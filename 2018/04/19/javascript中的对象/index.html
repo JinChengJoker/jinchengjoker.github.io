@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="ECMAScript 规定全局对象叫做 global，但是浏览器把 window 作为全局对象（浏览器先存在的）。 window 有很多属性，这些属性就是全局变量，可供调用。大致分为两种：  ECMAScript 规定的 Number、String、Boolean、Object … 浏览器自己添加的 alert、prompt、comfirm、console …  Number 对象Number 对">
+<meta name="keywords" content="前端 front-end JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 中的对象">
+<meta property="og:url" content="http://yoursite.com/2018/04/19/javascript中的对象/index.html">
+<meta property="og:site_name" content="JinCheng&#39;s Blog">
+<meta property="og:description" content="ECMAScript 规定全局对象叫做 global，但是浏览器把 window 作为全局对象（浏览器先存在的）。 window 有很多属性，这些属性就是全局变量，可供调用。大致分为两种：  ECMAScript 规定的 Number、String、Boolean、Object … 浏览器自己添加的 alert、prompt、comfirm、console …  Number 对象Number 对">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-27T14:27:47.608Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 中的对象">
+<meta name="twitter:description" content="ECMAScript 规定全局对象叫做 global，但是浏览器把 window 作为全局对象（浏览器先存在的）。 window 有很多属性，这些属性就是全局变量，可供调用。大致分为两种：  ECMAScript 规定的 Number、String、Boolean、Object … 浏览器自己添加的 alert、prompt、comfirm、console …  Number 对象Number 对">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/19/javascript中的对象/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>JavaScript 中的对象 | JinCheng's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JinCheng's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/19/javascript中的对象/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JinCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/04/27/5ae331c4ac6c1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JinCheng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript 中的对象
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-04-19 21:34:49" itemprop="dateCreated datePublished" datetime="2018-04-19T21:34:49+08:00">2018-04-19</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>ECMAScript 规定全局对象叫做 global，但是浏览器把 window 作为全局对象（浏览器先存在的）。</p>
+<p>window 有很多属性，这些属性就是全局变量，可供调用。大致分为两种：</p>
+<ul>
+<li>ECMAScript 规定的 <code>Number</code>、<code>String</code>、<code>Boolean</code>、<code>Object</code> …</li>
+<li>浏览器自己添加的 <code>alert</code>、<code>prompt</code>、<code>comfirm</code>、<code>console</code> …</li>
+</ul>
+<h2 id="Number-对象"><a href="#Number-对象" class="headerlink" title="Number 对象"></a>Number 对象</h2><p><code>Number</code> 对象是数值对应的包装对象。</p>
+<p><code>Number()</code> 可以作为工具函数使用，也可以作为构造函数使用（即可以使用new命令）：</p>
+<ul>
+<li><code>Number(&#39;1&#39;)</code> 尝试把任意值变为数值</li>
+<li><code>var n = new Number(1)</code> 把数值 1 包装成一个对象</li>
+</ul>
+<p>那么为什么要把 1 包装成一个对象？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n1 = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> n2 = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>)</span><br><span class="line"><span class="comment">// 这两个变量有什么区别？</span></span><br></pre></td></tr></table></figure>
+<p>区别就是内存不同。</p>
+<p>打印出 <code>n1</code> 和 <code>n2</code> 可以发现，<code>n1</code> 的值是一个基本类型，直接存在 Stack 中；而 <code>n2</code> 的值则是一个对象，把这个对象的 Heap 地址存在 Stack 中，对象里提供了一些例如 <code>valueOf()</code>、<code>toString()</code> 等可以被调用的属性和方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n2.valueOf()  <span class="comment">// 得到初始值 1</span></span><br><span class="line">n2.toString()  <span class="comment">// 转换为字符串 '1'</span></span><br></pre></td></tr></table></figure>
+<p>但奇怪的是，<code>n1</code> 是基本类型，它也可以调用这些方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n1.valueOf()  <span class="comment">// 1</span></span><br><span class="line">n1.toString()  <span class="comment">// '1'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>JS 黑历史：Brendan Eich 最初设计 JS 的时候，被要求语法要像 JAVA，于是就有了 <code>var n2 = new Number(1)</code>。但他认为这种方式太麻烦，于是就有了 <code>var n1 = 1</code>。但这样有一个缺点，因为 <code>n1</code> 是基本类型，所以就无法调用 <code>Number</code> 对象提供的方法。</p>
+</blockquote>
+<p><strong>解决办法就是，当对 <code>n1</code> 想要进行操作或调用对应的方法时，就把 <code>n1</code> 做一个转换，临时包装成一个对象，之后就马上删除这个对象。这样就实现了基本类型也可以直接调用相应的属性和方法。</strong></p>
+<p>一个简单的验证：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">1</span></span><br><span class="line">n.a = <span class="number">2</span>  <span class="comment">// 会不会报错？</span></span><br></pre></td></tr></table></figure>
+<p>当执行 <code>n.a = 2</code> 时，JS 会临时的把 <code>n</code> 包装成对象，然后给这个对象添加属性 <code>a</code>，值为 2。</p>
+<p>所以不会报错。</p>
+<p>如果想要调用 <code>n.a</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n.a  <span class="comment">// 返回的值？</span></span><br></pre></td></tr></table></figure>
+<p>因为在执行完 <code>n.a = 2</code> 后，<code>n</code> 临时包装的对象就马上被删除了，所以再执行 <code>n.a</code> 的时候，就会另外重新把 <code>n</code> 临时包装成对象，但这个对象并没有添加属性 <code>a</code>。</p>
+<p>所以返回的值是 <code>undefined</code>。</p>
+<p>更多详细参考：<a href="http://javascript.ruanyifeng.com/stdlib/number.html" target="_blank" rel="noopener">阮一峰《JavaScript 标准参考教程》- Number 对象</a></p>
+<h2 id="String-对象"><a href="#String-对象" class="headerlink" title="String 对象"></a>String 对象</h2><p>与 <code>Number</code> 对象类似，<code>String</code> 对象是字符串对应的包装对象。</p>
+<p><code>String()</code> 可以作为工具函数使用，也可以作为构造函数使用。</p>
+<p>更多详细参考：<a href="http://javascript.ruanyifeng.com/stdlib/string.html" target="_blank" rel="noopener">阮一峰《JavaScript 标准参考教程》- String 对象</a></p>
+<h2 id="Boolean-对象"><a href="#Boolean-对象" class="headerlink" title="Boolean 对象"></a>Boolean 对象</h2><p>与 <code>Number</code> 对象类似，<code>Boolean</code> 对象是布尔值对应的包装对象。</p>
+<p><code>Boolean()</code> 可以作为工具函数使用，也可以作为构造函数使用。</p>
+<p>讲一个笑话：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bool = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">false</span>)</span><br><span class="line"><span class="keyword">if</span>(bool) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"js is amazing :)"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>更多详细参考：<a href="http://javascript.ruanyifeng.com/stdlib/wrapper.html#toc6" target="_blank" rel="noopener">阮一峰《JavaScript 标准参考教程》- Boolean 对象</a></p>
+<h2 id="Object-对象"><a href="#Object-对象" class="headerlink" title="Object 对象"></a>Object 对象</h2><p><code>Object()</code> 当作工具函数使用，将任意值转为对象：</p>
+<ul>
+<li>如果参数是空、undefined 或 null，返回一个空对象</li>
+<li>如果参数是 number、string 或 boolean 值，返回对应的包装对象</li>
+<li>如果参数是一个对象，它总是返回该对象</li>
+</ul>
+<p><code>Object()</code> 也可以作为构造函数使用，用法与工具函数用法几乎一模一样。</p>
+<p>例如直接通过它来生成新对象：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o1 = &#123;&#125;</span><br><span class="line"><span class="keyword">var</span> o2 = <span class="keyword">new</span> <span class="built_in">Object</span>()</span><br><span class="line">o1 === o2  <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p><code>o1</code> 和 <code>o2</code> 基本没有区别，都是空对象，只是在 Stack 中存的 Heap 地址不同。</p>
+<p>更多详细参考：<a href="http://javascript.ruanyifeng.com/stdlib/object.html" target="_blank" rel="noopener">阮一峰《JavaScript 标准参考教程》- Object 对象</a></p>
+<h2 id="Array-对象"><a href="#Array-对象" class="headerlink" title="Array 对象"></a>Array 对象</h2><p><code>Array()</code> 当作工具函数和构造函数的用法几乎一摸一样，可以用它生成新的 Array 对象。</p>
+<p><strong>但是 <code>Array()</code> 有一个巨大的缺陷，就是不同的参数，会导致它的行为不一致。</strong></p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>)  <span class="comment">// 声明一个长度为 3 的数组，但没有任何元素，只有 length 属性</span></span><br><span class="line">a  <span class="comment">// []</span></span><br><span class="line">a.length  <span class="comment">// 3</span></span><br><span class="line"><span class="string">'0'</span> <span class="keyword">in</span> a  <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>, <span class="number">3</span>)  <span class="comment">// 声明一个长度为 2 的数组 [3, 3]</span></span><br><span class="line">b  <span class="comment">// [3, 3]</span></span><br></pre></td></tr></table></figure>
+<p><strong>因此，不建议使用它生成新数组，直接使用数组字面量是更好的做法。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<p>更多详细参考：<a href="http://javascript.ruanyifeng.com/stdlib/array.html" target="_blank" rel="noopener">阮一峰《JavaScript 标准参考教程》- Array 对象</a></p>
+<h2 id="简单总结"><a href="#简单总结" class="headerlink" title="简单总结"></a>简单总结</h2><ul>
+<li><p><code>Number()</code>、<code>String()</code>、<code>Boolean()</code><br>  不加 <code>new</code> 就是当做数据类型转换工具函数使用，返回的是基本类型的值。<br>  加 <code>new</code> 就是当做构造函数使用，返回的是对应类型的包装对象。</p>
+</li>
+<li><p><code>Object()</code>、<code>Array()</code><br>  加不加 <code>new</code> 都一样，返回的都是对象。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/18/垃圾回收和内存泄漏/" rel="next" title="垃圾回收和内存泄漏">
+                <i class="fa fa-chevron-left"></i> 垃圾回收和内存泄漏
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/20/javascript中的原型和原型链/" rel="prev" title="JavaScript 中的原型和原型链">
+                JavaScript 中的原型和原型链 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://i.loli.net/2018/04/27/5ae331c4ac6c1.jpg"
+                alt="JinCheng" />
+            
+              <p class="site-author-name" itemprop="name">JinCheng</p>
+              <p class="site-description motion-element" itemprop="description">嬉皮笑脸面对人生的难</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-对象"><span class="nav-number">1.</span> <span class="nav-text">Number 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-对象"><span class="nav-number">2.</span> <span class="nav-text">String 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boolean-对象"><span class="nav-number">3.</span> <span class="nav-text">Boolean 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-对象"><span class="nav-number">4.</span> <span class="nav-text">Object 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-对象"><span class="nav-number">5.</span> <span class="nav-text">Array 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单总结"><span class="nav-number">6.</span> <span class="nav-text">简单总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JinCheng</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

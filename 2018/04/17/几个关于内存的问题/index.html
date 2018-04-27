@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="简单来说，JS 引擎将内存分为代码区和数据区，而数据区分为 Stack（栈内存）和 Heap（堆内存）。 基本类型的数据直接存入 Stack 里，复杂类型的数据是把 Heap 地址存入 Stack 里，这个地址就是对数据的引用。 记录一下几个关于内存的问题： 1. 1234var a = 1var b = ab = 2// a = ? 不废话。。。a 的值肯定为 1。 2. 1234var a =">
+<meta name="keywords" content="前端 front-end JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="几个关于内存的问题">
+<meta property="og:url" content="http://yoursite.com/2018/04/17/几个关于内存的问题/index.html">
+<meta property="og:site_name" content="JinCheng&#39;s Blog">
+<meta property="og:description" content="简单来说，JS 引擎将内存分为代码区和数据区，而数据区分为 Stack（栈内存）和 Heap（堆内存）。 基本类型的数据直接存入 Stack 里，复杂类型的数据是把 Heap 地址存入 Stack 里，这个地址就是对数据的引用。 记录一下几个关于内存的问题： 1. 1234var a = 1var b = ab = 2// a = ? 不废话。。。a 的值肯定为 1。 2. 1234var a =">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-27T11:14:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="几个关于内存的问题">
+<meta name="twitter:description" content="简单来说，JS 引擎将内存分为代码区和数据区，而数据区分为 Stack（栈内存）和 Heap（堆内存）。 基本类型的数据直接存入 Stack 里，复杂类型的数据是把 Heap 地址存入 Stack 里，这个地址就是对数据的引用。 记录一下几个关于内存的问题： 1. 1234var a = 1var b = ab = 2// a = ? 不废话。。。a 的值肯定为 1。 2. 1234var a =">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/17/几个关于内存的问题/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>几个关于内存的问题 | JinCheng's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JinCheng's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/几个关于内存的问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JinCheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/04/27/5ae331c4ac6c1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JinCheng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">几个关于内存的问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-04-17 14:34:42" itemprop="dateCreated datePublished" datetime="2018-04-17T14:34:42+08:00">2018-04-17</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>简单来说，JS 引擎将内存分为代码区和数据区，而数据区分为 Stack（栈内存）和 Heap（堆内存）。</p>
+<p>基本类型的数据直接存入 Stack 里，复杂类型的数据是把 Heap 地址存入 Stack 里，这个地址就是对数据的引用。</p>
+<p>记录一下几个关于内存的问题：</p>
+<p>1.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b = <span class="number">2</span></span><br><span class="line"><span class="comment">// a = ?</span></span><br></pre></td></tr></table></figure>
+<p>不废话。。。a 的值肯定为 1。</p>
+<p>2.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123; <span class="attr">name</span>: <span class="string">'a'</span> &#125;</span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b = &#123; <span class="attr">name</span>: <span class="string">'b'</span> &#125;</span><br><span class="line"><span class="comment">// a.name = ?</span></span><br></pre></td></tr></table></figure>
+<p>因为 a 的值为一个对象（复杂类型），所以 a 其实是把这个对象的 Heap 地址存在 Stack 里。</p>
+<p><code>var b = a</code> 是复制了这个 Heap 地址给 b。</p>
+<p><code>b = { name: &#39;b&#39; }</code> 是把一个新对象的 Heap 地址赋值给 b，覆盖掉原来的 Heap 地址。</p>
+<p>所以 a 没有变化，<code>a.name</code> 的值为 <code>&#39;a&#39;</code>。</p>
+<p>3.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123; <span class="attr">name</span>: <span class="string">'a'</span> &#125;</span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b.name = <span class="string">'b'</span></span><br><span class="line"><span class="comment">// a.name = ?</span></span><br></pre></td></tr></table></figure>
+<p>前两句同上</p>
+<p>此时 <code>b.name = &#39;b&#39;</code> 其实是把 Heap 地址引用的对象中的 name 变成了 <code>&#39;b&#39;</code>。</p>
+<p>因为 a 和 b 的 Heap 地址引用的是同一个内存区域（即同一个对象），所以 <code>a.name</code> 的值也变成了 <code>&#39;b&#39;</code>。</p>
+<p>4.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123; <span class="attr">name</span>: <span class="string">'a'</span> &#125;</span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b = <span class="literal">null</span></span><br><span class="line"><span class="comment">// a.name = ?</span></span><br></pre></td></tr></table></figure>
+<p>其实与第二题同理，<code>b = null</code> 是把 <code>null</code> 赋值给 b，覆盖掉原来的 Heap 地址。</p>
+<p>所以 a 没有变化，<code>a.name</code> 的值还是为 <code>&#39;a&#39;</code>。</p>
+<p>5.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123; <span class="attr">self</span>: a &#125;</span><br><span class="line"><span class="comment">// a === a.self ?</span></span><br></pre></td></tr></table></figure>
+<p>首先变量提升会声明一个 <code>a</code>，此时 a 并没有被赋值，a 为 <code>undefined</code>。</p>
+<p>然后在 Heap 中存 <code>{ self: a }</code> 数据，此时 a 依然为 <code>undefined</code>。</p>
+<p>最后再把该数据的 Heap 地址赋值给 a 存入 Stack 里。</p>
+<p>所以实际上 <code>a</code> 的值为 <code>{ self: undefined }</code>，<code>a.self</code> 为 <code>undefined</code>。结果为 <code>false</code>。</p>
+<p>如果要实现 <code>a === a.self</code> ，要先存一个空对象，再给空对象添加属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a = &#123;&#125;</span><br><span class="line">a.self = a</span><br><span class="line">a === a.self  // true</span><br></pre></td></tr></table></figure>
+<p>6.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123; <span class="attr">name</span>: <span class="string">'a'</span> &#125;</span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">a.x = a = &#123; <span class="attr">name</span>: <span class="string">'b'</span> &#125;</span><br><span class="line"><span class="comment">// a.x = ?</span></span><br><span class="line"><span class="comment">// b.x = ?</span></span><br></pre></td></tr></table></figure>
+<p>首先写出 <code>a.x = a = { name: &#39;b&#39; }</code> 这样的代码很智障。。。</p>
+<p>然后运行到这一行的时候，a 和 b 在 Stack 中存入的 Heap 地址已经确定了，简单的假设这个地址为 <code>ADDR200</code>，写成伪代码 <code>ADDR200.x = ADDR200 = { name: &#39;b&#39; }</code>。</p>
+<p>先计算 <code>a = { name: &#39;b&#39; }</code> 就是覆盖之前的 Heap 地址，再简单的假设这个地址为 <code>ADDR300</code>，写成伪代码 <code>ADDR200.x = ADDR300</code>。</p>
+<p>再计算 <code>a.x = a</code> 就是给 Heap 地址为 <code>ADDR200</code> 引用的对象添加属性 <code>x</code>，值为 Heap 地址 <code>ADDR300</code>。</p>
+<p>所以最后 a 在 Stack 中存的 Heap 地址为 <code>ADDR300</code>，b 在 Stack 中存的 Heap 地址为 <code>ADDR200</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a  <span class="comment">// &#123; name: 'b' &#125;</span></span><br><span class="line">b  <span class="comment">// &#123; name: 'a', x: &#123; name: 'b' &#125; &#125;</span></span><br><span class="line">a.x  <span class="comment">// undefined</span></span><br><span class="line">b.x  <span class="comment">// &#123; name: 'b' &#125;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/14/javascript数据类型转换/" rel="next" title="JavaScript 数据类型转换">
+                <i class="fa fa-chevron-left"></i> JavaScript 数据类型转换
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/18/垃圾回收和内存泄漏/" rel="prev" title="垃圾回收和内存泄漏">
+                垃圾回收和内存泄漏 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://i.loli.net/2018/04/27/5ae331c4ac6c1.jpg"
+                alt="JinCheng" />
+            
+              <p class="site-author-name" itemprop="name">JinCheng</p>
+              <p class="site-description motion-element" itemprop="description">嬉皮笑脸面对人生的难</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JinCheng</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
