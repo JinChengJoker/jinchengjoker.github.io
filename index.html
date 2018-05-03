@@ -219,7 +219,7 @@
           
           <li class="menu-item menu-item-home menu-item-active">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Accueil</a>
   </li>
         
         
@@ -227,7 +227,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
   </li>
 
       
@@ -262,6 +262,152 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/03/实现一个简易版jQueryAPI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="金成Joker">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/04/27/5ae331c4ac6c1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JinCheng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/03/实现一个简易版jQueryAPI/" itemprop="url">
+                  实现一个简易版 jQuery API
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-05-03 21:01:56" itemprop="dateCreated datePublished" datetime="2018-05-03T21:01:56+08:00">2018-05-03</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>假设基本需求如下：<br>使用 <code>$(&#39;div&#39;).addClass(&#39;red&#39;)</code> 可以给所有 <code>div</code> 添加一个 <code>red</code> 类。<br>使用 <code>$(&#39;div&#39;).setText(&#39;hello&#39;)</code> 可以将所有 <code>div</code> 的文本内容设置为 <code>hello</code>。</p>
+</blockquote>
+<h2 id="封装函数"><a href="#封装函数" class="headerlink" title="封装函数"></a>封装函数</h2><p>根据需求分别封装出两个函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addClass</span>(<span class="params">selector, className</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> nodes = <span class="built_in">document</span>.querySelectorAll(selector)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nodes.length; i++) &#123;</span><br><span class="line">        nodes[i].classList.add(className)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setText</span>(<span class="params">selector, text</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> nodes = <span class="built_in">document</span>.querySelectorAll(selector)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nodes.length; i++) &#123;</span><br><span class="line">        nodes[i].textContent = text</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="选择器前置"><a href="#选择器前置" class="headerlink" title="选择器前置"></a>选择器前置</h2><h3 id="方法一：拓展-prototype"><a href="#方法一：拓展-prototype" class="headerlink" title="方法一：拓展 prototype"></a>方法一：拓展 prototype</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">NodeList.prototype.addClass = <span class="function"><span class="keyword">function</span>(<span class="params">className</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.length; i++) &#123;</span><br><span class="line">        <span class="keyword">this</span>[i].classList.add(className)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">NodeList.prototype.setText = <span class="function"><span class="keyword">function</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.length; i++) &#123;</span><br><span class="line">        <span class="keyword">this</span>[i].textContent = text</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用 API：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> nodes = <span class="built_in">document</span>.querySelectorAll(<span class="string">'div'</span>)</span><br><span class="line">nodes.addClass(<span class="string">'red'</span>)</span><br><span class="line">nodes.setText(<span class="string">'hello'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="方法二：新建构造函数"><a href="#方法二：新建构造函数" class="headerlink" title="方法二：新建构造函数"></a>方法二：新建构造函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.jquery = <span class="function"><span class="keyword">function</span>(<span class="params">selector</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> nodes = <span class="built_in">document</span>.querySelectorAll(selector)</span><br><span class="line">    nodes.addClass = <span class="function"><span class="keyword">function</span>(<span class="params">className</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nodes.length; i++) &#123;</span><br><span class="line">            nodes[i].classList.add(className)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    nodes.setText = <span class="function"><span class="keyword">function</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nodes.length; i++) &#123;</span><br><span class="line">            nodes[i].textContent = text</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nodes</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用 API：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jquery(<span class="string">'div'</span>).addClass(<span class="string">'red'</span>)</span><br><span class="line">jquery(<span class="string">'div'</span>).setText(<span class="string">'hello'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.$ = jquery</span><br><span class="line">$(<span class="string">'div'</span>).addClass(<span class="string">'red'</span>)</span><br><span class="line">$(<span class="string">'div'</span>).setText(<span class="string">'hello'</span>)</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -317,7 +463,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
@@ -468,7 +614,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
@@ -649,7 +795,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
@@ -785,7 +931,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
@@ -967,7 +1113,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
@@ -1166,7 +1312,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
@@ -1312,7 +1458,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
@@ -1483,7 +1629,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
@@ -1675,7 +1821,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
 
               
@@ -1858,184 +2004,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/17/CSS笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="金成Joker">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://i.loli.net/2018/04/27/5ae331c4ac6c1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JinCheng's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/17/CSS笔记/" itemprop="url">
-                  CSS 笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-03-17 14:51:31" itemprop="dateCreated datePublished" datetime="2018-03-17T14:51:31+08:00">2018-03-17</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>CSS(Cascading Style Sheets) 层叠样式表。</p>
-<h2 id="CSS-主要版本"><a href="#CSS-主要版本" class="headerlink" title="CSS 主要版本"></a>CSS 主要版本</h2><ul>
-<li><p>CSS2<br>  1998年发布 CSS2，紧接着发布 CSS2.1，修复了 CSS2 中的一些错误，删除了一些不被支持的内容，增加了一些已有浏览器的拓展内容。</p>
-</li>
-<li><p>CSS3<br>  2011年 CSS 被分为多个模块，并且每个模块单独升级，统称为 CSS3。例如： CSS 选择器 level3，CSS 媒体查询 level3，CSS color level3 等等。</p>
-</li>
-</ul>
-<h2 id="常见引入-CSS-方式"><a href="#常见引入-CSS-方式" class="headerlink" title="常见引入 CSS 方式"></a>常见引入 CSS 方式</h2><ul>
-<li><p>内联 <code>style</code> 属性</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;color: red;&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>style</code> 标签</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    div &#123;</span><br><span class="line">        color: red;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>引入外部 <code>CSS</code> 文件</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;./css/style.css&quot;&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 .css 文件中引入</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import url(&apos;./style.css&apos;);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="文档流"><a href="#文档流" class="headerlink" title="文档流"></a>文档流</h2><p>指文档内元素的流动方向。</p>
-<ul>
-<li><p>内联元素<br>  默认从左往右流动，遇到阻碍（宽度不够）换行继续从左往右流动。<br>  不接受 width 和 height 这两个属性。</p>
-</li>
-<li><p>块级元素<br>  默认从上往下流动，每个元素各占一行。</p>
-</li>
-</ul>
-<h2 id="一些技巧"><a href="#一些技巧" class="headerlink" title="一些技巧"></a>一些技巧</h2><ul>
-<li><p>解决元素 <code>float</code> 之后出现的问题<br>  在 float 元素的父元素添加 clearfix 类：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.clearfix::after &#123;</span><br><span class="line">    content: &quot;&quot;;</span><br><span class="line">    display: block;</span><br><span class="line">    clear: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>鼠标移入显示边框<br>  可以默认透明边框，写鼠标移入效果时再填充颜色。</p>
-</li>
-</ul>
-<h2 id="注意细节"><a href="#注意细节" class="headerlink" title="注意细节"></a>注意细节</h2><ul>
-<li><p>尽量不要使用 <code>width</code> 和 <code>height</code> 属性，否则不注意就会造成一些奇怪的问题（例如简历 demo 中导航和个人资料 <code>&lt;hr&gt;</code> 的问题）。</p>
-</li>
-<li><p>在编辑器中，两个 <code>span</code> 标签换行，在浏览器中渲染会有空格（因为两个标签之间会有换行符，不论有多少空格和换行符都只会渲染成一个空格）。</p>
-</li>
-<li><p>给元素添加 <code>display: inline-block;</code> 之后，有可能会出现一些奇怪的问题，可以尝试添加 <code>vertical-align: top;</code> 解决。</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2087,8 +2055,8 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">articles</span>
                   </a>
                 </div>
               
@@ -2145,7 +2113,7 @@
 
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
@@ -2153,7 +2121,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
+  <div class="theme-info">Thème &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
 
 
 
