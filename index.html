@@ -219,7 +219,7 @@
           
           <li class="menu-item menu-item-home menu-item-active">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Accueil</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
   </li>
         
         
@@ -227,7 +227,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
   </li>
 
       
@@ -262,6 +262,145 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/10/动态rem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="金成Joker">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/04/27/5ae331c4ac6c1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JinCheng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/10/动态rem/" itemprop="url">
+                  动态rem
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-05-10 23:21:24" itemprop="dateCreated datePublished" datetime="2018-05-10T23:21:24+08:00">2018-05-10</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="什么是-rem"><a href="#什么是-rem" class="headerlink" title="什么是 rem"></a>什么是 rem</h2><p>rem 代表根元素 <code>html</code> 的 font-size 大小。</p>
+<h2 id="添加-meta-viewport"><a href="#添加-meta-viewport" class="headerlink" title="添加 meta viewport"></a>添加 meta viewport</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"</span>&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="JS-动态调整-rem"><a href="#JS-动态调整-rem" class="headerlink" title="JS 动态调整 rem"></a>JS 动态调整 rem</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">flexible</span>(<span class="params">window, document</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> docEl = <span class="built_in">document</span>.documentElement</span><br><span class="line"></span><br><span class="line">    setRemUnit()</span><br><span class="line">    setBodyFontSize()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// reset rem unit on page resize</span></span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'resize'</span>, setRemUnit)</span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'pageshow'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (e.persisted) &#123;</span><br><span class="line">            setRemUnit()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// set 1rem = viewWidth / 10</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">setRemUnit</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> width = <span class="built_in">Math</span>.min(docEl.clientWidth, <span class="number">512</span>)  <span class="comment">// 最大 512 px</span></span><br><span class="line">        <span class="keyword">var</span> rem = width / <span class="number">10</span></span><br><span class="line">        docEl.style.fontSize = rem + <span class="string">'px'</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// adjust body font size</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">setBodyFontSize</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">document</span>.body) &#123;</span><br><span class="line">            <span class="built_in">document</span>.body.style.fontSize = <span class="string">'12px'</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, setBodyFontSize)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(<span class="built_in">window</span>, <span class="built_in">document</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="使用-node-sass-自动-px2rem"><a href="#使用-node-sass-自动-px2rem" class="headerlink" title="使用 node-sass 自动 px2rem"></a>使用 node-sass 自动 px2rem</h2><p>在 <code>.scss</code> 文件中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$designWidth : 750;  // 设计稿的宽度</span><br><span class="line"></span><br><span class="line">@function px($px)&#123;</span><br><span class="line">    @return $px / $designWidth * 10 + rem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -317,7 +456,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
@@ -463,7 +602,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
@@ -614,7 +753,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
@@ -795,7 +934,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
@@ -931,7 +1070,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
@@ -1113,7 +1252,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
@@ -1312,7 +1451,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
@@ -1458,7 +1597,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
@@ -1629,7 +1768,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
@@ -1767,243 +1906,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/12/javascript数据类型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="金成Joker">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://i.loli.net/2018/04/27/5ae331c4ac6c1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JinCheng's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/12/javascript数据类型/" itemprop="url">
-                  JavaScript 数据类型
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posté le</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-04-12 22:44:04" itemprop="dateCreated datePublished" datetime="2018-04-12T22:44:04+08:00">2018-04-12</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h2><p>六种基本类型：Number、String、Boolean、Symbol、null、undefined。</p>
-<h3 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">进制</th>
-<th style="text-align:center">说明</th>
-<th style="text-align:center">示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">十进制</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">123</td>
-</tr>
-<tr>
-<td style="text-align:center">十进制</td>
-<td style="text-align:center">浮点数</td>
-<td style="text-align:center">1.23</td>
-</tr>
-<tr>
-<td style="text-align:center">十进制</td>
-<td style="text-align:center">科学计数</td>
-<td style="text-align:center">1.23e2 = 123</td>
-</tr>
-<tr>
-<td style="text-align:center">二进制</td>
-<td style="text-align:center">以 0b 开头</td>
-<td style="text-align:center">0b11</td>
-</tr>
-<tr>
-<td style="text-align:center">八进制</td>
-<td style="text-align:center">以 0 开头</td>
-<td style="text-align:center">011</td>
-</tr>
-<tr>
-<td style="text-align:center">十六进制</td>
-<td style="text-align:center">以 0x 开头</td>
-<td style="text-align:center">0x11</td>
-</tr>
-</tbody>
-</table>
-<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><ul>
-<li><p>空字符串： <code>&#39;&#39;</code></p>
-</li>
-<li><p>非空字符串： <code>&#39;abc&#39;</code> <code>&#39; &#39;</code></p>
-</li>
-<li><p>多行字符串：</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 无回车符</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="string">'123'</span> + </span><br><span class="line">        <span class="string">'456'</span></span><br><span class="line">s.length  <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 无回车符</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="string">'123\</span></span><br><span class="line"><span class="string">456'</span></span><br><span class="line">s.length  <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 包含一个回车符</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="string">`123</span></span><br><span class="line"><span class="string">456`</span></span><br><span class="line">s.length  <span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h3><p>只有两个值：true 和 false</p>
-<h3 id="null-和-undefined"><a href="#null-和-undefined" class="headerlink" title="null 和 undefined"></a>null 和 undefined</h3><ul>
-<li><p>如果一个变量没有赋值，那么它就是 undefined。</p>
-</li>
-<li><p>惯例 - 如果要声明一个对象，且暂时没有值，可以初始化为 null。</p>
-</li>
-<li><p>惯例 - 如果要声明一个非对象，且暂时没有值，可以初始化为 undefined。</p>
-</li>
-</ul>
-<h2 id="复杂类型"><a href="#复杂类型" class="headerlink" title="复杂类型"></a>复杂类型</h2><p>只有一种复杂类型：Object。</p>
-<p>对象又可以分为三种子类型：Object（狭义的对象）、Array、Function。</p>
-<p>复杂类型由基本类型组成。</p>
-<h3 id="Object（狭义的对象）"><a href="#Object（狭义的对象）" class="headerlink" title="Object（狭义的对象）"></a>Object（狭义的对象）</h3><h4 id="键名"><a href="#键名" class="headerlink" title="键名"></a>键名</h4><ul>
-<li><p>object 的所有键名都是字符串，但有些情况可以省略引号。</p>
-</li>
-<li><p>如果键名是数值，会被自动转为字符串。</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    1: &apos;a&apos;,</span><br><span class="line">    2: &apos;b&apos;</span><br><span class="line">&#125;</span><br><span class="line">// 等同于</span><br><span class="line">var obj = &#123;</span><br><span class="line">    &apos;1&apos;: &apos;a&apos;,</span><br><span class="line">    &apos;2&apos;: &apos;b&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果键名不是数值，且没有加引号，则必须以标识符（变量名）的规定命名；如果加引号，则没有这样的限制。</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 报错</span><br><span class="line">var obj = &#123;</span><br><span class="line">    1a: &apos;hello&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 正确</span><br><span class="line">var obj = &#123;</span><br><span class="line">    &apos;1a&apos;: &apos;hello&apos;,</span><br><span class="line">    &apos;2 b&apos;: &apos;world&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="添加属性"><a href="#添加属性" class="headerlink" title="添加属性"></a>添加属性</h4><ul>
-<li><p>用方括号运算符 <code>object[&#39;key&#39;]</code> 添加属性，键名必须加上引号，否则会被当做变量。如果键名是数值，可以不用加引号，会被自动转为字符串。</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;&#125;</span><br><span class="line">obj[a] = &apos;hello&apos;  // 报错</span><br><span class="line">obj[&apos;a&apos;] = &apos;hello&apos;  // 正确</span><br><span class="line">obj[1] = &apos;world&apos;  // 正确</span><br><span class="line">obj[&apos;1&apos;] = &apos;world&apos;  // 正确</span><br><span class="line">obj[2b] = &apos;hi&apos;  // 报错</span><br><span class="line">obj[&apos;2b&apos;] = &apos;hi&apos;  // 正确</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>用点运算符 <code>object.key</code> 添加属性，键名必须符合标识符（变量名）规定。</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;&#125;</span><br><span class="line">obj.a = &apos;hello&apos;  // 正确</span><br><span class="line">obj.1 = &apos;world&apos;  // 报错</span><br><span class="line">obj.2b = &apos;hi&apos;  // 报错</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="读取属性"><a href="#读取属性" class="headerlink" title="读取属性"></a>读取属性</h4><ul>
-<li><p>用方括号运算符 <code>object[&#39;key&#39;]</code> 取值，键名必须加上引号，否则会被当做变量。如果键名是数值，可以不用加引号，会被自动转为字符串。</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    a: &apos;hello&apos;,</span><br><span class="line">    1: &apos;world&apos;,</span><br><span class="line">    2b: &apos;hi&apos;</span><br><span class="line">&#125;</span><br><span class="line">obj[&apos;a&apos;]  // &apos;hello&apos;</span><br><span class="line">obj[a]  // 报错，因为 a 被当成了变量，变量 a 不存在</span><br><span class="line">obj[&apos;1&apos;]  // &apos;world&apos;</span><br><span class="line">obj[1]  // &apos;world&apos;</span><br><span class="line">obj[2b]  // 报错</span><br><span class="line">obj[&apos;2b&apos;]  // &apos;hi&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果键名符合标识符（变量名）规定时，可以用点运算符 <code>object.key</code> 取值。</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    a: &apos;hello&apos;,</span><br><span class="line">    1: &apos;world&apos;,</span><br><span class="line">    2b: &apos;hi&apos;</span><br><span class="line">&#125;</span><br><span class="line">obj.a  // &apos;hello&apos;</span><br><span class="line">obj.1  // 报错</span><br><span class="line">obj.2b  // 报错</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h4><ul>
-<li><p><code>key in object</code> 用于判断一个属性是否存在于 object 中，如果存在就返回true，否则返回false。</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123; p: 1 &#125;</span><br><span class="line">&apos;p&apos; in obj // true</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>for...in</code> 用于遍历 object 的属性。</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123; a: 1, b: 2, c: 3 &#125;</span><br><span class="line">for(var key in obj) &#123;</span><br><span class="line">    console.log(key)</span><br><span class="line">&#125;</span><br><span class="line">// &apos;a&apos;</span><br><span class="line">// &apos;b&apos;</span><br><span class="line">// &apos;c&apos;</span><br><span class="line">for(var key in obj) &#123;</span><br><span class="line">    console.log(obj[key])  // 注意这里 typeof key 为 string</span><br><span class="line">&#125;</span><br><span class="line">// 1</span><br><span class="line">// 2</span><br><span class="line">// 3</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>Object.keys()</code> 可以查看一个对象的所有属性。</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123; a: 1, b: 2, c: 3 &#125;</span><br><span class="line">Object.keys(obj)  // [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>delete obj.key</code> 用于删除 object 中的属性，删除成功后返回 true。</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123; p: 1 &#125;</span><br><span class="line">delete obj.p  // true</span><br><span class="line">obj.p  // undefined</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2055,8 +1957,8 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
-                    <span class="site-state-item-name">articles</span>
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
               
@@ -2113,7 +2015,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
@@ -2121,7 +2023,7 @@
 
 
 
-  <div class="theme-info">Thème &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
 
 
 
