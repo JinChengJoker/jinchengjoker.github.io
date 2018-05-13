@@ -278,6 +278,198 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/14/javascript数据类型转换/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="金成Joker">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/04/27/5ae331c4ac6c1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JinCheng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/14/javascript数据类型转换/" itemprop="url">
+                  JavaScript 数据类型转换
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-04-14 00:27:05" itemprop="dateCreated datePublished" datetime="2018-04-14T00:27:05+08:00">2018-04-14</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="转换为-string"><a href="#转换为-string" class="headerlink" title="转换为 string"></a>转换为 string</h2><h3 id="toString-方法"><a href="#toString-方法" class="headerlink" title="toString() 方法"></a>toString() 方法</h3><ul>
+<li><p>boolean</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">true.toString()  // &quot;true&quot;</span><br><span class="line">false.toString()  // &quot;false&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>null<br>  没有 <code>toString()</code> 方法</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">null.toString()  // 报错</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>undefined<br>  没有 <code>toString()</code> 方法</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">undefined.toString()  // 报错</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>object<br>  <code>toString()</code> 结果都是 <code>&quot;[object Object]&quot;</code></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;&#125;</span><br><span class="line">obj.toString()  // &quot;[object Object]&quot;</span><br><span class="line"></span><br><span class="line">var obj = &#123;a: &apos;hello&apos;&#125;</span><br><span class="line">obj.toString()  // &quot;[object Object]&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>array</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var arr = []</span><br><span class="line">arr.toString()  // &quot;&quot;</span><br><span class="line"></span><br><span class="line">var arr = [&apos;a&apos;, &apos;b&apos;]</span><br><span class="line">arr.toString()  // &quot;a,b&quot;</span><br><span class="line"></span><br><span class="line">var arr = [&apos;a&apos;, &apos;b&apos;, &#123; c: &apos;hello&apos; &#125;]</span><br><span class="line">arr.toString()  // &quot;a,b,[object Object]&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>function  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var func = function(key) &#123;console.log(key)&#125;</span><br><span class="line">func.toString()  // &quot;function (key) &#123;console.log(key)&#125;&quot; function 和括号之间有空格</span><br><span class="line"></span><br><span class="line">function zzz(key) &#123;console.log(key)&#125;</span><br><span class="line">zzz.toString()  // &quot;function zzz(key) &#123;console.log(key)&#125;&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="加空字符串方法"><a href="#加空字符串方法" class="headerlink" title="加空字符串方法"></a>加空字符串方法</h3><p>null 和 undefined 可以用此方法转为 string，其它结果和 <code>toString()</code> 方法一致</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">null + &apos;&apos;  // &quot;null&quot;</span><br><span class="line">undefined + &apos;&apos;  // &quot;undefined&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="全局方法-String"><a href="#全局方法-String" class="headerlink" title="全局方法 String()"></a>全局方法 String()</h3><p>结果与加空字符串方法一致</p>
+<h2 id="转换为-Boolean"><a href="#转换为-Boolean" class="headerlink" title="转换为 Boolean"></a>转换为 Boolean</h2><h3 id="全局方法-Boolean"><a href="#全局方法-Boolean" class="headerlink" title="全局方法 Boolean()"></a>全局方法 Boolean()</h3><ul>
+<li><p>number</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Boolean(0)  // false</span><br><span class="line">Boolean(NaN)  // false</span><br><span class="line"></span><br><span class="line">Boolean(1)  // true</span><br><span class="line">Boolean(-1)  // true</span><br><span class="line">Boolean(1.23)  // true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>string</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 空字符串</span><br><span class="line">Boolean(&apos;&apos;)  // false</span><br><span class="line"></span><br><span class="line">// 非空字符串</span><br><span class="line">Boolean(&apos; &apos;)  // true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>null 和 undefined</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Boolean(null)  // false</span><br><span class="line">Boolean(undefined)  // false</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>object<br>  转换结果都为 <code>true</code></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 空对象</span><br><span class="line">Boolean(&#123;&#125;)  // true</span><br><span class="line"></span><br><span class="line">// 非空对象</span><br><span class="line">var obj = &#123;a: &apos;hello&apos;&#125;</span><br><span class="line">Boolean(obj)  // true</span><br><span class="line"></span><br><span class="line">// 空数组</span><br><span class="line">Boolean([])  // true</span><br><span class="line"></span><br><span class="line">// 非空数组</span><br><span class="line">var arr = [&apos;a&apos;, &apos;b&apos;]</span><br><span class="line">Boolean(arr)  // true</span><br><span class="line"></span><br><span class="line">function fn(key) &#123;</span><br><span class="line">    console.log(key)</span><br><span class="line">&#125;</span><br><span class="line">Boolean(fn) // true</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="两次取反法"><a href="#两次取反法" class="headerlink" title="两次取反法 !!"></a>两次取反法 !!</h3><p>结果和全局方法 <code>Boolean()</code> 一致</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">!! 0  // false</span><br><span class="line">!! NaN  // false</span><br><span class="line"></span><br><span class="line">!! 1  // true</span><br><span class="line">!! -1  // true</span><br><span class="line">!! 1.23  // true</span><br></pre></td></tr></table></figure>
+<h2 id="转换为-Number"><a href="#转换为-Number" class="headerlink" title="转换为 Number"></a>转换为 Number</h2><h3 id="全局方法-Number"><a href="#全局方法-Number" class="headerlink" title="全局方法 Number()"></a>全局方法 Number()</h3><ul>
+<li><p>string<br>  注意：空格字符串（只包含一个或多个空格的字符串）转换结果为0</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Number(&apos;1&apos;)  // 1</span><br><span class="line">Number(&apos;-1&apos;)  // -1</span><br><span class="line">Number(&apos;1.23&apos;)  // 1.23</span><br><span class="line"></span><br><span class="line">// 空字符串</span><br><span class="line">Number(&apos;&apos;)  // 0</span><br><span class="line"></span><br><span class="line">// 空格字符串</span><br><span class="line">Number(&apos; &apos;)  // 0</span><br><span class="line"></span><br><span class="line">// 非空字符串</span><br><span class="line">Number(&apos;abc&apos;)  // NaN</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>boolean</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Number(true)  // 1</span><br><span class="line">Number(false)  // 0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>null 和 undefined<br>  注意：转换后的值不同</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Number(null)  // 0</span><br><span class="line">Number(undefined)  // NaN</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>object</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 空对象</span><br><span class="line">var obj = &#123;&#125;</span><br><span class="line">Number(obj)  // NaN</span><br><span class="line"></span><br><span class="line">// 非空对象</span><br><span class="line">var obj = &#123;a: &apos;hello&apos;&#125;</span><br><span class="line">Number(obj)  // NaN</span><br><span class="line"></span><br><span class="line">function fn(key) &#123;</span><br><span class="line">    console.log(key)</span><br><span class="line">&#125;</span><br><span class="line">Number(fn) // NaN</span><br></pre></td></tr></table></figure>
+<p>  其中 array 比较特殊，需要注意</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 空数组</span><br><span class="line">Number([])  // 0</span><br><span class="line"></span><br><span class="line">// 非空数组</span><br><span class="line">var arr = [&apos;a&apos;, &apos;6&apos;]</span><br><span class="line">Number(arr)  // NaN</span><br><span class="line"></span><br><span class="line">// 非空数组有且只有一个是数值的元素</span><br><span class="line">var arr = [&apos;6&apos;]</span><br><span class="line">Number(arr)  // 6</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="减去-0-方法"><a href="#减去-0-方法" class="headerlink" title="减去 0 方法"></a>减去 0 方法</h3><p>结果与全局方法 <code>Number()</code> 一致</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&apos;1&apos; - 0  // 1</span><br><span class="line">&apos;-1&apos; - 0  // -1</span><br><span class="line">&apos;1.23&apos; - 0  // 1.23</span><br><span class="line"></span><br><span class="line">// 空字符串</span><br><span class="line">&apos;&apos; - 0  // 0</span><br><span class="line"></span><br><span class="line">// 空格字符串</span><br><span class="line">&apos; &apos; - 0  // 0</span><br><span class="line"></span><br><span class="line">// 非空字符串</span><br><span class="line">&apos;abc&apos; - 0  // NaN</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/12/javascript数据类型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1374,7 +1566,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
