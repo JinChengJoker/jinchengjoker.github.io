@@ -278,6 +278,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/22/排序算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="金成Joker">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/04/27/5ae331c4ac6c1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JinCheng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/22/排序算法/" itemprop="url">
+                  排序算法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-05-22 23:30:28" itemprop="dateCreated datePublished" datetime="2018-05-22T23:30:28+08:00">2018-05-22</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><h3 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h3><ol>
+<li>依次两两对比，大小互换，越大的数越往后排，每一轮可以确定一个数。</li>
+<li>把剩下的数重复该操作。</li>
+</ol>
+<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 所需轮数 arr.length - 1</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> l = <span class="number">0</span>; l &lt; arr.length - <span class="number">1</span>; l++) &#123;</span><br><span class="line">        <span class="comment">// 每一轮找出一个最大值</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length - <span class="number">1</span> - l; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] &gt; arr[i+<span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="keyword">let</span> temp = arr[i]</span><br><span class="line">                arr[i] = arr[i+<span class="number">1</span>]</span><br><span class="line">                arr[i+<span class="number">1</span>] = temp</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><h3 id="基本思路-1"><a href="#基本思路-1" class="headerlink" title="基本思路"></a>基本思路</h3><ol>
+<li>每一轮找出其中的一个最大数，排在其最后一位，每一轮可以确定一个数。</li>
+<li>把剩下的数重复该操作。</li>
+</ol>
+<h3 id="算法实现-1"><a href="#算法实现-1" class="headerlink" title="算法实现"></a>算法实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> length = arr.length</span><br><span class="line">    <span class="comment">// 所需轮数 arr.length - 1</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> l = <span class="number">0</span>; l &lt; length - <span class="number">1</span>; l++) &#123;</span><br><span class="line">        <span class="comment">// 首先假设最大值的 index 为 0</span></span><br><span class="line">        <span class="keyword">let</span> max = <span class="number">0</span></span><br><span class="line">        <span class="comment">// 然后依次对比找出实际最大值</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; length - l; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] &gt; arr[max]) &#123;</span><br><span class="line">                max = i</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">let</span> temp = arr[max]</span><br><span class="line">        arr[max] = arr[length<span class="number">-1</span>-l]</span><br><span class="line">        arr[length<span class="number">-1</span>-l] = temp</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h2><h3 id="基本思路-2"><a href="#基本思路-2" class="headerlink" title="基本思路"></a>基本思路</h3><p>类似整理扑克牌，需要一个额外的临时数组来计数。</p>
+<ol>
+<li>先将所有值依次进行计数，放入临时数组对应的下标位置中。</li>
+<li>然后将临时数组中的值依次取出即可。</li>
+</ol>
+<h3 id="算法实现-2"><a href="#算法实现-2" class="headerlink" title="算法实现"></a>算法实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> temp = []</span><br><span class="line">    <span class="keyword">let</span> newArr = []</span><br><span class="line">    <span class="comment">// 入</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(temp[arr[i]] === <span class="literal">undefined</span>) &#123;</span><br><span class="line">            temp[arr[i]] = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            temp[arr[i]] = temp[arr[i]] + <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 出</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; temp.length; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(temp[j] !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">            <span class="keyword">let</span> count = temp[j]</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">let</span> c = <span class="number">1</span>; c &lt;= count; c++) &#123;</span><br><span class="line">                newArr.push(j)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newArr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><h3 id="基本思路-3"><a href="#基本思路-3" class="headerlink" title="基本思路"></a>基本思路</h3><ol>
+<li>首先确定一个支点值，所有小于支点的值放在其左侧，大于支点的值放在其右侧。</li>
+<li>然后分别对左侧和右侧重复进行该操作。</li>
+</ol>
+<h3 id="算法实现-3"><a href="#算法实现-3" class="headerlink" title="算法实现"></a>算法实现</h3><p>饶了我吧… 😭 😭</p>
+<p>参考：<a href="https://javascript.ruanyifeng.com/library/sorting.html#toc12" target="_blank" rel="noopener">阮一峰 - 快速排序</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">partition</span>(<span class="params">arr, l, r</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> pivot = arr[<span class="built_in">Math</span>.floor((l+r)/<span class="number">2</span>)]</span><br><span class="line">    <span class="comment">// 必须 l &lt;= r 例如：[3, 2, 5, 4, 5]</span></span><br><span class="line">    <span class="keyword">while</span>(l &lt;= r) &#123;</span><br><span class="line">        <span class="comment">// 必须 arr[l] &lt; pivot 同上</span></span><br><span class="line">        <span class="keyword">while</span>(arr[l] &lt; pivot) &#123;</span><br><span class="line">            l++</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(arr[r] &gt; pivot) &#123;</span><br><span class="line">            r--</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(l &lt;= r) &#123;</span><br><span class="line">            <span class="keyword">let</span> temp = arr[l]</span><br><span class="line">            arr[l] = arr[r]</span><br><span class="line">            arr[r] = temp</span><br><span class="line">            l++</span><br><span class="line">            r--</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span>(<span class="params">arr, l, r</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> arr</span><br><span class="line">    &#125;</span><br><span class="line">    l = (l === <span class="literal">undefined</span> ? <span class="number">0</span> : l)</span><br><span class="line">    r = (r === <span class="literal">undefined</span> ? arr.length - <span class="number">1</span> : r)</span><br><span class="line">    <span class="keyword">let</span> i = partition(arr, l, r)</span><br><span class="line">    <span class="keyword">if</span>(l &lt; i - <span class="number">1</span>) &#123;</span><br><span class="line">        quickSort(arr, l, i<span class="number">-1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(i &lt; r) &#123;</span><br><span class="line">        quickSort(arr, i, r)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/13/HTTP基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1734,177 +1891,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/几个关于内存的问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="金成Joker">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://i.loli.net/2018/04/27/5ae331c4ac6c1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JinCheng's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/17/几个关于内存的问题/" itemprop="url">
-                  几个关于内存的问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-04-17 14:34:42" itemprop="dateCreated datePublished" datetime="2018-04-17T14:34:42+08:00">2018-04-17</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>简单来说，JS 引擎将内存分为代码区和数据区，而数据区分为 Stack（栈内存）和 Heap（堆内存）。</p>
-<p>基本类型的数据直接存入 Stack 里，复杂类型的数据是把 Heap 地址存入 Stack 里，这个地址就是对数据的引用。</p>
-<p>记录一下几个关于内存的问题：</p>
-<p>1.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b = <span class="number">2</span></span><br><span class="line"><span class="comment">// a = ?</span></span><br></pre></td></tr></table></figure>
-<p>不废话。。。a 的值肯定为 1。</p>
-<p>2.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123; <span class="attr">name</span>: <span class="string">'a'</span> &#125;</span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b = &#123; <span class="attr">name</span>: <span class="string">'b'</span> &#125;</span><br><span class="line"><span class="comment">// a.name = ?</span></span><br></pre></td></tr></table></figure>
-<p>因为 a 的值为一个对象（复杂类型），所以 a 其实是把这个对象的 Heap 地址存在 Stack 里。</p>
-<p><code>var b = a</code> 是复制了这个 Heap 地址给 b。</p>
-<p><code>b = { name: &#39;b&#39; }</code> 是把一个新对象的 Heap 地址赋值给 b，覆盖掉原来的 Heap 地址。</p>
-<p>所以 a 没有变化，<code>a.name</code> 的值为 <code>&#39;a&#39;</code>。</p>
-<p>3.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123; <span class="attr">name</span>: <span class="string">'a'</span> &#125;</span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b.name = <span class="string">'b'</span></span><br><span class="line"><span class="comment">// a.name = ?</span></span><br></pre></td></tr></table></figure>
-<p>前两句同上</p>
-<p>此时 <code>b.name = &#39;b&#39;</code> 其实是把 Heap 地址引用的对象中的 name 变成了 <code>&#39;b&#39;</code>。</p>
-<p>因为 a 和 b 的 Heap 地址引用的是同一个内存区域（即同一个对象），所以 <code>a.name</code> 的值也变成了 <code>&#39;b&#39;</code>。</p>
-<p>4.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123; <span class="attr">name</span>: <span class="string">'a'</span> &#125;</span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">b = <span class="literal">null</span></span><br><span class="line"><span class="comment">// a.name = ?</span></span><br></pre></td></tr></table></figure>
-<p>其实与第二题同理，<code>b = null</code> 是把 <code>null</code> 赋值给 b，覆盖掉原来的 Heap 地址。</p>
-<p>所以 a 没有变化，<code>a.name</code> 的值还是为 <code>&#39;a&#39;</code>。</p>
-<p>5.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123; <span class="attr">self</span>: a &#125;</span><br><span class="line"><span class="comment">// a === a.self ?</span></span><br></pre></td></tr></table></figure>
-<p>首先变量提升会声明一个 <code>a</code>，此时 a 并没有被赋值，a 为 <code>undefined</code>。</p>
-<p>然后在 Heap 中存 <code>{ self: a }</code> 数据，此时 a 依然为 <code>undefined</code>。</p>
-<p>最后再把该数据的 Heap 地址赋值给 a 存入 Stack 里。</p>
-<p>所以实际上 <code>a</code> 的值为 <code>{ self: undefined }</code>，<code>a.self</code> 为 <code>undefined</code>。结果为 <code>false</code>。</p>
-<p>如果要实现 <code>a === a.self</code> ，要先存一个空对象，再给空对象添加属性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a = &#123;&#125;</span><br><span class="line">a.self = a</span><br><span class="line">a === a.self  // true</span><br></pre></td></tr></table></figure>
-<p>6.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123; <span class="attr">name</span>: <span class="string">'a'</span> &#125;</span><br><span class="line"><span class="keyword">var</span> b = a</span><br><span class="line">a.x = a = &#123; <span class="attr">name</span>: <span class="string">'b'</span> &#125;</span><br><span class="line"><span class="comment">// a.x = ?</span></span><br><span class="line"><span class="comment">// b.x = ?</span></span><br></pre></td></tr></table></figure>
-<p>首先写出 <code>a.x = a = { name: &#39;b&#39; }</code> 这样的代码很智障。。。</p>
-<p>然后运行到这一行的时候，a 和 b 在 Stack 中存入的 Heap 地址已经确定了，简单的假设这个地址为 <code>ADDR200</code>，写成伪代码 <code>ADDR200.x = ADDR200 = { name: &#39;b&#39; }</code>。</p>
-<p>先计算 <code>a = { name: &#39;b&#39; }</code> 就是覆盖之前的 Heap 地址，再简单的假设这个地址为 <code>ADDR300</code>，写成伪代码 <code>ADDR200.x = ADDR300</code>。</p>
-<p>再计算 <code>a.x = a</code> 就是给 Heap 地址为 <code>ADDR200</code> 引用的对象添加属性 <code>x</code>，值为 Heap 地址 <code>ADDR300</code>。</p>
-<p>所以最后 a 在 Stack 中存的 Heap 地址为 <code>ADDR300</code>，b 在 Stack 中存的 Heap 地址为 <code>ADDR200</code>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a  <span class="comment">// &#123; name: 'b' &#125;</span></span><br><span class="line">b  <span class="comment">// &#123; name: 'a', x: &#123; name: 'b' &#125; &#125;</span></span><br><span class="line">a.x  <span class="comment">// undefined</span></span><br><span class="line">b.x  <span class="comment">// &#123; name: 'b' &#125;</span></span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1956,7 +1942,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
