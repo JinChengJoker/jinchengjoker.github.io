@@ -278,6 +278,152 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/18/垃圾回收和内存泄漏/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="金成Joker">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/04/27/5ae331c4ac6c1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JinCheng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/18/垃圾回收和内存泄漏/" itemprop="url">
+                  垃圾回收和内存泄漏
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-04-18 21:23:47" itemprop="dateCreated datePublished" datetime="2018-04-18T21:23:47+08:00">2018-04-18</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><p>简单来说，如果一个对象没有被引用，那么它就是垃圾，内存将会被回收。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123; <span class="attr">name</span>: <span class="string">'a'</span> &#125;</span><br><span class="line"><span class="keyword">var</span> b = &#123; <span class="attr">name</span>: <span class="string">'b'</span> &#125;</span><br><span class="line">b = a</span><br></pre></td></tr></table></figure>
+<p>因为 b 在 Stack 中存的 Heap 地址被 a 覆盖了，所以导致 <code>{ name: &#39;b&#39; }</code> 没有被引用，那么它就是垃圾，内存将会被回收。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">'hello'</span>) &#125;</span><br><span class="line"><span class="built_in">document</span>.body.onclick = fn</span><br><span class="line">fn = <span class="literal">null</span></span><br><span class="line"><span class="comment">// 对象 function() &#123; console.log('hello') &#125; 会不会被垃圾回收？</span></span><br></pre></td></tr></table></figure>
+<p>前两句表示 <code>fn</code> 和 <code>document.body.onclick</code> 在 Stack 中存的是同一个 Heap 地址。</p>
+<p><code>fn = null</code> 表示 <code>fn</code> 在 Stack 中存的 Heap 地址被 <code>null</code> 覆盖了。</p>
+<p>但是对象 <code>function() { console.log(&#39;hello&#39;) }</code> 的 Heap 地址依然被 <code>document.body.onclick</code> 所引用，所以它不是垃圾。</p>
+<h2 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h2><p>不再用到的内存，没有及时回收释放，就叫做内存泄漏。</p>
+<p>上面的例子，如果关掉当前页面，那么 <code>document</code> 就不存在了，对象 <code>function() { console.log(&#39;hello&#39;) }</code> 就没有被引用，将会被当作垃圾回收，所占内存会被释放。</p>
+<p>但是在 IE（尤其是 IE6） 中会有 BUG，因为在页面关闭后它无法正常的把 <code>onclick</code> 等事件监听绑定的函数标记为垃圾，所以它会认为对象 <code>function() { console.log(&#39;hello&#39;) }</code> 不是垃圾，那么内存将不会被回收，除非关闭整个浏览器。这样垃圾越来越多，内存无法重新被利用，造成内存泄漏。</p>
+<p>解决办法是在页面关闭之前，把所有的事件监听赋值为 <code>null</code>。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/17/几个关于内存的问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1737,7 +1883,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
