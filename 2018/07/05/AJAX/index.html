@@ -102,25 +102,25 @@
 
 
 
-  <meta name="description" content="垃圾回收简单来说，如果一个对象没有被引用，那么它就是垃圾，内存将会被回收。 123var a = &amp;#123; name: &apos;a&apos; &amp;#125;var b = &amp;#123; name: &apos;b&apos; &amp;#125;b = a 因为 b 在 Stack 中存的 Heap 地址被 a 覆盖了，所以导致 { name: &amp;#39;b&amp;#39; } 没有被引用，那么它就是垃圾，内存将会被回收。 1234var f">
+  <meta name="description" content="全称 Async Javascript and XML。 使用 XMLHttpRequest浏览器提供了一个 XMLHttpRequest 方法，可以通过 new XMLHttpRequest() 创建一个可以发起 HTTP 请求的对象。 12345678910111213let request = new XMLHttpRequest()  // 创建 HTTP 请求对象request.open">
 <meta name="keywords" content="前端 front-end JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="垃圾回收和内存泄漏">
-<meta property="og:url" content="http://yoursite.com/2018/04/18/垃圾回收和内存泄漏/index.html">
+<meta property="og:title" content="AJAX">
+<meta property="og:url" content="http://yoursite.com/2018/07/05/AJAX/index.html">
 <meta property="og:site_name" content="JinCheng&#39;s Blog">
-<meta property="og:description" content="垃圾回收简单来说，如果一个对象没有被引用，那么它就是垃圾，内存将会被回收。 123var a = &amp;#123; name: &apos;a&apos; &amp;#125;var b = &amp;#123; name: &apos;b&apos; &amp;#125;b = a 因为 b 在 Stack 中存的 Heap 地址被 a 覆盖了，所以导致 { name: &amp;#39;b&amp;#39; } 没有被引用，那么它就是垃圾，内存将会被回收。 1234var f">
+<meta property="og:description" content="全称 Async Javascript and XML。 使用 XMLHttpRequest浏览器提供了一个 XMLHttpRequest 方法，可以通过 new XMLHttpRequest() 创建一个可以发起 HTTP 请求的对象。 12345678910111213let request = new XMLHttpRequest()  // 创建 HTTP 请求对象request.open">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-27T11:14:10.000Z">
+<meta property="og:updated_time" content="2018-07-04T17:46:54.429Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="垃圾回收和内存泄漏">
-<meta name="twitter:description" content="垃圾回收简单来说，如果一个对象没有被引用，那么它就是垃圾，内存将会被回收。 123var a = &amp;#123; name: &apos;a&apos; &amp;#125;var b = &amp;#123; name: &apos;b&apos; &amp;#125;b = a 因为 b 在 Stack 中存的 Heap 地址被 a 覆盖了，所以导致 { name: &amp;#39;b&amp;#39; } 没有被引用，那么它就是垃圾，内存将会被回收。 1234var f">
+<meta name="twitter:title" content="AJAX">
+<meta name="twitter:description" content="全称 Async Javascript and XML。 使用 XMLHttpRequest浏览器提供了一个 XMLHttpRequest 方法，可以通过 new XMLHttpRequest() 创建一个可以发起 HTTP 请求的对象。 12345678910111213let request = new XMLHttpRequest()  // 创建 HTTP 请求对象request.open">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/18/垃圾回收和内存泄漏/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/05/AJAX/"/>
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>垃圾回收和内存泄漏 | JinCheng's Blog</title>
+  <title>AJAX | JinCheng's Blog</title>
   
 
 
@@ -278,7 +278,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/18/垃圾回收和内存泄漏/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/05/AJAX/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="金成Joker">
@@ -295,7 +295,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">垃圾回收和内存泄漏
+          <h1 class="post-title" itemprop="name headline">AJAX
               
             
           </h1>
@@ -320,7 +320,7 @@
                 
               
 
-              <time title="Post created: 2018-04-18 21:23:47" itemprop="dateCreated datePublished" datetime="2018-04-18T21:23:47+08:00">2018-04-18</time>
+              <time title="Post created: 2018-07-05 01:46:17" itemprop="dateCreated datePublished" datetime="2018-07-05T01:46:17+08:00">2018-07-05</time>
             
 
             
@@ -354,18 +354,31 @@
       
 
       
-        <h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><p>简单来说，如果一个对象没有被引用，那么它就是垃圾，内存将会被回收。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123; <span class="attr">name</span>: <span class="string">'a'</span> &#125;</span><br><span class="line"><span class="keyword">var</span> b = &#123; <span class="attr">name</span>: <span class="string">'b'</span> &#125;</span><br><span class="line">b = a</span><br></pre></td></tr></table></figure>
-<p>因为 b 在 Stack 中存的 Heap 地址被 a 覆盖了，所以导致 <code>{ name: &#39;b&#39; }</code> 没有被引用，那么它就是垃圾，内存将会被回收。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">'hello'</span>) &#125;</span><br><span class="line"><span class="built_in">document</span>.body.onclick = fn</span><br><span class="line">fn = <span class="literal">null</span></span><br><span class="line"><span class="comment">// 对象 function() &#123; console.log('hello') &#125; 会不会被垃圾回收？</span></span><br></pre></td></tr></table></figure>
-<p>前两句表示 <code>fn</code> 和 <code>document.body.onclick</code> 在 Stack 中存的是同一个 Heap 地址。</p>
-<p><code>fn = null</code> 表示 <code>fn</code> 在 Stack 中存的 Heap 地址被 <code>null</code> 覆盖了。</p>
-<p>但是对象 <code>function() { console.log(&#39;hello&#39;) }</code> 的 Heap 地址依然被 <code>document.body.onclick</code> 所引用，所以它不是垃圾。</p>
-<h2 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h2><p>不再用到的内存，没有及时回收释放，就叫做内存泄漏。</p>
-<p>上面的例子，如果关掉当前页面，那么 <code>document</code> 就不存在了，对象 <code>function() { console.log(&#39;hello&#39;) }</code> 就没有被引用，将会被当作垃圾回收，所占内存会被释放。</p>
-<p>但是在 IE（尤其是 IE6） 中会有 BUG，因为在页面关闭后它无法正常的把 <code>onclick</code> 等事件监听绑定的函数标记为垃圾，所以它会认为对象 <code>function() { console.log(&#39;hello&#39;) }</code> 不是垃圾，那么内存将不会被回收，除非关闭整个浏览器。这样垃圾越来越多，内存无法重新被利用，造成内存泄漏。</p>
-<p>解决办法是在页面关闭之前，把所有的事件监听赋值为 <code>null</code>。</p>
-
+        <p>全称 Async Javascript and XML。</p>
+<h2 id="使用-XMLHttpRequest"><a href="#使用-XMLHttpRequest" class="headerlink" title="使用 XMLHttpRequest"></a>使用 XMLHttpRequest</h2><p>浏览器提供了一个 <code>XMLHttpRequest</code> 方法，可以通过 <code>new XMLHttpRequest()</code> 创建一个可以发起 HTTP 请求的对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> request = <span class="keyword">new</span> XMLHttpRequest()  <span class="comment">// 创建 HTTP 请求对象</span></span><br><span class="line">request.open(<span class="string">'GET'</span>, <span class="string">'/xxx'</span>)  <span class="comment">// 初始化请求，默认为异步</span></span><br><span class="line">request.send()  <span class="comment">// 发送请求</span></span><br><span class="line">request.onreadystatechange = () = &#123;</span><br><span class="line">    <span class="keyword">if</span>(request.readyState === <span class="number">4</span>) &#123;  <span class="comment">// 请求和响应已完毕</span></span><br><span class="line">        <span class="keyword">if</span>(request.status &gt;= <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'请求成功'</span>)</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.parse(request.responseText))</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(request.status &gt;= <span class="number">400</span>) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'请求失败'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 <code>request</code> 对象中：</p>
+<ul>
+<li><code>onreadystatechange</code> 可以监听 <code>readyState</code> 值的变化。</li>
+<li><code>readyState</code> 表示请求的 5 种状态。<ul>
+<li><code>0</code> 未打开。<code>open()</code> 方法还未被调用</li>
+<li><code>1</code> 未发送。<code>open()</code> 方法已经被调用</li>
+<li><code>2</code> 已获取响应头。<code>send()</code> 方法已经被调用，响应头和响应状态已经返回</li>
+<li><code>3</code> 正在下载响应体。响应体下载中，<code>responseText</code> 中已经获取了部分数据</li>
+<li><code>4</code> 请求完成。整个请求过程已经完毕</li>
+</ul>
+</li>
+</ul>
+<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><p>因为安全问题，浏览器规定：只有在 <strong>协议、域名、端口号</strong> 一模一样的情况下，才可以通过 <strong>AJAX</strong> 发送请求。</p>
+<p><strong>那为什么 <code>form</code> 没有跨域问题？</strong></p>
+<p>因为用 <code>form</code> 发请求会刷新或离开当前页面，且用 <code>form</code> 提交到另一个域名之后，原页面的脚本无法获取新页面中的内容。</p>
+<p>所以浏览器认为这是安全的。</p>
+<p>实际上用 <code>&lt;a&gt;</code>、<code>&lt;img&gt;</code>、<code>&lt;link&gt;</code>、<code>&lt;script&gt;</code> 这些标签都可以发起请求，且都没有同源策略的限制。</p>
+<p>而 AJAX 是可以直接读取响应内容的，因此浏览器不允许这样做。</p>
+<h2 id="CORS（跨域资源共享）"><a href="#CORS（跨域资源共享）" class="headerlink" title="CORS（跨域资源共享）"></a>CORS（跨域资源共享）</h2><p>全称 Cross-Origin Resource Sharing</p>
+<p>虽然浏览器制定了同源策源，但是我们可以通过 CORS 来突破它，即跨域。</p>
+<p>在服务器的响应中添加：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">'http://xxx'</span>)</span><br><span class="line"><span class="comment">// 或者四海皆兄弟</span></span><br><span class="line">response.setHeader(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">'*'</span>)</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -392,8 +405,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/17/几个关于内存的问题/" rel="next" title="几个关于内存的问题">
-                <i class="fa fa-chevron-left"></i> 几个关于内存的问题
+              <a href="/2018/07/03/JSONP/" rel="next" title="JSONP">
+                <i class="fa fa-chevron-left"></i> JSONP
               </a>
             
           </div>
@@ -401,10 +414,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/19/javascript中的对象/" rel="prev" title="JavaScript 中的对象">
-                JavaScript 中的对象 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -522,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾回收"><span class="nav-number">1.</span> <span class="nav-text">垃圾回收</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存泄漏"><span class="nav-number">2.</span> <span class="nav-text">内存泄漏</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-XMLHttpRequest"><span class="nav-number">1.</span> <span class="nav-text">使用 XMLHttpRequest</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同源策略"><span class="nav-number">2.</span> <span class="nav-text">同源策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CORS（跨域资源共享）"><span class="nav-number">3.</span> <span class="nav-text">CORS（跨域资源共享）</span></a></li></ol></div>
             
 
           </div>

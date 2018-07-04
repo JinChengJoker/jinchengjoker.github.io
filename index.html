@@ -219,7 +219,7 @@
           
           <li class="menu-item menu-item-home menu-item-active">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
   </li>
         
         
@@ -227,7 +227,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archivi</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
   </li>
 
       
@@ -262,6 +262,165 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/05/AJAX/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="金成Joker">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/04/27/5ae331c4ac6c1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JinCheng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/05/AJAX/" itemprop="url">
+                  AJAX
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-07-05 01:46:17" itemprop="dateCreated datePublished" datetime="2018-07-05T01:46:17+08:00">2018-07-05</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>全称 Async Javascript and XML。</p>
+<h2 id="使用-XMLHttpRequest"><a href="#使用-XMLHttpRequest" class="headerlink" title="使用 XMLHttpRequest"></a>使用 XMLHttpRequest</h2><p>浏览器提供了一个 <code>XMLHttpRequest</code> 方法，可以通过 <code>new XMLHttpRequest()</code> 创建一个可以发起 HTTP 请求的对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> request = <span class="keyword">new</span> XMLHttpRequest()  <span class="comment">// 创建 HTTP 请求对象</span></span><br><span class="line">request.open(<span class="string">'GET'</span>, <span class="string">'/xxx'</span>)  <span class="comment">// 初始化请求，默认为异步</span></span><br><span class="line">request.send()  <span class="comment">// 发送请求</span></span><br><span class="line">request.onreadystatechange = () = &#123;</span><br><span class="line">    <span class="keyword">if</span>(request.readyState === <span class="number">4</span>) &#123;  <span class="comment">// 请求和响应已完毕</span></span><br><span class="line">        <span class="keyword">if</span>(request.status &gt;= <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'请求成功'</span>)</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.parse(request.responseText))</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(request.status &gt;= <span class="number">400</span>) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'请求失败'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 <code>request</code> 对象中：</p>
+<ul>
+<li><code>onreadystatechange</code> 可以监听 <code>readyState</code> 值的变化。</li>
+<li><code>readyState</code> 表示请求的 5 种状态。<ul>
+<li><code>0</code> 未打开。<code>open()</code> 方法还未被调用</li>
+<li><code>1</code> 未发送。<code>open()</code> 方法已经被调用</li>
+<li><code>2</code> 已获取响应头。<code>send()</code> 方法已经被调用，响应头和响应状态已经返回</li>
+<li><code>3</code> 正在下载响应体。响应体下载中，<code>responseText</code> 中已经获取了部分数据</li>
+<li><code>4</code> 请求完成。整个请求过程已经完毕</li>
+</ul>
+</li>
+</ul>
+<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><p>因为安全问题，浏览器规定：只有在 <strong>协议、域名、端口号</strong> 一模一样的情况下，才可以通过 <strong>AJAX</strong> 发送请求。</p>
+<p><strong>那为什么 <code>form</code> 没有跨域问题？</strong></p>
+<p>因为用 <code>form</code> 发请求会刷新或离开当前页面，且用 <code>form</code> 提交到另一个域名之后，原页面的脚本无法获取新页面中的内容。</p>
+<p>所以浏览器认为这是安全的。</p>
+<p>实际上用 <code>&lt;a&gt;</code>、<code>&lt;img&gt;</code>、<code>&lt;link&gt;</code>、<code>&lt;script&gt;</code> 这些标签都可以发起请求，且都没有同源策略的限制。</p>
+<p>而 AJAX 是可以直接读取响应内容的，因此浏览器不允许这样做。</p>
+<h2 id="CORS（跨域资源共享）"><a href="#CORS（跨域资源共享）" class="headerlink" title="CORS（跨域资源共享）"></a>CORS（跨域资源共享）</h2><p>全称 Cross-Origin Resource Sharing</p>
+<p>虽然浏览器制定了同源策源，但是我们可以通过 CORS 来突破它，即跨域。</p>
+<p>在服务器的响应中添加：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">'http://xxx'</span>)</span><br><span class="line"><span class="comment">// 或者四海皆兄弟</span></span><br><span class="line">response.setHeader(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">'*'</span>)</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -317,14 +476,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2018-07-03 21:00:55" itemprop="dateCreated datePublished" datetime="2018-07-03T21:00:55+08:00">2018-07-03</time>
+              <time title="Post created: 2018-07-03 21:00:55" itemprop="dateCreated datePublished" datetime="2018-07-03T21:00:55+08:00">2018-07-03</time>
             
 
             
@@ -491,14 +650,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2018-06-26 01:22:28" itemprop="dateCreated datePublished" datetime="2018-06-26T01:22:28+08:00">2018-06-26</time>
+              <time title="Post created: 2018-06-26 01:22:28" itemprop="dateCreated datePublished" datetime="2018-06-26T01:22:28+08:00">2018-06-26</time>
             
 
             
@@ -650,14 +809,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2018-05-22 23:30:28" itemprop="dateCreated datePublished" datetime="2018-05-22T23:30:28+08:00">2018-05-22</time>
+              <time title="Post created: 2018-05-22 23:30:28" itemprop="dateCreated datePublished" datetime="2018-05-22T23:30:28+08:00">2018-05-22</time>
             
 
             
@@ -807,14 +966,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2018-05-13 17:09:20" itemprop="dateCreated datePublished" datetime="2018-05-13T17:09:20+08:00">2018-05-13</time>
+              <time title="Post created: 2018-05-13 17:09:20" itemprop="dateCreated datePublished" datetime="2018-05-13T17:09:20+08:00">2018-05-13</time>
             
 
             
@@ -999,14 +1158,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2018-05-10 23:21:24" itemprop="dateCreated datePublished" datetime="2018-05-10T23:21:24+08:00">2018-05-10</time>
+              <time title="Post created: 2018-05-10 23:21:24" itemprop="dateCreated datePublished" datetime="2018-05-10T23:21:24+08:00">2018-05-10</time>
             
 
             
@@ -1138,14 +1297,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2018-05-03 21:01:56" itemprop="dateCreated datePublished" datetime="2018-05-03T21:01:56+08:00">2018-05-03</time>
+              <time title="Post created: 2018-05-03 21:01:56" itemprop="dateCreated datePublished" datetime="2018-05-03T21:01:56+08:00">2018-05-03</time>
             
 
             
@@ -1284,14 +1443,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2018-04-26 22:38:38" itemprop="dateCreated datePublished" datetime="2018-04-26T22:38:38+08:00">2018-04-26</time>
+              <time title="Post created: 2018-04-26 22:38:38" itemprop="dateCreated datePublished" datetime="2018-04-26T22:38:38+08:00">2018-04-26</time>
             
 
             
@@ -1435,14 +1594,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2018-04-24 21:06:06" itemprop="dateCreated datePublished" datetime="2018-04-24T21:06:06+08:00">2018-04-24</time>
+              <time title="Post created: 2018-04-24 21:06:06" itemprop="dateCreated datePublished" datetime="2018-04-24T21:06:06+08:00">2018-04-24</time>
             
 
             
@@ -1616,14 +1775,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Scritto il</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Post creato: 2018-04-23 17:30:11" itemprop="dateCreated datePublished" datetime="2018-04-23T17:30:11+08:00">2018-04-23</time>
+              <time title="Post created: 2018-04-23 17:30:11" itemprop="dateCreated datePublished" datetime="2018-04-23T17:30:11+08:00">2018-04-23</time>
             
 
             
@@ -1698,193 +1857,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/20/javascript中的原型和原型链/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="金成Joker">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://i.loli.net/2018/04/27/5ae331c4ac6c1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JinCheng's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/20/javascript中的原型和原型链/" itemprop="url">
-                  JavaScript 中的原型和原型链
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Scritto il</span>
-              
-
-              
-                
-              
-
-              <time title="Post creato: 2018-04-20 09:00:22" itemprop="dateCreated datePublished" datetime="2018-04-20T09:00:22+08:00">2018-04-20</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="公用属性"><a href="#公用属性" class="headerlink" title="公用属性"></a>公用属性</h2><p>用全局函数包装下面几个对象：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello'</span>)</span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>)</span><br><span class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>()</span><br></pre></td></tr></table></figure>
-<p>可以发现，他们都可以调用例如 <code>toString()</code> 和 <code>valueOf()</code> 等一些方法。</p>
-<p>那如果每一个对象都自己去存有这些属性，一个明显的问题就是会造成资源的浪费。</p>
-<p><strong>JS 的解决办法就是，把这些函数统一放在一个对象里（暂且叫做公用属性组成的对象）。当声明一个新的对象时，就给这个新的对象添加一个隐藏的属性 <code>__proto__</code>，在这个属性中去存公用属性对象的 Heap 地址，这样就完成了对公用属性的引用。</strong></p>
-<h3 id="Object-对象的公用属性"><a href="#Object-对象的公用属性" class="headerlink" title="Object 对象的公用属性"></a>Object 对象的公用属性</h3><p>举个例子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o1 = &#123;&#125;</span><br><span class="line">o1.name = <span class="string">'JinCheng'</span></span><br><span class="line">o1.age = <span class="number">20</span></span><br><span class="line"><span class="built_in">console</span>.log(o1)</span><br></pre></td></tr></table></figure>
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/19/162de43da3db3aa3?w=391&amp;h=414&amp;f=png&amp;s=19748" alt="图例1"></p>
-<p>就会发现额外隐藏的 <code>__proto__</code> 属性。</p>
-<p>当调用 <code>o1.toString()</code> 时：</p>
-<ol>
-<li><p>首先会看 <code>o1</code> 是不是对象，如果不是，就临时包装成对象。</p>
-</li>
-<li><p>再看 <code>o1</code> 自身有没有 <code>toString</code> 这个属性可供调用。</p>
-</li>
-<li><p>如果没有这个属性，就会自动去调用 <code>__proto__</code> 对象里的属性方法。</p>
-</li>
-</ol>
-<p>简单的验证：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 再声明一个对象 o2</span></span><br><span class="line"><span class="keyword">var</span> o2 = &#123;</span><br><span class="line">    name: <span class="string">'JinCheng'</span>,</span><br><span class="line">    age: <span class="number">20</span></span><br><span class="line">&#125;</span><br><span class="line">o1 === o2  <span class="comment">// false 因为 Heap 地址不同</span></span><br><span class="line">o1.toString === o2.toString  <span class="comment">// true 可以发现他们调用的其实是同一个公用属性</span></span><br></pre></td></tr></table></figure>
-<h3 id="非-Object-对象的公用属性"><a href="#非-Object-对象的公用属性" class="headerlink" title="非 Object 对象的公用属性"></a>非 Object 对象的公用属性</h3><p>以 Number 对象为例（String 对象和 Boolean 对象同理）：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<p>我们知道除了上面所有对象的公用属性之外，Number 对象还有它自己的一些属性方法。</p>
-<p>例如：<code>toFixed()</code> 和 <code>toExponential()</code> 等，这些是只有 Number 对象才公用的属性。</p>
-<p>声明一个 Object 对象：<code>var o = new Object()</code> 它是不能调用这些属性方法的，因为它的 <code>__proto__</code> 属性直接引用了 Object 对象的公用属性。</p>
-<p>所以 Number 对象的 <code>__proto__</code> 属性就不能直接引用 Object 对象的公用属性，否则它也就同样没有办法调用这些属性方法了。</p>
-<p><strong>解决办法就是，Number 对象的 <code>__proto__</code> 属性要先引用 Number 的公用属性对象，又因为这个被引用的公用属性对象其实也是一个对象，所以在这个 Number 的公用属性对象里面还会再有一个 <code>__proto__</code> 属性去引用 Object 的公用属性。</strong></p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/20/162dee115a26b86f?w=1652&amp;h=939&amp;f=png&amp;s=360346" alt="图例2"></p>
-<p>在控制台打印出 <code>n</code>，就可以看到两层 <code>__proto__</code> ：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/19/162de822f08b5807?w=377&amp;h=481&amp;f=png&amp;s=24325" alt="图例3"></p>
-<p>注意：</p>
-<ol>
-<li><p>如果对象自身和它的公用属性对象，都定义了一个同名属性，那么优先读取对象自身的属性，这叫做“覆盖”。</p>
-</li>
-<li><p>这些同名属性不是同一个方法，他们不相等，可能有不同的用法。例如：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Number 对象 toString 方法可以接受一个参数，表示输出的进制</span></span><br><span class="line"><span class="keyword">var</span> n = <span class="number">10</span></span><br><span class="line">n.toString(<span class="number">8</span>)  <span class="comment">// '12'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Object 对象 toString 方法不能接参数</span></span><br><span class="line"><span class="keyword">var</span> o = &#123;&#125;</span><br><span class="line">o.toString()  <span class="comment">// "[object Object]"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 验证</span></span><br><span class="line">n.toString === o.toString  <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="Prototype（原型对象）"><a href="#Prototype（原型对象）" class="headerlink" title="Prototype（原型对象）"></a>Prototype（原型对象）</h2><p>上面的那些公用属性对象其实就叫做 Prototype（原型对象）。</p>
-<p>JavaScript 规定，所有对象都有自己的原型对象（prototype）。</p>
-<p>他们各自存在相应对象的 <code>prototype</code> 属性中，JS 引擎在初始化全局对象时就会构建他们。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/20/162dedaf32133139?w=1517&amp;h=974&amp;f=png&amp;s=543972" alt="图例4"></p>
-<p>简单的验证：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;&#125;</span><br><span class="line">o.__proto__ === Object.prototype  // true</span><br><span class="line"></span><br><span class="line">var n = new Number(1)</span><br><span class="line">n.__proto__ === Number.prototype  // true</span><br><span class="line">n.__proto__.__proto__ === Object.prototype  // true</span><br><span class="line"></span><br><span class="line">var s = new String(&apos;hello&apos;)</span><br><span class="line">s.__proto__ === String.prototype  // true</span><br><span class="line">s.__proto__.__proto__ === Object.prototype  // true</span><br><span class="line"></span><br><span class="line">var b = new Boolean(true)</span><br><span class="line">b.__proto__ === Boolean.prototype  // true</span><br><span class="line">b.__proto__.__proto__ === Object.prototype  // true</span><br></pre></td></tr></table></figure>
-<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p><strong>上面图例中的，从蓝色的线到 String 的 <code>prototype</code>，再到 Object 的 <code>prototype</code>，就是一条原型链。</strong></p>
-<p>如果一层层地上溯，所有对象的原型最终都可以上溯到 <code>Object.prototype</code>。也就是说，所有对象都继承了 <code>Object.prototype</code> 的属性。这就是所有对象都有 <code>toString</code> 和 <code>valueOf</code> 方法的原因。</p>
-<p>那么，<code>Object.prototype</code> 对象有没有它的原型呢？回答是 <code>Object.prototype</code> 的原型是 <code>null</code>。<code>null</code> 没有任何属性和方法，也没有自己的原型。因此，原型链的尽头就是 <code>null</code>。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1931,8 +1908,8 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">20</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
               
@@ -1989,7 +1966,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
@@ -1997,7 +1974,7 @@
 
 
 
-  <div class="theme-info">Tema &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
 
 
 
