@@ -6,7 +6,18 @@
     <description>Recent content in Posts on 金成的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Fri, 18 Feb 2022 18:21:16 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Feb 2022 14:50:43 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vue 运行时&#43;编译器 vs. 仅运行时</title>
+      <link>https://jinchengjoker.github.io/posts/vue/vue%E8%BF%90%E8%A1%8C%E6%97%B6&#43;%E7%BC%96%E8%AF%91%E5%99%A8vs.%E4%BB%85%E8%BF%90%E8%A1%8C%E6%97%B6/</link>
+      <pubDate>Tue, 22 Feb 2022 14:50:43 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/vue/vue%E8%BF%90%E8%A1%8C%E6%97%B6&#43;%E7%BC%96%E8%AF%91%E5%99%A8vs.%E4%BB%85%E8%BF%90%E8%A1%8C%E6%97%B6/</guid>
+      <description>在vue npm包的 dist/ 目录有很多不同的Vue.js构建版本。
+ vue.global.js - 包含编译器和运行时的完整版（约 520KB） vue.global.prod.js - 包含编译器和运行时的压缩后完整版（约 105KB） vue.runtime.global.js - 只包含运行时（约 356KB） vue.runtime.global.prod.js - 只包含运行时的压缩版（约 68KB）  如果要在客户端上编译模板（即：将字符串传递给template选项，或者使用元素的DOM内HTML作为模板挂载到元素），则需要编译器，因此需要完整的构建版本：
+&amp;lt;!-- index.html --&amp;gt; &amp;lt;div id=&amp;#34;app&amp;#34;&amp;gt; &amp;lt;h1&amp;gt;{{hi}}&amp;lt;/h1&amp;gt; &amp;lt;/div&amp;gt; // main.js // 以 vue3 写法为例  // 需要编译器 // 会直接替换 app 元素的内容 Vue.createApp({ template: &amp;#39;&amp;lt;div&amp;gt;{{ hi }}&amp;lt;/div&amp;gt;&amp;#39;, data() { return { hi: &amp;#34;hi&amp;#34; }; } }).mount(&amp;#39;#app&amp;#39;) // 需要编译器 // 相当于使用 app 元素的 DOM 内 HTML 作为模板 Vue.createApp({ data() { return { hi: &amp;#34;hi&amp;#34; }; } }).</description>
+    </item>
+    
     <item>
       <title>开博大吉</title>
       <link>https://jinchengjoker.github.io/posts/%E5%BC%80%E5%8D%9A%E5%A4%A7%E5%90%89/</link>
