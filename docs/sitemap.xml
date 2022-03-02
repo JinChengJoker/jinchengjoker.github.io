@@ -3,11 +3,14 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://jinchengjoker.github.io/</loc>
-    <lastmod>2022-03-01T16:15:19+08:00</lastmod>
+    <lastmod>2022-03-02T20:30:50+08:00</lastmod>
     <priority>0</priority>
   </url><url>
     <loc>https://jinchengjoker.github.io/posts/</loc>
-    <lastmod>2022-03-01T16:15:19+08:00</lastmod>
+    <lastmod>2022-03-02T20:30:50+08:00</lastmod>
+  </url><url>
+    <loc>https://jinchengjoker.github.io/posts/misc/fe_arch/</loc>
+    <lastmod>2022-03-02T20:30:50+08:00</lastmod>
   </url><url>
     <loc>https://jinchengjoker.github.io/posts/vue/vue_mvvm/</loc>
     <lastmod>2022-03-01T16:15:19+08:00</lastmod>

@@ -6,7 +6,16 @@
     <description>Recent content on 金成的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Tue, 01 Mar 2022 16:15:19 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Mar 2022 20:30:50 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>到底什么是前端架构？</title>
+      <link>https://jinchengjoker.github.io/posts/misc/fe_arch/</link>
+      <pubDate>Wed, 02 Mar 2022 20:30:50 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/misc/fe_arch/</guid>
+      <description>文件夹划分师 </description>
+    </item>
+    
     <item>
       <title>Vue 之 MVVM</title>
       <link>https://jinchengjoker.github.io/posts/vue/vue_mvvm/</link>
