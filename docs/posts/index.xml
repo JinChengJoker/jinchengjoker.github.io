@@ -6,13 +6,30 @@
     <description>Recent content in Posts on 金成的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Tue, 22 Feb 2022 14:50:43 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Mar 2022 16:15:19 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vue 之 MVVM</title>
+      <link>https://jinchengjoker.github.io/posts/vue/vue_mvvm/</link>
+      <pubDate>Tue, 01 Mar 2022 16:15:19 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/vue/vue_mvvm/</guid>
+      <description>Vue 是 MVVM？ v1.0 版本 在vue v1.0版本的官网上有这么一张图：
+可以看到在v1.0版本，当时vue把自己定义为一个MVVM模型的框架：
+ Vue.js 拥抱数据驱动的视图概念。通俗地讲，它意味着我们在普通 HTML 模板中使用特殊的语法将 DOM “绑定”到底层数据。一旦创建了绑定，DOM 将与数据保持同步。每当修改了数据，DOM 便相应地更新。这样我们应用中的逻辑就几乎都是直接修改数据了，不必与 DOM 更新搅在一起。
+ v2.x v3.x 版本 但是在后来的版本，vue的官网上就移除了这张图的介绍，取而代之的是下面这句话：
+ 虽然没有完全遵循 MVVM 模型，但是 Vue 的设计也受到了它的启发。
+ 在v2.x、v3.x版本，vue更像是一个MV*模型，因为它确实有些地方没有遵循MVVM模型。其实不必纠结这个*具体是指什么。
+先顺便了解一下 MVC 引用阮一峰老师的文章，在前端层面可以很容易的理解什么是MCV：
+  模型（Model）：数据保存 视图（View）：用户界面 控制器（Controller）：业务逻辑     View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，渲染出视图（用户得到反馈）   Vue 是 MVVM MVVM是Model-View-ViewModel的缩写。阮一峰老师也介绍了MVVM，但是实在是过于概括。这里推荐廖雪峰老师的文章：
+ MVVM 最早由微软提出来，它借鉴了桌面应用程序的 MVC 思想，在前端页面中，把 Model 用纯 JavaScript 对象表示，View 负责显示，两者做到了最大限度的分离。</description>
+    </item>
+    
     <item>
       <title>Vue 运行时&#43;编译器 vs. 仅运行时</title>
-      <link>https://jinchengjoker.github.io/posts/vue/vue%E8%BF%90%E8%A1%8C%E6%97%B6&#43;%E7%BC%96%E8%AF%91%E5%99%A8vs.%E4%BB%85%E8%BF%90%E8%A1%8C%E6%97%B6/</link>
+      <link>https://jinchengjoker.github.io/posts/vue/vue_runtime_runtime-only/</link>
       <pubDate>Tue, 22 Feb 2022 14:50:43 +0800</pubDate>
       
-      <guid>https://jinchengjoker.github.io/posts/vue/vue%E8%BF%90%E8%A1%8C%E6%97%B6&#43;%E7%BC%96%E8%AF%91%E5%99%A8vs.%E4%BB%85%E8%BF%90%E8%A1%8C%E6%97%B6/</guid>
+      <guid>https://jinchengjoker.github.io/posts/vue/vue_runtime_runtime-only/</guid>
       <description>在vue npm包的 dist/ 目录有很多不同的Vue.js构建版本。
  vue.global.js - 包含编译器和运行时的完整版（约 520KB） vue.global.prod.js - 包含编译器和运行时的压缩后完整版（约 105KB） vue.runtime.global.js - 只包含运行时（约 356KB） vue.runtime.global.prod.js - 只包含运行时的压缩版（约 68KB）  如果要在客户端上编译模板（即：将字符串传递给template选项，或者使用元素的DOM内HTML作为模板挂载到元素），则需要编译器，因此需要完整的构建版本：
 &amp;lt;!-- index.html --&amp;gt; &amp;lt;div id=&amp;#34;app&amp;#34;&amp;gt; &amp;lt;h1&amp;gt;{{hi}}&amp;lt;/h1&amp;gt; &amp;lt;/div&amp;gt; // main.js // 以 vue3 写法为例  // 需要编译器 // 会直接替换 app 元素的内容 Vue.createApp({ template: &amp;#39;&amp;lt;div&amp;gt;{{ hi }}&amp;lt;/div&amp;gt;&amp;#39;, data() { return { hi: &amp;#34;hi&amp;#34; }; } }).mount(&amp;#39;#app&amp;#39;) // 需要编译器 // 相当于使用 app 元素的 DOM 内 HTML 作为模板 Vue.createApp({ data() { return { hi: &amp;#34;hi&amp;#34; }; } }).</description>
