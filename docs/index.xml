@@ -6,7 +6,22 @@
     <description>Recent content on 金成的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Wed, 02 Mar 2022 20:30:50 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Mar 2022 14:39:28 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vue 数据响应式原理</title>
+      <link>https://jinchengjoker.github.io/posts/vue/vue_data_reactivity/</link>
+      <pubDate>Sun, 06 Mar 2022 14:39:28 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/vue/vue_data_reactivity/</guid>
+      <description>断断续续已经用了很长时间的vue了，从之前的vue2到现在的vue3。说起它的数据响应式原理，一直都是比较模糊的，只是大概知道是通过Object.defineProperty()和代理来实现的，具体也没有去深入的了解。
+最近看了一些文章和视频，所以在这里进行一些总结。
+先了解一下 ES6 的 getter/setter 一个简单的例子了解getter/setter的基本用法：
+const obj = { lastName: &amp;#34;高&amp;#34;, firstName: &amp;#34;圆圆&amp;#34;, get name() { return this.lastName + this.firstName }, set name(value){ this.lastName = value[0] this.firstName = value.substring(1) }, } console.log(obj.name) // 高圆圆  obj.name = &amp;#39;刘诗诗&amp;#39; console.log(`姓：${obj.lastName}`) // 姓：刘 console.log(`名：${obj.firstName}`) // 名：诗诗 需求一 上面的例子在声明obj的时候就已经定义了name的getter/setter，那如何在一个已有的对象上添加一个新的getter/setter？
+再了解一下 ES6 的 Object.defineProperty 用ES6的新语法Object.defineProperty可以实现上述需求。
+例如给obj对象添加一个age的getter/setter：
+let _age = 0 Object.defineProperty(obj, &amp;#39;age&amp;#39;, { get() { return _age }, set(value) { _age = value } }) 这里需要一个_age变量作为临时存储，为了方便可以把这个临时的_age放到obj里：</description>
+    </item>
+    
     <item>
       <title>到底什么是前端架构？</title>
       <link>https://jinchengjoker.github.io/posts/misc/fe_arch/</link>
