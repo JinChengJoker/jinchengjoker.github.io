@@ -325,7 +325,7 @@ Object.<span style="color:#a6e22e">defineProperty</span>(<span style="color:#a6e
     <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
   }
 })
-</code></pre></div><p>实际上这就是<code>vue</code>的数据响应式原理，<code>vue</code>内部也对传入的<code>data</code>进行了这么一层代理和监听。这意味着后续对<code>data</code>的所有操作，<code>vue</code>都可以知道并做出响应，即调用<code>render(data)</code>刷新视图。</p>
+</code></pre></div><p>实际上这就是<code>vue</code>的数据响应式原理，<code>vue</code>内部也对传入的<code>data</code>进行了这么一层代理和监听。这意味着后续对<code>data</code>的所有操作，<code>vue</code>都可以知道并做出响应（调用<code>render(data)</code>刷新视图），即数据响应式。</p>
 </section>
 
   
