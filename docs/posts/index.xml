@@ -6,7 +6,21 @@
     <description>Recent content in Posts on 金成的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Sun, 06 Mar 2022 14:39:28 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 30 Mar 2022 10:29:15 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vue2 data 选项存在的问题</title>
+      <link>https://jinchengjoker.github.io/posts/vue/vue2_data_problem/</link>
+      <pubDate>Wed, 30 Mar 2022 10:29:15 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/vue/vue2_data_problem/</guid>
+      <description>来自 Vue 的警告 new Vue({ data: {}, template: ` &amp;lt;div&amp;gt;{{n}}&amp;lt;/div&amp;gt; ` }).$mount(&amp;#34;#app&amp;#34;); 上面的例子中，在template选项里使用了n，但在data选项中并没有初始化n，这时vue会在控制台发出警告：
+ [Vue warn]: Property or method &amp;quot;n&amp;quot; is not defined on the instance but referenced during render. Make sure that this property is reactive, either in the data option, or for class-based components, by initializing the property.
+ 这是因为vue2是使用的Object.defineProperty来实现数据响应式：
+Object.defineProperty(data, &amp;#39;xxx&amp;#39;, { ... }) vue会遍历data选项内所有的属性并进行代理，前提是要有明确的key，即需要事先声明好key才能进行遍历。在模板中使用了没有事先声明的属性，vue无法对其进行代理并做出响应。
+所以改为以下写法可以消除警告：
+new Vue({ data: { n: null }, template: ` &amp;lt;div&amp;gt;{{n}}&amp;lt;/div&amp;gt; ` }).</description>
+    </item>
+    
     <item>
       <title>Vue 数据响应式原理</title>
       <link>https://jinchengjoker.github.io/posts/vue/vue_data_reactivity/</link>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+<html lang="zh-Hans">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>Vue2 data 选项存在的问题 - 金成的博客</title>
+
+  
+  
+  <meta name="description" content="来自 Vue 的警告 new Vue({ data: {}, template: ` &lt;div&gt;{{n}}&lt;/div&gt; ` }).$mount(&#34;#app&#34;); 上面的例子中，在template选项里使用了n，但在data选项中并没有初始化n，这时vue会在控制台发出警告：
+ [Vue warn]: Property or method &quot;n&quot; is not defined on the instance but referenced during render. Make sure that this property is reactive, either in the data option, or for class-based components, by initializing the property.
+ 这是因为vue2是使用的Object.defineProperty来实现数据响应式：
+Object.defineProperty(data, &#39;xxx&#39;, { ... }) vue会遍历data选项内所有的属性并进行代理，前提是要有明确的key，即需要事先声明好key才能进行遍历。在模板中使用了没有事先声明的属性，vue无法对其进行代理并做出响应。
+所以改为以下写法可以消除警告：
+new Vue({ data: { n: null }, template: ` &lt;div&gt;{{n}}&lt;/div&gt; ` })." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://jinchengjoker.github.io/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="https://jinchengjoker.github.io/an-old-hope.min.css" />
+  <script
+    defer
+    src="https://jinchengjoker.github.io/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="https://jinchengjoker.github.io/theme.png" />
+
+  
+
+  
+  <link rel="icon" href="https://jinchengjoker.github.io/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://jinchengjoker.github.io/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.92.2" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Vue2 data 选项存在的问题" />
+<meta property="og:description" content="来自 Vue 的警告 new Vue({ data: {}, template: ` &lt;div&gt;{{n}}&lt;/div&gt; ` }).$mount(&#34;#app&#34;); 上面的例子中，在template选项里使用了n，但在data选项中并没有初始化n，这时vue会在控制台发出警告：
+ [Vue warn]: Property or method &quot;n&quot; is not defined on the instance but referenced during render. Make sure that this property is reactive, either in the data option, or for class-based components, by initializing the property.
+ 这是因为vue2是使用的Object.defineProperty来实现数据响应式：
+Object.defineProperty(data, &#39;xxx&#39;, { ... }) vue会遍历data选项内所有的属性并进行代理，前提是要有明确的key，即需要事先声明好key才能进行遍历。在模板中使用了没有事先声明的属性，vue无法对其进行代理并做出响应。
+所以改为以下写法可以消除警告：
+new Vue({ data: { n: null }, template: ` &lt;div&gt;{{n}}&lt;/div&gt; ` })." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jinchengjoker.github.io/posts/vue/vue2_data_problem/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-30T10:29:15+08:00" />
+<meta property="article:modified_time" content="2022-03-30T10:29:15+08:00" />
+
+
+  
+  <meta itemprop="name" content="Vue2 data 选项存在的问题">
+<meta itemprop="description" content="来自 Vue 的警告 new Vue({ data: {}, template: ` &lt;div&gt;{{n}}&lt;/div&gt; ` }).$mount(&#34;#app&#34;); 上面的例子中，在template选项里使用了n，但在data选项中并没有初始化n，这时vue会在控制台发出警告：
+ [Vue warn]: Property or method &quot;n&quot; is not defined on the instance but referenced during render. Make sure that this property is reactive, either in the data option, or for class-based components, by initializing the property.
+ 这是因为vue2是使用的Object.defineProperty来实现数据响应式：
+Object.defineProperty(data, &#39;xxx&#39;, { ... }) vue会遍历data选项内所有的属性并进行代理，前提是要有明确的key，即需要事先声明好key才能进行遍历。在模板中使用了没有事先声明的属性，vue无法对其进行代理并做出响应。
+所以改为以下写法可以消除警告：
+new Vue({ data: { n: null }, template: ` &lt;div&gt;{{n}}&lt;/div&gt; ` })."><meta itemprop="datePublished" content="2022-03-30T10:29:15+08:00" />
+<meta itemprop="dateModified" content="2022-03-30T10:29:15+08:00" />
+<meta itemprop="wordCount" content="200">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vue2 data 选项存在的问题"/>
+<meta name="twitter:description" content="来自 Vue 的警告 new Vue({ data: {}, template: ` &lt;div&gt;{{n}}&lt;/div&gt; ` }).$mount(&#34;#app&#34;); 上面的例子中，在template选项里使用了n，但在data选项中并没有初始化n，这时vue会在控制台发出警告：
+ [Vue warn]: Property or method &quot;n&quot; is not defined on the instance but referenced during render. Make sure that this property is reactive, either in the data option, or for class-based components, by initializing the property.
+ 这是因为vue2是使用的Object.defineProperty来实现数据响应式：
+Object.defineProperty(data, &#39;xxx&#39;, { ... }) vue会遍历data选项内所有的属性并进行代理，前提是要有明确的key，即需要事先声明好key才能进行遍历。在模板中使用了没有事先声明的属性，vue无法对其进行代理并做出响应。
+所以改为以下写法可以消除警告：
+new Vue({ data: { n: null }, template: ` &lt;div&gt;{{n}}&lt;/div&gt; ` })."/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="false">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="https://jinchengjoker.github.io/">金成的博客</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      
+      <time>Mar 30, 2022</time>
+      
+      
+    </p>
+    <h1>Vue2 data 选项存在的问题</h1>
+  </header>
+  <section class="post-content"><h2 id="来自-vue-的警告">来自 Vue 的警告</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+  <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {},
+  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`
+</span><span style="color:#e6db74">    &lt;div&gt;{{n}}&lt;/div&gt;
+</span><span style="color:#e6db74">  `</span>
+}).<span style="color:#a6e22e">$mount</span>(<span style="color:#e6db74">&#34;#app&#34;</span>);
+</code></pre></div><p>上面的例子中，在<code>template</code>选项里使用了<code>n</code>，但在<code>data</code>选项中并没有初始化<code>n</code>，这时<code>vue</code>会在控制台发出警告：</p>
+<blockquote>
+<p><code>[Vue warn]: Property or method &quot;n&quot; is not defined on the instance but referenced during render. Make sure that this property is reactive, either in the data option, or for class-based components, by initializing the property.</code></p>
+</blockquote>
+<p>这是因为<code>vue2</code>是使用的<code>Object.defineProperty</code>来实现数据响应式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Object.<span style="color:#a6e22e">defineProperty</span>(<span style="color:#a6e22e">data</span>, <span style="color:#e6db74">&#39;xxx&#39;</span>, {
+  ...
+})
+</code></pre></div><p><code>vue</code>会遍历<code>data</code>选项内所有的属性并进行代理，前提是要有明确的<code>key</code>，即需要事先声明好<code>key</code>才能进行遍历。在模板中使用了没有事先声明的属性，<code>vue</code>无法对其进行代理并做出响应。</p>
+<p>所以改为以下写法可以消除警告：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+  <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">n</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>
+  },
+  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`
+</span><span style="color:#e6db74">    &lt;div&gt;{{n}}&lt;/div&gt;
+</span><span style="color:#e6db74">  `</span>
+}).<span style="color:#a6e22e">$mount</span>(<span style="color:#e6db74">&#34;#app&#34;</span>);
+</code></pre></div><h2 id="vue2-只会检查-data-内的第一层属性">Vue2 只会检查 data 内的第一层属性</h2>
+<p>但是实际开发过程中，遇到更多的是以下这种情况：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+  <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> {
+      <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;xxx&#39;</span>  <span style="color:#75715e">// user.name 会被 Vue 监听 &amp; 代理
+</span><span style="color:#75715e"></span>    }
+  },
+  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`
+</span><span style="color:#e6db74">    &lt;div&gt;
+</span><span style="color:#e6db74">      {{user.name}}
+</span><span style="color:#e6db74">      {{user.age}}
+</span><span style="color:#e6db74">      &lt;button @click=&#34;setAge&#34;&gt;set age&lt;/button&gt;
+</span><span style="color:#e6db74">    &lt;/div&gt;
+</span><span style="color:#e6db74">  `</span>,
+  <span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">setAge</span>() {
+      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">18</span>
+    }
+  }
+}).<span style="color:#a6e22e">$mount</span>(<span style="color:#e6db74">&#34;#app&#34;</span>);
+</code></pre></div><p>上面的实例在<code>template</code>中使用了未声明的属性<code>user.age</code>，但是此时<code>vue</code>并不会发出警告，因为<code>vue</code>只会去检查<code>data</code>中的第一层属性。</p>
+<p>并且点击按钮调用<code>setAge</code>方法，页面中依然不会显示<code>user.age</code>，因为事先并没有在<code>user</code>中声明<code>age</code>，<code>vue</code>就不会代理<code>user.age</code>，所以即使改变了<code>user.age</code>的值<code>vue</code>也不知道，自然也不会触发<code>render</code>更新视图。</p>
+<h2 id="vueset">Vue.set</h2>
+<p>解决上述问题有两种办法：</p>
+<ul>
+<li>第一种就是提前声明好所有需要的或可能产生的<code>key</code>，但问题是很多时候我们并不能保证后续不再继续添加属性。</li>
+<li>第二种就是使用<code>vue</code>提供的<code>Vue.set</code>/<code>this.$set</code>方法。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+  ...
+  <span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">setAge</span>() {
+      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">$set</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">user</span>, <span style="color:#e6db74">&#39;age&#39;</span>, <span style="color:#ae81ff">18</span>)
+    }
+  }
+}).<span style="color:#a6e22e">$mount</span>(<span style="color:#e6db74">&#34;#app&#34;</span>);
+</code></pre></div><p><code>Vue.set</code>至少会做三件事情：</p>
+<ol>
+<li>在目标对象里添加一个新的<code>key</code>和<code>value</code>；</li>
+<li>对新的<code>key</code>进行代理和监听使其同样具有响应性；</li>
+<li>触发一次<code>render</code>来更新视图。</li>
+</ol>
+<p>后面再需要修改这个<code>key</code>的值，就不需要使用<code>Vue.set</code>了，正常修改即可触发响应。</p>
+<h2 id="vueset-作用于数组的问题">Vue.set 作用于数组的问题</h2>
+<p>因为数组其实也是一种对象，数组的索引<code>index</code>相当于<code>key</code>，数组的每一项相当于<code>value</code>。也就是说，数组也无法通过直接新增索引（新增<code>key</code>）来让<code>vue</code>做出响应。</p>
+<p>同样的，数组也无法在一开始就确定长度且不会改变，更无法提前声明好所有的索引。所以按理来说，数组也可以使用<code>Vue.set</code>来定义新的元素。</p>
+<p>但是当<code>Vue.set</code>作用于数组时会有一个坑，那就是<code>vue</code>并不会对新增的元素进行代理和监听，它只会做两件事情：</p>
+<ol>
+<li>在目标数组里添加一个新的元素（索引<code>index</code>和<code>value</code>）；</li>
+<li>触发一次<code>render</code>来更新视图。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+  <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">arr</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;c&#34;</span>]
+  },
+  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`
+</span><span style="color:#e6db74">    &lt;div&gt;
+</span><span style="color:#e6db74">      {{arr}}
+</span><span style="color:#e6db74">      &lt;button @click=&#34;setD&#34;&gt;set d&lt;/button&gt;
+</span><span style="color:#e6db74">      &lt;button @click=&#34;changeD&#34;&gt;change d&lt;/button&gt;
+</span><span style="color:#e6db74">    &lt;/div&gt;
+</span><span style="color:#e6db74">  `</span>,
+  <span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">setD</span>() {
+      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">$set</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">arr</span>, <span style="color:#e6db74">&#39;3&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>)
+    },
+    <span style="color:#a6e22e">changeD</span>() {
+      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">arr</span>[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ddd&#39;</span>
+    }
+  }
+}).<span style="color:#a6e22e">$mount</span>(<span style="color:#e6db74">&#34;#app&#34;</span>);
+</code></pre></div><p>先点击第一个按钮调用<code>setD</code>，可以正常显示出<code>[ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot; ]</code>。</p>
+<p>然后点击第二个按钮调用<code>changeD</code>，这次就会发现没有任何反应，因为它根本就就不具有响应性。</p>
+<h2 id="vue-对数组方法的篡改">Vue 对数组方法的篡改</h2>
+<p>实际上，大多数情况下我们不会直接操作数组的索引，更好的办法是调用数组的方法来操作数组。</p>
+<p>所以<code>vue</code>基于这一点，对数组的七个常用方法进行了篡改（<a href="https://cn.vuejs.org/v2/guide/list.html#%E5%8F%98%E6%9B%B4%E6%96%B9%E6%B3%95">变更方法</a>）：</p>
+<ul>
+<li>push()</li>
+<li>pop()</li>
+<li>shift()</li>
+<li>unshift()</li>
+<li>splice()</li>
+<li>sort()</li>
+<li>reverse()</li>
+</ul>
+<p>在<code>vue</code>中调用数组的以上方法时，同样也会触发视图更新。<code>vue</code>大概做了两件事情：</p>
+<ol>
+<li>调用<code>JS</code>对应的原生方法；</li>
+<li>触发一次<code>render</code>来更新视图。</li>
+</ol>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="post-nav">
+     
+    <a class="next" href="https://jinchengjoker.github.io/posts/vue/vue_data_reactivity/"><span>Vue 数据响应式原理</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2022 <a href="https://jinchengjoker.github.io/">金成的博客</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>

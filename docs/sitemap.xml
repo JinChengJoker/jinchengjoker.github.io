@@ -3,11 +3,14 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://jinchengjoker.github.io/</loc>
-    <lastmod>2022-03-06T14:39:28+08:00</lastmod>
+    <lastmod>2022-03-30T10:29:15+08:00</lastmod>
     <priority>0</priority>
   </url><url>
     <loc>https://jinchengjoker.github.io/posts/</loc>
-    <lastmod>2022-03-06T14:39:28+08:00</lastmod>
+    <lastmod>2022-03-30T10:29:15+08:00</lastmod>
+  </url><url>
+    <loc>https://jinchengjoker.github.io/posts/vue/vue2_data_problem/</loc>
+    <lastmod>2022-03-30T10:29:15+08:00</lastmod>
   </url><url>
     <loc>https://jinchengjoker.github.io/posts/vue/vue_data_reactivity/</loc>
     <lastmod>2022-03-06T14:39:28+08:00</lastmod>
