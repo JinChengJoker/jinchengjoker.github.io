@@ -74,9 +74,166 @@ let _age = 0 Object.defineProperty(obj, &amp;#39;age&amp;#39;, { get() { return 
     </item>
     
     <item>
+      <title>JSONP</title>
+      <link>https://jinchengjoker.github.io/posts/misc/jsonp/</link>
+      <pubDate>Tue, 03 Jul 2018 21:00:55 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/misc/jsonp/</guid>
+      <description>JSONP 是服务器与客户端跨源通信的常用方法。
+它的基本思想是，通过动态创建 &amp;lt;script&amp;gt; 元素向服务器发起请求，这种做法不受同源政策限制。服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。
+通过一个简单的例子来理解 JSONP 到底是什么。
+Demo 地址：https://github.com/JinChengJoker/jsonp-demo
+简易服务器 用 node.js 搭一个简易的服务器 server.js：
+var http = require(&amp;#39;http&amp;#39;) var url = require(&amp;#39;url&amp;#39;) var fs = require(&amp;#39;fs&amp;#39;) var port = process.argv[2] // 判断是否传入端口号参数 if(!port) { console.log(&amp;#39;请指定端口号！\n例如：node server.js 8888&amp;#39;) process.exit(1) } // 创建服务器 var server = http.createServer( function(request, response) { var temp = url.parse(request.url, true) var path = temp.pathname var query = temp.query console.log(&amp;#39;HTTP 请求路径为：\n&amp;#39; + path) // 判断 HTTP 请求路径  if(path === &amp;#39;/&amp;#39;) { var data = fs.</description>
+    </item>
+    
+    <item>
+      <title>DOM 事件标准与模型</title>
+      <link>https://jinchengjoker.github.io/posts/js/dom_events/</link>
+      <pubDate>Tue, 26 Jun 2018 01:22:28 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/js/dom_events/</guid>
+      <description>DOM Level 0 它不是一个标准，只是对各个浏览器支持的 DOM 事件的统称。
+btn.onclick = function() { console.log(&amp;#39;hi&amp;#39;) } btn.onmouseenter = function() { console.log(&amp;#39;mouseenter&amp;#39;) } btn.onmouseleave = function() { console.log(&amp;#39;mouseleave&amp;#39;) } DOM Level 1 把各个浏览器支持的 DOM 事件进行汇总，形成规范标准。
+DOM Level 2 现在主要的规范标准。
+添加了更多 DOM 事件，以及制定了事件流、事件捕获、事件冒泡和事件取消等更多标准。
+btn.addEventListener(&amp;#39;click&amp;#39;, function() { console.log(&amp;#39;hi&amp;#39;) }) btn.addEventListener(&amp;#39;mouseenter&amp;#39;, function() { console.log(&amp;#39;mouseenter&amp;#39;) }) btn.addEventListener(&amp;#39;mouseleave&amp;#39;, function() { console.log(&amp;#39;mouseleave&amp;#39;) }) 和 DOM Level 1 的区别 它们区别在于，DOM Level 1 只是一个属性，属性是唯一的，也就是说一个元素只可能有一个 onclick 属性，这意味着不能多次绑定同一事件。
+btn.onclick = function() { // 将会被覆盖  console.</description>
+    </item>
+    
+    <item>
+      <title>HTTP 基础知识</title>
+      <link>https://jinchengjoker.github.io/posts/misc/http_basic/</link>
+      <pubDate>Sun, 13 May 2018 17:09:20 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/misc/http_basic/</guid>
+      <description>HTTP HyperText Transfer Protocol 超文本传输协议，用于控制客户端与服务器之间如何进行沟通传输。
+URL Uniform Resource Locator 统一资源定位符，也被俗称为网址。
+例如：https://www.baidu.com/s?wd=hello&amp;amp;rsv_spt=1#5 就是一个 URL。
+其中包括：协议、域名、路径、查询参数、锚点和端口号。
+ 域名
+.com 为顶级域名，baidu 为二级域名，www 为三级域名。 路径
+并不对应任何文件。 端口号
+例如：21 端口用于 FTP 服务，443 端口用于 HTTPS 服务，1080 端口用于代理服务，3306 端口用于 MySQL 服务，80 端口用于 HTTP 服务。  DNS Domain Name System 域名系统，用于将域名解析为对应的 IP。
+可以使用 nslookup 工具查询对应的 IP。
+nslookup www.baidu.comHosts 更改 hosts 文件可以指定任意域名的 IP。
+客户端与服务器的基本交互 客户端与服务器之间使用 HTTP。
+ 客户端浏览器输入 URL 通过 DNS 解析，获取 IP 地址 请求该 IP 地址 80 端口 进行 TCP 的三次握手 服务器响应 浏览器接受下载数据  发起请求 基本格式 第1部分：动词 路径 协议/版本号第2部分：Key: value第2部分：Key: value第2部分：Key: value.</description>
+    </item>
+    
+    <item>
+      <title>JS 中的 this 和 arguments</title>
+      <link>https://jinchengjoker.github.io/posts/js/this_and_arguments/</link>
+      <pubDate>Thu, 26 Apr 2018 22:38:38 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/js/this_and_arguments/</guid>
+      <description>this 到底指的是什么 首先我们知道函数的两种调用方式：
+function sum(a, b) { return a + b } // 第一种方式 sum(1, 2) // 3  // 第二种方式 sum.call(undefined, 1, 2) // 3 如果函数以 .call() 的方式调用，那么其实 this 通常指的就是第一个参数。暂时不讨论以 () 的方式调用。
+但是需要注意的是：
+  当第一个参数为 undefined、null 或空时，在非严格模式下，this 会自动指向全局 window 对象。
+// 非严格模式 function fn() { console.log(this) } fn.call() // 全局 window 对象 fn.call(undefined) // 全局 window 对象 fn.call(null) // 全局 window 对象  // 使用严格模式 function fn() { &amp;#39;use strict&amp;#39; console.</description>
+    </item>
+    
+    <item>
+      <title>JS 中的数组</title>
+      <link>https://jinchengjoker.github.io/posts/js/array_in_js/</link>
+      <pubDate>Tue, 24 Apr 2018 21:06:06 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/js/array_in_js/</guid>
+      <description>JS 中的数组到底是什么？ JS 中的数组其实就是一种特殊的对象。
+typeof [1, 2, 3] // &amp;#34;object&amp;#34; 它和狭义上的对象的本质区别就是，键名是按次序排列的一组整数（0，1，2 &amp;hellip;），且继承了 Array.prototype 属性，可以调用一系列 Array 提供的方法。
+伪数组 如果一个对象的所有键名是按次序排列的一组整数（0，1，2 &amp;hellip;），含有 length 属性且没有继承 Array.prototype 属性，不具备数组特有的方法，那么这个对象就是伪数组。语法上称为“类似数组的对象”。
+例如函数的 arguments 对象就是一个伪数组：
+以及大多数 DOM 返回的元素集也是伪数组。
+数组的常用方法 静态方法   Array.isArray()
+该方法返回一个布尔值，表示传入的参数是否为数组。可以弥补 typeof 运算符的不足。
+var arr = [1, 2, 3] typeof arr // &amp;#34;object&amp;#34; Array.isArray(arr) // true   实例方法   Array.prototype.sort()
+使用该方法原数组将被改变。
+sort() 方法对数组成员进行排序，默认是按照字典顺序排序(不是大小顺序)。
+如果需要按照自定义顺序排序，需要传入一个函数参数，参数函数可以接受两个参数，表示进行比较的两个数组元素。如果该函数的返回值大于0，表示第一个元素排在第二个元素后面；其他情况下，都是第一个元素排在第二个元素前面。
+[&amp;#39;d&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;a&amp;#39;].sort() // [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;d&amp;#39;] [4, 3, 2, 1].</description>
+    </item>
+    
+    <item>
+      <title>JS 中的原型和原型链</title>
+      <link>https://jinchengjoker.github.io/posts/js/prototype/</link>
+      <pubDate>Fri, 20 Apr 2018 09:00:22 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/js/prototype/</guid>
+      <description>公用属性 用全局函数包装下面几个对象：
+var n = new Number(1) var s = new String(&amp;#39;hello&amp;#39;) var b = new Boolean(true) var o = new Object() 可以发现，他们都可以调用例如 toString() 和 valueOf() 等一些方法。
+那如果每一个对象都自己去存有这些属性，一个明显的问题就是会造成资源的浪费。
+JS 的解决办法就是，把这些函数统一放在一个对象里（暂且叫做公用属性组成的对象）。当声明一个新的对象时，就给这个新的对象添加一个隐藏的属性 __proto__，在这个属性中去存公用属性对象的 Heap 地址，这样就完成了对公用属性的引用。
+Object 对象的公用属性 举个例子：
+var o1 = {} o1.name = &amp;#39;JinCheng&amp;#39; o1.age = 20 console.log(o1) 就会发现额外隐藏的 __proto__ 属性。
+当调用 o1.toString() 时：
+  首先会看 o1 是不是对象，如果不是，就临时包装成对象。
+  再看 o1 自身有没有 toString 这个属性可供调用。
+  如果没有这个属性，就会自动去调用 __proto__ 对象里的属性方法。</description>
+    </item>
+    
+    <item>
+      <title>JS 中的对象</title>
+      <link>https://jinchengjoker.github.io/posts/js/object_in_js/</link>
+      <pubDate>Thu, 19 Apr 2018 21:34:49 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/js/object_in_js/</guid>
+      <description>ECMAScript 规定全局对象叫做 global，但是浏览器把 window 作为全局对象（浏览器先存在的）。
+window 有很多属性，这些属性就是全局变量，可供调用。大致分为两种：
+ ECMAScript 规定的 Number、String、Boolean、Object &amp;hellip; 浏览器自己添加的 alert、prompt、comfirm、console &amp;hellip;  Number 对象 Number 对象是数值对应的包装对象。
+Number() 可以作为工具函数使用，也可以作为构造函数使用（即可以使用new命令）：
+ Number(&#39;1&#39;) 尝试把任意值变为数值 var n = new Number(1) 把数值 1 包装成一个对象  那么为什么要把 1 包装成一个对象？
+var n1 = 1 var n2 = new Number(1) // 这两个变量有什么区别？ 区别就是内存不同。
+打印出 n1 和 n2 可以发现，n1 的值是一个基本类型，直接存在 Stack 中；而 n2 的值则是一个对象，把这个对象的 Heap 地址存在 Stack 中，对象里提供了一些例如 valueOf()、toString() 等可以被调用的属性和方法。
+n2.valueOf() // 得到初始值 1 n2.toString() // 转换为字符串 &amp;#39;1&amp;#39; 但奇怪的是，n1 是基本类型，它也可以调用这些方法：</description>
+    </item>
+    
+    <item>
+      <title>JS 垃圾回收和内存泄漏</title>
+      <link>https://jinchengjoker.github.io/posts/js/garbage_collection_and_memory_leak/</link>
+      <pubDate>Wed, 18 Apr 2018 21:23:47 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/js/garbage_collection_and_memory_leak/</guid>
+      <description>垃圾回收 简单来说，如果一个对象没有被引用，那么它就是垃圾，内存将会被回收。
+var a = { name: &amp;#39;a&amp;#39; } var b = { name: &amp;#39;b&amp;#39; } b = a 因为 b 在 Stack 中存的 Heap 地址被 a 覆盖了，所以导致 { name: &#39;b&#39; } 没有被引用，那么它就是垃圾，内存将会被回收。
+var fn = function() { console.log(&amp;#39;hello&amp;#39;) } document.body.onclick = fn fn = null // 对象 function() { console.log(&amp;#39;hello&amp;#39;) } 会不会被垃圾回收？ 前两句表示 fn 和 document.body.onclick 在 Stack 中存的是同一个 Heap 地址。
+fn = null 表示 fn 在 Stack 中存的 Heap 地址被 null 覆盖了。</description>
+    </item>
+    
+    <item>
+      <title>JS 栈内存和堆内存</title>
+      <link>https://jinchengjoker.github.io/posts/js/stack_and_heap/</link>
+      <pubDate>Tue, 17 Apr 2018 14:34:42 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/js/stack_and_heap/</guid>
+      <description>简单来说，JS 引擎将内存分为代码区和数据区，而数据区分为 Stack（栈内存）和 Heap（堆内存）。
+基本类型的数据直接存入 Stack 里，复杂类型的数据是把 Heap 地址存入 Stack 里，这个地址就是对数据的引用。
+记录一下几个关于内存的问题：
+1.
+var a = 1 var b = a b = 2 // a = ? 不废话。。。a 的值肯定为 1。
+2.
+var a = { name: &amp;#39;a&amp;#39; } var b = a b = { name: &amp;#39;b&amp;#39; } // a.name = ? 因为 a 的值为一个对象（复杂类型），所以 a 其实是把这个对象的 Heap 地址存在 Stack 里。
+var b = a 是复制了这个 Heap 地址给 b。</description>
+    </item>
+    
+    <item>
+      <title>JS 深浅拷贝</title>
+      <link>https://jinchengjoker.github.io/posts/js/shallow_and_deep_clone/</link>
+      <pubDate>Tue, 12 Dec 2017 14:43:06 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/js/shallow_and_deep_clone/</guid>
+      <description>最近在项目中遇到了一个关于数组拷贝的问题
+在 JavaScript 中，一般的简单值（Number/String/Boolean）是通过直接复制来进行赋值的：
+var a = 1 var b = a b = 2 console.log(a) // 1 console.log(b) // 2 但是数组和对象如果用以上的方法简单赋值，某些情况下就会出现问题：
+var arr1 = [1, 2, 3] var arr2 = arr1 arr1.shift() console.log(arr1) // [2, 3] console.log(arr2) // [2, 3] 上面的示例中，我只删除了 arr1 的第一个元素，但是打印出来会发现 arr1 和 arr2 的值都被改变了。 因为这只是数组的浅拷贝，var arr2 = arr1 只是将 arr1 的内存地址复制给 arr2，两个数组其实指向同一个内存区域。
+对象同理：
+var obj1 = { name: &amp;#39;luwei&amp;#39;, age: 23 } var obj2 = obj1 obj2.</description>
+    </item>
+    
+    <item>
       <title>开博大吉</title>
       <link>https://jinchengjoker.github.io/posts/%E5%BC%80%E5%8D%9A%E5%A4%A7%E5%90%89/</link>
-      <pubDate>Fri, 18 Feb 2022 18:21:16 +0800</pubDate>
+      <pubDate>Thu, 01 Jun 2017 18:21:16 +0800</pubDate>
       
       <guid>https://jinchengjoker.github.io/posts/%E5%BC%80%E5%8D%9A%E5%A4%A7%E5%90%89/</guid>
       <description>你他娘还真是个人才！ </description>
