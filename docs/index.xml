@@ -74,11 +74,150 @@ let _age = 0 Object.defineProperty(obj, &amp;#39;age&amp;#39;, { get() { return 
     </item>
     
     <item>
+      <title>在 NPM 上发布一个命令行工具包</title>
+      <link>https://jinchengjoker.github.io/posts/misc/make_npm_package/</link>
+      <pubDate>Mon, 08 Jun 2020 00:00:00 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/misc/make_npm_package/</guid>
+      <description>以自己写的一个命令行工具 demo为例。
+修改 package.json { &amp;#34;name&amp;#34;: &amp;#34;zy-todo&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;0.0.1&amp;#34;, &amp;#34;main&amp;#34;: &amp;#34;index.js&amp;#34;, &amp;#34;bin&amp;#34;: { &amp;#34;zydo&amp;#34;: &amp;#34;cli.js&amp;#34; }, &amp;#34;files&amp;#34;: [ &amp;#34;*.js&amp;#34; ], &amp;#34;license&amp;#34;: &amp;#34;MIT&amp;#34;, &amp;#34;dependencies&amp;#34;: { &amp;#34;commander&amp;#34;: &amp;#34;^5.1.0&amp;#34;, &amp;#34;inquirer&amp;#34;: &amp;#34;^7.1.0&amp;#34; } }  name：必须是唯一的，不能和其他已发布的包重名。 version：发布的包的版本号。 main：整个包的主要逻辑文件，一般是 index.js。 bin：如果这个包是一个命令行工具，那么最终生成的命令是什么，以及命令对应执行的文件是什么。 files：告诉 NPM 哪些文件是有用的。  shebang shebang 写在某个文件的头部，用来告诉命令行用什么程序来执行这个文件。
+例如我这个包是用 node 执行 cli.js 文件，那么就在 cli.js 文件头部写入：
+#!/usr/bin/env node 可行性权限 在 Linux 和 Mac OS 下还需要给文件加上可执行权限：
+chmod +x cli.js NPM 发布 发布包需要一个 NPM 账号。
+必须使用 npm 的官方源进行发布，淘宝源不支持发布。</description>
+    </item>
+    
+    <item>
+      <title>Promise、微任务、宏任务</title>
+      <link>https://jinchengjoker.github.io/posts/js/promise/</link>
+      <pubDate>Mon, 24 Feb 2020 00:00:00 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/js/promise/</guid>
+      <description>基本用法 const roll = () =&amp;gt; { return new Promise((resolve, reject) =&amp;gt; { setTimeout(() =&amp;gt; { resolve(Math.floor(Math.random() * 6) + 1) }, 1000) }) } roll() .then( (result) =&amp;gt; { console.log(result) }, (reason) =&amp;gt; { console.log(&amp;#39;reason: &amp;#39; + reason) } ) 多次处理一个结果 上一个 then 的返回值会传递给下一个 then，可以继续处理。
+roll() .then((r1) =&amp;gt; r1) .then((r2) =&amp;gt; console.log(r2 * 10)) 错误处理 如果上一个 then 抛出了错误，那么下一个 then 就需要继续处理错误。如果没有抛出错误，就不需要继续处理错误。
+roll() .then(null, (err1) =&amp;gt; { throw new Error(err1) }) .</description>
+    </item>
+    
+    <item>
+      <title>用 JS 理解递归</title>
+      <link>https://jinchengjoker.github.io/posts/misc/recursion/</link>
+      <pubDate>Mon, 06 Jan 2020 00:00:00 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/misc/recursion/</guid>
+      <description>简单阶乘的例子 const j = (n) =&amp;gt; n === 1 ? 1 : n * j(n-1) 上面的函数，可以计算出从 1 到任意正整数 n 的阶乘。
+这就是最简单的递归，一个函数的内部通过某种条件进行判断，并且调用了自己。
+斐波那契数列的例子 斐波那契数列：数列的第一项和第二项都为 1，从第三项开始每一项都为前两项之和。
+为了编程的习惯，假设第零项为 0，也能满足斐波那契数列的要求。
+用递归求斐波那契数列第 n 项的值：
+const j = (n) =&amp;gt; n === 0 ? 0 : n === 1 ? 1 : j(n-1) + j(n-2) 调用栈 上面的例子，由于使用了递归，所以会在调用栈中进行压栈，主要用来记忆每次计算之后“回到哪里”。
+当调用栈压栈次数过多，计算就会非常的缓慢，甚至爆栈。
+比如计算斐波那契数列第 40 项，可能需要一秒；计算第 50 项就需要几十秒。
+所以需要优化的就是如何降低压栈/计算次数。
+用尾递归（迭代）优化 尾递归就是在函数的尾巴进行迭代。
+因为不需要“回头”了，所以使用尾递归可以大大减少压栈和重复计算次数。
+const j = (n) =&amp;gt; f(2, n, 1, 0) const f = (start, end, prev1, prev2) =&amp;gt; end === 0 ?</description>
+    </item>
+    
+    <item>
+      <title>JS 中的函数</title>
+      <link>https://jinchengjoker.github.io/posts/js/function_in_js/</link>
+      <pubDate>Thu, 26 Dec 2019 00:00:00 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/js/function_in_js/</guid>
+      <description>函数的返回值由什么确定？ 一个函数的返回值，由两个因素决定：
+ 定义时的环境 env 调用时输入的参数 params  举例：
+let x = &amp;#39;x&amp;#39; let a = &amp;#39;1&amp;#39; function f1(x){ return x + a } { let a = &amp;#39;2&amp;#39; f1(&amp;#39;y&amp;#39;) // 值为 &amp;#39;y1&amp;#39; } 在函数 f1 中：
+ x 是参数，所以 x 的值在调用 f1 的时候确定。 a 不是参数，所以 a 的值在 f1 定义时，由它所处的环境确定。  let x = &amp;#39;x&amp;#39; let a = &amp;#39;1&amp;#39; function f1(x){ return x + a } a = &amp;#39;3&amp;#39; { let a = &amp;#39;2&amp;#39; f1(&amp;#39;y&amp;#39;) // 值为 &amp;#39;y3&amp;#39; } 另一个例子：</description>
+    </item>
+    
+    <item>
+      <title>用 JS 理解函数柯里化</title>
+      <link>https://jinchengjoker.github.io/posts/misc/currying/</link>
+      <pubDate>Thu, 14 Nov 2019 00:00:00 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/misc/currying/</guid>
+      <description>一句话解释函数柯里化：让所有函数只接受一个参数。
+单一参数 例如，未来的 JS 可能会支持的 pipe 操作：
+function doubleSay (str) { return str + &amp;#34;, &amp;#34; + str } function capitalize (str) { return str[0].toUpperCase() + str.substring(1) } function exclaim (str) { return str + &amp;#39;!&amp;#39; } let result = &amp;#34;hello&amp;#34; |&amp;gt; doubleSay |&amp;gt; capitalize |&amp;gt; exclaim result // &amp;#34;Hello, hello!&amp;#34; 或者使用 Ramda.js：
+const say = Ramda.compose(doubleSay, capitalize, exclaim) say(&amp;#39;hello&amp;#39;) // &amp;#39;Hello, hello!&amp;#39; 如何让单参数函数支持两个参数 可以用对象：
+const add = ({a, b}) =&amp;gt; a + b add({ a: 1, b: 2 }) 或者用箭头函数和闭包来实现：</description>
+    </item>
+    
+    <item>
+      <title>JS 实现深拷贝</title>
+      <link>https://jinchengjoker.github.io/posts/js/deep_clone/</link>
+      <pubDate>Fri, 20 Sep 2019 00:00:00 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/js/deep_clone/</guid>
+      <description>JSON 序列化和反序列化 对于一般（狭义）的对象，最简单快速的方法就是使用 JSON 的序列化和反序列化：
+const o1 = { name: &amp;#39;xxx&amp;#39;, age: 18, child: { name: &amp;#39;zzz&amp;#39; } } const o2 = JSON.parse(JSON.stringify(o1)) o1 === o2 // false o1.name === o2.name // true o1.child === o2.child // false o1.child.name === o2.child.name // true 缺点：仅支持 JSON 所支持的数据类型和结构。
+例如：
+ 不支持函数，会被直接忽略 不支持 undefined，会被直接忽略 不支持循环引用，例如 xxx.self = xxx，会报错  对于更复杂的对象，就无法使用上面的办法，需要使用递归来进行深拷贝。
+搭建测试环境 安装 mocha、chai 和 sinon-chai：
+yarn init -yyarn add mocha chai sinon-chai --devpackage.</description>
+    </item>
+    
+    <item>
+      <title>用 TS 实现 EventHub（发布/订阅模式）</title>
+      <link>https://jinchengjoker.github.io/posts/misc/eventhub/</link>
+      <pubDate>Wed, 11 Sep 2019 00:00:00 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/misc/eventhub/</guid>
+      <description>确定 API  EventHub#on EventHub#emit EventHub#off  测试环境搭建 TDD：测试驱动开发
+安装 ts-node：
+yarn global add ts-node初始化一个 EventHub 类：
+// index.ts  class EventHub {} export default EventHub 编写测试用例：
+// test/index.ts  import EventHub from &amp;#39;../index&amp;#39; // 测试 eventhub 是否正确生成 const testEventHub = (message) =&amp;gt; { const eventhub = new EventHub() console.assert(eventhub instanceof Object === true, &amp;#39;eventhub 应该是一个 object&amp;#39;) console.log(message) } testEventHub(&amp;#39;测试 eventhub 是否正确生成&amp;#39;) 用 ts-node 运行测试：
+ts-node test/index.ts初步实现 on 和 emit 添加测试用例：</description>
+    </item>
+    
+    <item>
+      <title>JS 高阶函数</title>
+      <link>https://jinchengjoker.github.io/posts/js/higher_function/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/js/higher_function/</guid>
+      <description>一句话解释高阶函数：把函数作为参数或者返回值的函数。
+JS 中部分内置的高阶函数  Function.prototype.bind Function.prototype.apply Function.prototype.call Array.prototype.sort Array.prototype.map Array.prototype.filter Array.prototype.reduce  bind/apply/call.call() 是什么意思 例如，bind的一般用法：
+var f1 = function() { console.log(this) console.log(arguments) } var newF1 = f1.bind({ name: &amp;#39;john&amp;#39; }, 1, 2) newF1() // {name: &amp;#39;john&amp;#39;} // [1, 2] 推理：
+ 已知obj.method(a, b, c)等价于obj.method.call(obj, a, b, c)。 假设obj = f1，method = bind。 那么f1.bind(a, b, c)等价于f1.bind.call(f1, a, b, c)。 假设a = { name: &#39;john&#39; }，b = 1，c = 2。 那么f1.bind({ name: &#39;john&#39; }, 1, 2)这就是一般的用法，它等价于f1.</description>
+    </item>
+    
+    <item>
+      <title>AJAX</title>
+      <link>https://jinchengjoker.github.io/posts/bom/ajax/</link>
+      <pubDate>Thu, 05 Jul 2018 01:46:17 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/bom/ajax/</guid>
+      <description>全称 Async Javascript and XML。
+使用 XMLHttpRequest 浏览器提供了一个 XMLHttpRequest 方法，可以通过 new XMLHttpRequest() 创建一个可以发起 HTTP 请求的对象。
+let request = new XMLHttpRequest() // 创建 HTTP 请求对象  request.open(&amp;#39;POST&amp;#39;, &amp;#39;/xxx&amp;#39;) // 初始化请求，默认为异步 request.setRequestHeader(&amp;#39;Content-Type&amp;#39;, &amp;#39;application/x-www-form-urlencoded&amp;#39;) request.send(&amp;#39;这是要发送的数据&amp;#39;) // 发送请求 request.onreadystatechange = () =&amp;gt; { if(request.readyState === 4) { // 请求和响应已完毕  if(request.status &amp;gt;= 200 &amp;amp;&amp;amp; request.status &amp;lt; 300) { console.log(&amp;#39;请求成功&amp;#39;) console.log(request.getResponseHeader(&amp;#39;Content-Type&amp;#39;)) console.log(JSON.parse(request.responseText)) } else if(request.status &amp;gt;= 400) { console.log(&amp;#39;请求失败&amp;#39;) } } } 在 request 实例中：</description>
+    </item>
+    
+    <item>
+      <title>CORS 跨域资源共享</title>
+      <link>https://jinchengjoker.github.io/posts/bom/cors/</link>
+      <pubDate>Wed, 04 Jul 2018 18:46:17 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/bom/cors/</guid>
+      <description>同源策略 因为安全问题，浏览器规定：只有在 协议、域名、端口号 一模一样的情况下，才可以通过 AJAX 发送请求。
+那为什么 form 没有跨域问题？
+因为用 form 发请求会刷新或离开当前页面，且用 form 提交到另一个域名之后，原页面的脚本无法获取新页面中的内容。
+所以浏览器认为这是安全的。
+实际上用 &amp;lt;a&amp;gt;、&amp;lt;img&amp;gt;、&amp;lt;link&amp;gt;、&amp;lt;script&amp;gt; 这些标签都可以发起请求，且都没有同源策略的限制。
+而 AJAX 是可以直接读取响应内容的，因此浏览器不允许这样做。
+CORS 全称 Cross-Origin Resource Sharing
+虽然浏览器制定了同源策源，但是我们可以通过 CORS 来突破它，即跨域。
+在服务器的响应中添加：
+response.setHeader(&amp;#39;Access-Control-Allow-Origin&amp;#39;, &amp;#39;http://xxx&amp;#39;) // 或者 response.setHeader(&amp;#39;Access-Control-Allow-Origin&amp;#39;, &amp;#39;*&amp;#39;) </description>
+    </item>
+    
+    <item>
       <title>JSONP</title>
-      <link>https://jinchengjoker.github.io/posts/misc/jsonp/</link>
+      <link>https://jinchengjoker.github.io/posts/bom/jsonp/</link>
       <pubDate>Tue, 03 Jul 2018 21:00:55 +0800</pubDate>
       
-      <guid>https://jinchengjoker.github.io/posts/misc/jsonp/</guid>
+      <guid>https://jinchengjoker.github.io/posts/bom/jsonp/</guid>
       <description>JSONP 是服务器与客户端跨源通信的常用方法。
 它的基本思想是，通过动态创建 &amp;lt;script&amp;gt; 元素向服务器发起请求，这种做法不受同源政策限制。服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。
 通过一个简单的例子来理解 JSONP 到底是什么。
@@ -89,10 +228,10 @@ var http = require(&amp;#39;http&amp;#39;) var url = require(&amp;#39;url&amp;#3
     
     <item>
       <title>DOM 事件标准与模型</title>
-      <link>https://jinchengjoker.github.io/posts/js/dom_events/</link>
+      <link>https://jinchengjoker.github.io/posts/dom/dom_events/</link>
       <pubDate>Tue, 26 Jun 2018 01:22:28 +0800</pubDate>
       
-      <guid>https://jinchengjoker.github.io/posts/js/dom_events/</guid>
+      <guid>https://jinchengjoker.github.io/posts/dom/dom_events/</guid>
       <description>DOM Level 0 它不是一个标准，只是对各个浏览器支持的 DOM 事件的统称。
 btn.onclick = function() { console.log(&amp;#39;hi&amp;#39;) } btn.onmouseenter = function() { console.log(&amp;#39;mouseenter&amp;#39;) } btn.onmouseleave = function() { console.log(&amp;#39;mouseleave&amp;#39;) } DOM Level 1 把各个浏览器支持的 DOM 事件进行汇总，形成规范标准。
 DOM Level 2 现在主要的规范标准。
@@ -102,11 +241,20 @@ btn.onclick = function() { // 将会被覆盖  console.</description>
     </item>
     
     <item>
+      <title>排序算法</title>
+      <link>https://jinchengjoker.github.io/posts/algorithm/sort/</link>
+      <pubDate>Tue, 22 May 2018 23:30:28 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/algorithm/sort/</guid>
+      <description>冒泡排序 基本思路  依次两两对比，大小互换，越大的数越往后排，每一轮可以确定一个数。 把剩下的数重复该操作。  算法实现 function bubbleSort(arr) { // 所需轮数 arr.length - 1  for(let l = 0; l &amp;lt; arr.length - 1; l++) { // 每一轮找出一个最大值  for(let i = 0; i &amp;lt; arr.length - 1 - l; i++) { if(arr[i] &amp;gt; arr[i+1]) { let temp = arr[i] arr[i] = arr[i+1] arr[i+1] = temp } } } return arr } 选择排序 基本思路  每一轮找出其中的一个最大数，排在其最后一位，每一轮可以确定一个数。 把剩下的数重复该操作。  算法实现 function selectSort(arr) { let length = arr.</description>
+    </item>
+    
+    <item>
       <title>HTTP 基础知识</title>
-      <link>https://jinchengjoker.github.io/posts/misc/http_basic/</link>
+      <link>https://jinchengjoker.github.io/posts/http/http_basic/</link>
       <pubDate>Sun, 13 May 2018 17:09:20 +0800</pubDate>
       
-      <guid>https://jinchengjoker.github.io/posts/misc/http_basic/</guid>
+      <guid>https://jinchengjoker.github.io/posts/http/http_basic/</guid>
       <description>HTTP HyperText Transfer Protocol 超文本传输协议，用于控制客户端与服务器之间如何进行沟通传输。
 URL Uniform Resource Locator 统一资源定位符，也被俗称为网址。
 例如：https://www.baidu.com/s?wd=hello&amp;amp;rsv_spt=1#5 就是一个 URL。

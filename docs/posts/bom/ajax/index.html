@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+<html lang="zh-Hans">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>AJAX - 金成的博客</title>
+
+  
+  
+  <meta name="description" content="全称 Async Javascript and XML。
+使用 XMLHttpRequest 浏览器提供了一个 XMLHttpRequest 方法，可以通过 new XMLHttpRequest() 创建一个可以发起 HTTP 请求的对象。
+let request = new XMLHttpRequest() // 创建 HTTP 请求对象  request.open(&#39;POST&#39;, &#39;/xxx&#39;) // 初始化请求，默认为异步 request.setRequestHeader(&#39;Content-Type&#39;, &#39;application/x-www-form-urlencoded&#39;) request.send(&#39;这是要发送的数据&#39;) // 发送请求 request.onreadystatechange = () =&gt; { if(request.readyState === 4) { // 请求和响应已完毕  if(request.status &gt;= 200 &amp;&amp; request.status &lt; 300) { console.log(&#39;请求成功&#39;) console.log(request.getResponseHeader(&#39;Content-Type&#39;)) console.log(JSON.parse(request.responseText)) } else if(request.status &gt;= 400) { console.log(&#39;请求失败&#39;) } } } 在 request 实例中：" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://jinchengjoker.github.io/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="https://jinchengjoker.github.io/an-old-hope.min.css" />
+  <script
+    defer
+    src="https://jinchengjoker.github.io/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="https://jinchengjoker.github.io/theme.png" />
+
+  
+
+  
+  <link rel="icon" href="https://jinchengjoker.github.io/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://jinchengjoker.github.io/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.92.2" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="AJAX" />
+<meta property="og:description" content="全称 Async Javascript and XML。
+使用 XMLHttpRequest 浏览器提供了一个 XMLHttpRequest 方法，可以通过 new XMLHttpRequest() 创建一个可以发起 HTTP 请求的对象。
+let request = new XMLHttpRequest() // 创建 HTTP 请求对象  request.open(&#39;POST&#39;, &#39;/xxx&#39;) // 初始化请求，默认为异步 request.setRequestHeader(&#39;Content-Type&#39;, &#39;application/x-www-form-urlencoded&#39;) request.send(&#39;这是要发送的数据&#39;) // 发送请求 request.onreadystatechange = () =&gt; { if(request.readyState === 4) { // 请求和响应已完毕  if(request.status &gt;= 200 &amp;&amp; request.status &lt; 300) { console.log(&#39;请求成功&#39;) console.log(request.getResponseHeader(&#39;Content-Type&#39;)) console.log(JSON.parse(request.responseText)) } else if(request.status &gt;= 400) { console.log(&#39;请求失败&#39;) } } } 在 request 实例中：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jinchengjoker.github.io/posts/bom/ajax/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-07-05T01:46:17+08:00" />
+<meta property="article:modified_time" content="2018-07-05T01:46:17+08:00" />
+
+
+  
+  <meta itemprop="name" content="AJAX">
+<meta itemprop="description" content="全称 Async Javascript and XML。
+使用 XMLHttpRequest 浏览器提供了一个 XMLHttpRequest 方法，可以通过 new XMLHttpRequest() 创建一个可以发起 HTTP 请求的对象。
+let request = new XMLHttpRequest() // 创建 HTTP 请求对象  request.open(&#39;POST&#39;, &#39;/xxx&#39;) // 初始化请求，默认为异步 request.setRequestHeader(&#39;Content-Type&#39;, &#39;application/x-www-form-urlencoded&#39;) request.send(&#39;这是要发送的数据&#39;) // 发送请求 request.onreadystatechange = () =&gt; { if(request.readyState === 4) { // 请求和响应已完毕  if(request.status &gt;= 200 &amp;&amp; request.status &lt; 300) { console.log(&#39;请求成功&#39;) console.log(request.getResponseHeader(&#39;Content-Type&#39;)) console.log(JSON.parse(request.responseText)) } else if(request.status &gt;= 400) { console.log(&#39;请求失败&#39;) } } } 在 request 实例中："><meta itemprop="datePublished" content="2018-07-05T01:46:17+08:00" />
+<meta itemprop="dateModified" content="2018-07-05T01:46:17+08:00" />
+<meta itemprop="wordCount" content="107">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AJAX"/>
+<meta name="twitter:description" content="全称 Async Javascript and XML。
+使用 XMLHttpRequest 浏览器提供了一个 XMLHttpRequest 方法，可以通过 new XMLHttpRequest() 创建一个可以发起 HTTP 请求的对象。
+let request = new XMLHttpRequest() // 创建 HTTP 请求对象  request.open(&#39;POST&#39;, &#39;/xxx&#39;) // 初始化请求，默认为异步 request.setRequestHeader(&#39;Content-Type&#39;, &#39;application/x-www-form-urlencoded&#39;) request.send(&#39;这是要发送的数据&#39;) // 发送请求 request.onreadystatechange = () =&gt; { if(request.readyState === 4) { // 请求和响应已完毕  if(request.status &gt;= 200 &amp;&amp; request.status &lt; 300) { console.log(&#39;请求成功&#39;) console.log(request.getResponseHeader(&#39;Content-Type&#39;)) console.log(JSON.parse(request.responseText)) } else if(request.status &gt;= 400) { console.log(&#39;请求失败&#39;) } } } 在 request 实例中："/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="false">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="https://jinchengjoker.github.io/">金成的博客</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      
+      <time>Jul 5, 2018</time>
+      
+      
+    </p>
+    <h1>AJAX</h1>
+  </header>
+  <section class="post-content"><p>全称 Async Javascript and XML。</p>
+<h2 id="使用-xmlhttprequest">使用 XMLHttpRequest</h2>
+<p>浏览器提供了一个 <code>XMLHttpRequest</code> 方法，可以通过 <code>new XMLHttpRequest()</code> 创建一个可以发起 HTTP 请求的对象。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">request</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">XMLHttpRequest</span>()  <span style="color:#75715e">// 创建 HTTP 请求对象
+</span><span style="color:#75715e"></span>
+<span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#39;POST&#39;</span>, <span style="color:#e6db74">&#39;/xxx&#39;</span>)  <span style="color:#75715e">// 初始化请求，默认为异步
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">setRequestHeader</span>(<span style="color:#e6db74">&#39;Content-Type&#39;</span>, <span style="color:#e6db74">&#39;application/x-www-form-urlencoded&#39;</span>)
+<span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#39;这是要发送的数据&#39;</span>)  <span style="color:#75715e">// 发送请求
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">onreadystatechange</span> <span style="color:#f92672">=</span> () =&gt; {
+  <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">readyState</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">4</span>) {  <span style="color:#75715e">// 请求和响应已完毕
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">200</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">300</span>) {
+      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;请求成功&#39;</span>)
+      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">getResponseHeader</span>(<span style="color:#e6db74">&#39;Content-Type&#39;</span>))
+      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">responseText</span>))
+    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">400</span>) {
+      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;请求失败&#39;</span>)
+    }
+  }
+}
+</code></pre></div><p>在 <code>request</code> 实例中：</p>
+<ol>
+<li><code>setRequestHeader()</code> 可以设置 HTTP 请求头（即第二部分），但必须在 <code>open()</code> 和 <code>send()</code> 之间调用。</li>
+<li><code>send()</code> 可以设置 HTTP 请求的 body（即第四部分）。</li>
+<li><code>onreadystatechange</code> 可以监听 <code>readyState</code> 值的变化。</li>
+<li><code>readyState</code> 表示请求的 5 种状态。</li>
+</ol>
+<ul>
+<li><code>0</code> 未打开。<code>open()</code> 方法还未被调用</li>
+<li><code>1</code> 未发送。<code>open()</code> 方法已经被调用</li>
+<li><code>2</code> 已获取响应头。<code>send()</code> 方法已经被调用，响应头和响应状态已经返回</li>
+<li><code>3</code> 正在下载响应体。响应体下载中，<code>responseText</code> 中已经获取了部分数据</li>
+<li><code>4</code> 请求完成。整个请求过程已经完毕</li>
+</ul>
+<ol start="5">
+<li><code>getResponseHeader()</code> 可以获取 HTTP 响应头。</li>
+</ol>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="post-nav">
+    
+    <a class="prev" href="https://jinchengjoker.github.io/posts/js/higher_function/"><span>←</span><span>JS 高阶函数</span></a>
+     
+    <a class="next" href="https://jinchengjoker.github.io/posts/bom/cors/"><span>CORS 跨域资源共享</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2022 <a href="https://jinchengjoker.github.io/">金成的博客</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>
