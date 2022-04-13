@@ -70,6 +70,7 @@ n.a  // 返回的值？
 
 更多详细参考：[阮一峰《JavaScript 标准参考教程》- Number 对象](http://javascript.ruanyifeng.com/stdlib/number.html)
 
+
 ## String 对象
 
 与 `Number` 对象类似，`String` 对象是字符串对应的包装对象。
@@ -77,6 +78,7 @@ n.a  // 返回的值？
 `String()` 可以作为工具函数使用，也可以作为构造函数使用。
 
 更多详细参考：[阮一峰《JavaScript 标准参考教程》- String 对象](http://javascript.ruanyifeng.com/stdlib/string.html)
+
 
 ## Boolean 对象
 
@@ -94,6 +96,7 @@ if(bool) {
 ```
 
 更多详细参考：[阮一峰《JavaScript 标准参考教程》- Boolean 对象](http://javascript.ruanyifeng.com/stdlib/wrapper.html#toc6)
+
 
 ## Object 对象
 
@@ -116,6 +119,7 @@ o1 === o2  // false
 `o1` 和 `o2` 基本没有区别，都是空对象，只是在 Stack 中存的 Heap 地址不同。
 
 更多详细参考：[阮一峰《JavaScript 标准参考教程》- Object 对象](http://javascript.ruanyifeng.com/stdlib/object.html)
+
 
 ## Array 对象
 
@@ -143,11 +147,14 @@ var a = [1, 2, 3]
 
 更多详细参考：[阮一峰《JavaScript 标准参考教程》- Array 对象](http://javascript.ruanyifeng.com/stdlib/array.html)
 
+
 ## 简单总结
 
-- `Number()`、`String()`、`Boolean()`  
-    不加 `new` 就是当做数据类型转换工具函数使用，返回的是基本类型的值。  
-    加 `new` 就是当做构造函数使用，返回的是对应类型的包装对象。
+- `Number()`、`String()`、`Boolean()`
+
+不加 `new` 就是当做数据类型转换工具函数使用，返回的是基本类型的值。  
+加 `new` 就是当做构造函数使用，返回的是对应类型的包装对象。
 
 - `Object()`、`Array()`  
-    加不加 `new` 都一样，返回的都是对象。
+
+加不加 `new` 都一样，返回的都是对象。

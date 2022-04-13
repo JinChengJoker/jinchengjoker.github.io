@@ -82,7 +82,7 @@ let _age = 0 Object.defineProperty(obj, &amp;#39;age&amp;#39;, { get() { return 
       <description>JSONP 是服务器与客户端跨源通信的常用方法。
 它的基本思想是，通过动态创建 &amp;lt;script&amp;gt; 元素向服务器发起请求，这种做法不受同源政策限制。服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。
 通过一个简单的例子来理解 JSONP 到底是什么。
-Demo 地址：https://github.com/JinChengJoker/jsonp-demo
+Demo 地址
 简易服务器 用 node.js 搭一个简易的服务器 server.js：
 var http = require(&amp;#39;http&amp;#39;) var url = require(&amp;#39;url&amp;#39;) var fs = require(&amp;#39;fs&amp;#39;) var port = process.argv[2] // 判断是否传入端口号参数 if(!port) { console.log(&amp;#39;请指定端口号！\n例如：node server.js 8888&amp;#39;) process.exit(1) } // 创建服务器 var server = http.createServer( function(request, response) { var temp = url.parse(request.url, true) var path = temp.pathname var query = temp.query console.log(&amp;#39;HTTP 请求路径为：\n&amp;#39; + path) // 判断 HTTP 请求路径  if(path === &amp;#39;/&amp;#39;) { var data = fs.</description>
     </item>
@@ -111,14 +111,14 @@ btn.onclick = function() { // 将会被覆盖  console.</description>
 URL Uniform Resource Locator 统一资源定位符，也被俗称为网址。
 例如：https://www.baidu.com/s?wd=hello&amp;amp;rsv_spt=1#5 就是一个 URL。
 其中包括：协议、域名、路径、查询参数、锚点和端口号。
- 域名
-.com 为顶级域名，baidu 为二级域名，www 为三级域名。 路径
-并不对应任何文件。 端口号
-例如：21 端口用于 FTP 服务，443 端口用于 HTTPS 服务，1080 端口用于代理服务，3306 端口用于 MySQL 服务，80 端口用于 HTTP 服务。  DNS Domain Name System 域名系统，用于将域名解析为对应的 IP。
+ 域名  .com 为顶级域名，baidu 为二级域名，www 为三级域名。
+ 路径  并不对应任何文件。
+ 端口号  例如：21 端口用于 FTP 服务，443 端口用于 HTTPS 服务，1080 端口用于代理服务，3306 端口用于 MySQL 服务，80 端口用于 HTTP 服务。
+DNS Domain Name System 域名系统，用于将域名解析为对应的 IP。
 可以使用 nslookup 工具查询对应的 IP。
 nslookup www.baidu.comHosts 更改 hosts 文件可以指定任意域名的 IP。
 客户端与服务器的基本交互 客户端与服务器之间使用 HTTP。
- 客户端浏览器输入 URL 通过 DNS 解析，获取 IP 地址 请求该 IP 地址 80 端口 进行 TCP 的三次握手 服务器响应 浏览器接受下载数据  发起请求 基本格式 第1部分：动词 路径 协议/版本号第2部分：Key: value第2部分：Key: value第2部分：Key: value.</description>
+ 客户端浏览器输入 URL 通过 DNS 解析，获取 IP 地址 请求该 IP 地址 80 端口 进行 TCP 的三次握手 服务器响应 浏览器接受下载数据  发起请求 基本格式 第1部分：动词 路径 协议/版本号第2部分：Key: value.</description>
     </item>
     
     <item>
@@ -130,8 +130,7 @@ nslookup www.baidu.comHosts 更改 hosts 文件可以指定任意域名的 IP�
       <description>this 到底指的是什么 首先我们知道函数的两种调用方式：
 function sum(a, b) { return a + b } // 第一种方式 sum(1, 2) // 3  // 第二种方式 sum.call(undefined, 1, 2) // 3 如果函数以 .call() 的方式调用，那么其实 this 通常指的就是第一个参数。暂时不讨论以 () 的方式调用。
 但是需要注意的是：
-  当第一个参数为 undefined、null 或空时，在非严格模式下，this 会自动指向全局 window 对象。
-// 非严格模式 function fn() { console.log(this) } fn.call() // 全局 window 对象 fn.call(undefined) // 全局 window 对象 fn.call(null) // 全局 window 对象  // 使用严格模式 function fn() { &amp;#39;use strict&amp;#39; console.</description>
+ 当第一个参数为 undefined、null 或空时，在非严格模式下，this 会自动指向全局 window 对象。  // 非严格模式 function fn() { console.log(this) } fn.call() // 全局 window 对象 fn.call(undefined) // 全局 window 对象 fn.call(null) // 全局 window 对象  // 使用严格模式 function fn() { &amp;#39;use strict&amp;#39; console.</description>
     </item>
     
     <item>
@@ -145,10 +144,8 @@ typeof [1, 2, 3] // &amp;#34;object&amp;#34; 它和狭义上的对象的本质�
 伪数组 如果一个对象的所有键名是按次序排列的一组整数（0，1，2 &amp;hellip;），含有 length 属性且没有继承 Array.prototype 属性，不具备数组特有的方法，那么这个对象就是伪数组。语法上称为“类似数组的对象”。
 例如函数的 arguments 对象就是一个伪数组：
 以及大多数 DOM 返回的元素集也是伪数组。
-数组的常用方法 静态方法   Array.isArray()
-该方法返回一个布尔值，表示传入的参数是否为数组。可以弥补 typeof 运算符的不足。
-var arr = [1, 2, 3] typeof arr // &amp;#34;object&amp;#34; Array.isArray(arr) // true   实例方法   Array.prototype.sort()
-使用该方法原数组将被改变。
+数组的常用方法 静态方法  Array.isArray()  该方法返回一个布尔值，表示传入的参数是否为数组。可以弥补 typeof 运算符的不足。
+var arr = [1, 2, 3] typeof arr // &amp;#34;object&amp;#34; Array.isArray(arr) // true 实例方法  Array.prototype.sort()  使用该方法原数组将被改变。
 sort() 方法对数组成员进行排序，默认是按照字典顺序排序(不是大小顺序)。
 如果需要按照自定义顺序排序，需要传入一个函数参数，参数函数可以接受两个参数，表示进行比较的两个数组元素。如果该函数的返回值大于0，表示第一个元素排在第二个元素后面；其他情况下，都是第一个元素排在第二个元素前面。
 [&amp;#39;d&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;a&amp;#39;].sort() // [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;d&amp;#39;] [4, 3, 2, 1].</description>
@@ -167,9 +164,8 @@ JS 的解决办法就是，把这些函数统一放在一个对象里（暂且�
 Object 对象的公用属性 举个例子：
 var o1 = {} o1.name = &amp;#39;JinCheng&amp;#39; o1.age = 20 console.log(o1) 就会发现额外隐藏的 __proto__ 属性。
 当调用 o1.toString() 时：
-  首先会看 o1 是不是对象，如果不是，就临时包装成对象。
-  再看 o1 自身有没有 toString 这个属性可供调用。
-  如果没有这个属性，就会自动去调用 __proto__ 对象里的属性方法。</description>
+ 首先会看 o1 是不是对象，如果不是，就临时包装成对象。 再看 o1 自身有没有 toString 这个属性可供调用。 如果没有这个属性，就会自动去调用 __proto__ 对象里的属性方法。  简单的验证：
+// 再声明一个对象 o2 var o2 = { name: &amp;#39;JinCheng&amp;#39;, age: 20 } o1 === o2 // false 因为 Heap 地址不同 o1.</description>
     </item>
     
     <item>
@@ -209,10 +205,8 @@ fn = null 表示 fn 在 Stack 中存的 Heap 地址被 null 覆盖了。</descri
       <description>简单来说，JS 引擎将内存分为代码区和数据区，而数据区分为 Stack（栈内存）和 Heap（堆内存）。
 基本类型的数据直接存入 Stack 里，复杂类型的数据是把 Heap 地址存入 Stack 里，这个地址就是对数据的引用。
 记录一下几个关于内存的问题：
-1.
-var a = 1 var b = a b = 2 // a = ? 不废话。。。a 的值肯定为 1。
-2.
-var a = { name: &amp;#39;a&amp;#39; } var b = a b = { name: &amp;#39;b&amp;#39; } // a.name = ? 因为 a 的值为一个对象（复杂类型），所以 a 其实是把这个对象的 Heap 地址存在 Stack 里。
+   var a = 1 var b = a b = 2 // a = ? 不废话。。。a 的值肯定为 1。
+  var a = { name: &amp;#39;a&amp;#39; } var b = a b = { name: &amp;#39;b&amp;#39; } // a.name = ? 因为 a 的值为一个对象（复杂类型），所以 a 其实是把这个对象的 Heap 地址存在 Stack 里。
 var b = a 是复制了这个 Heap 地址给 b。</description>
     </item>
     
@@ -222,7 +216,7 @@ var b = a 是复制了这个 Heap 地址给 b。</description>
       <pubDate>Tue, 12 Dec 2017 14:43:06 +0800</pubDate>
       
       <guid>https://jinchengjoker.github.io/posts/js/shallow_and_deep_clone/</guid>
-      <description>最近在项目中遇到了一个关于数组拷贝的问题
+      <description>最近在项目中遇到了一个关于数组拷贝的问题。
 在 JavaScript 中，一般的简单值（Number/String/Boolean）是通过直接复制来进行赋值的：
 var a = 1 var b = a b = 2 console.log(a) // 1 console.log(b) // 2 但是数组和对象如果用以上的方法简单赋值，某些情况下就会出现问题：
 var arr1 = [1, 2, 3] var arr2 = arr1 arr1.shift() console.log(arr1) // [2, 3] console.log(arr2) // [2, 3] 上面的示例中，我只删除了 arr1 的第一个元素，但是打印出来会发现 arr1 和 arr2 的值都被改变了。 因为这只是数组的浅拷贝，var arr2 = arr1 只是将 arr1 的内存地址复制给 arr2，两个数组其实指向同一个内存区域。

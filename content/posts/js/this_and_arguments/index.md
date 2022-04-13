@@ -9,7 +9,7 @@ date: 2018-04-26T22:38:38+08:00
 
 ```javascript
 function sum(a, b) {
-    return a + b
+  return a + b
 }
 
 // 第一种方式
@@ -25,45 +25,45 @@ sum.call(undefined, 1, 2)  // 3
 
 1. 当第一个参数为 `undefined`、`null` 或空时，在非严格模式下，`this` 会自动指向全局 `window` 对象。
 
-    ```javascript
-    // 非严格模式
-    function fn() {
-        console.log(this)
-    }
-    fn.call()  // 全局 window 对象
-    fn.call(undefined)  // 全局 window 对象
-    fn.call(null)  // 全局 window 对象
-    
-    // 使用严格模式
-    function fn() {
-        'use strict'
-        console.log(this)
-    }
-    fn.call()  // undefined
-    fn.call(undefined)  // undefined
-    fn.call(null)  // null
-    ```
+```javascript
+// 非严格模式
+function fn() {
+  console.log(this)
+}
+fn.call()  // 全局 window 对象
+fn.call(undefined)  // 全局 window 对象
+fn.call(null)  // 全局 window 对象
+
+// 使用严格模式
+function fn() {
+  'use strict'
+  console.log(this)
+}
+fn.call()  // undefined
+fn.call(undefined)  // undefined
+fn.call(null)  // null
+```
 
 2. 当第一个参数为 `Number`、`String`、`Boolean` 类型时，在非严格模式下，`this` 会指向对应类型的包装对象。
 
-    ```javascript
-    // 非严格模式
-    function fn() {
-        console.log(typeof this)
-    }
-    fn.call(1)  // "object"
-    fn.call('hello')  // "object"
-    fn.call(true)  // "object"
-    
-    // 使用严格模式
-    function fn() {
-        'use strict'
-        console.log(this)
-    }
-    fn.call(1)  // 1
-    fn.call('hello')  // "hello"
-    fn.call(true)  // true
-    ```
+```javascript
+// 非严格模式
+function fn() {
+  console.log(typeof this)
+}
+fn.call(1)  // "object"
+fn.call('hello')  // "object"
+fn.call(true)  // "object"
+
+// 使用严格模式
+function fn() {
+  'use strict'
+  console.log(this)
+}
+fn.call(1)  // 1
+fn.call('hello')  // "hello"
+fn.call(true)  // true
+```
 
 ## arguments
 
@@ -78,19 +78,19 @@ sum.call(undefined, 1, 2)  // 3
 ```javascript
 // 非严格模式
 function sum(a, b) {
-    arguments[0] = 4
-    arguments[1] = 6
-    return a + b
+  arguments[0] = 4
+  arguments[1] = 6
+  return a + b
 }
 sum(1, 2)  // 10
 sum.call(undefined, 1, 2)  // 10
 
 // 严格模式
 function sum(a, b) {
-    'use strict'
-    arguments[0] = 4
-    arguments[1] = 6
-    return a + b
+  'use strict'
+  arguments[0] = 4
+  arguments[1] = 6
+  return a + b
 }
 sum(1, 2)  // 3
 sum.call(undefined, 1, 2)  // 3

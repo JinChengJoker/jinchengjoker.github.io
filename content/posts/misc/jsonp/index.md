@@ -9,7 +9,7 @@ JSONP 是服务器与客户端跨源通信的常用方法。
 
 通过一个简单的例子来理解 JSONP 到底是什么。
 
-Demo 地址：https://github.com/JinChengJoker/jsonp-demo
+[Demo 地址](https://github.com/JinChengJoker/jsonp-demo)
 
 ## 简易服务器
 
@@ -23,29 +23,29 @@ var port = process.argv[2]
 
 // 判断是否传入端口号参数
 if(!port) {
-    console.log('请指定端口号！\n例如：node server.js 8888')
-    process.exit(1)
+  console.log('请指定端口号！\n例如：node server.js 8888')
+  process.exit(1)
 }
 
 // 创建服务器
 var server = http.createServer(
-    function(request, response) {
-        var temp = url.parse(request.url, true)
-        var path = temp.pathname
-        var query = temp.query
-        console.log('HTTP 请求路径为：\n' + path)
-        // 判断 HTTP 请求路径
-        if(path === '/') {
-            var data = fs.readFileSync('./index.html', 'utf8')
-            response.setHeader('Content-Type', 'text/html; charset=utf-8')
-            response.write(data)
-            response.end()
-        } else {
-            // 找不到对应的请求路径，返回错误码404
-            response.statusCode = 404
-            response.end()
-        }
+  function(request, response) {
+    var temp = url.parse(request.url, true)
+    var path = temp.pathname
+    var query = temp.query
+    console.log('HTTP 请求路径为：\n' + path)
+    // 判断 HTTP 请求路径
+    if(path === '/') {
+      var data = fs.readFileSync('./index.html', 'utf8')
+      response.setHeader('Content-Type', 'text/html; charset=utf-8')
+      response.write(data)
+      response.end()
+    } else {
+      // 找不到对应的请求路径，返回错误码404
+      response.statusCode = 404
+      response.end()
     }
+  }
 )
 
 // 监听传入的端口号
@@ -60,24 +60,24 @@ console.log('监听' + port + '成功！\n请在浏览器打开 http://localhost
 
 在浏览器访问 `http://localhost:8888/`，返回当前文件夹下的 `index.html`：
 
-```
+```html
 <!DOCTYPE html>
 <html lang="zh-Hans">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>jsonp demo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jsonp demo</title>
 </head>
 <body>
-    <h5>当前余额：<span id="amount">100</span></h5>
-    <button id="btn">支付一元</button>
+  <h5>当前余额：<span id="amount">100</span></h5>
+  <button id="btn">支付一元</button>
 
-    <script>
-        btn.addEventListener('click', function(e) {
-            amount.innerText -= 1
-        })
-    </script>
+  <script>
+    btn.addEventListener('click', function(e) {
+      amount.innerText -= 1
+    })
+  </script>
 </body>
 </html>
 ```
@@ -91,7 +91,7 @@ console.log('监听' + port + '成功！\n请在浏览器打开 http://localhost
 
 修改 `index.html` 文件，将 `100` 替换为占位符 `&&amount&&`：
 
-```
+```html
 <span id="amount">&&amount&&</span>
 ```
 
@@ -99,12 +99,12 @@ console.log('监听' + port + '成功！\n请在浏览器打开 http://localhost
 
 ```javascript
 if(path === '/') {
-    var amount = fs.readFileSync('./db', 'utf8')
-    var data = fs.readFileSync('./index.html', 'utf8')
-    data = data.replace('&&amount&&', amount)
-    response.setHeader('Content-Type', 'text/html; charset=utf-8')
-    response.write(data)
-    response.end()
+  var amount = fs.readFileSync('./db', 'utf8')
+  var data = fs.readFileSync('./index.html', 'utf8')
+  data = data.replace('&&amount&&', amount)
+  response.setHeader('Content-Type', 'text/html; charset=utf-8')
+  response.write(data)
+  response.end()
 }
 ```
 
@@ -117,19 +117,19 @@ if(path === '/') {
 
 ```javascript
 btn.addEventListener('click', function() {
-    addScriptTag('/pay')
+  addScriptTag('/pay')
 })
 
 function addScriptTag(src) {
-    var script = document.createElement('script')
-    script.src = src
-    document.body.appendChild(script)
-    script.onload = function(e) {
-        e.currentTarget.remove()
-    }
-    script.onerror = function(e) {
-        e.currentTarget.remove()
-    }
+  var script = document.createElement('script')
+  script.src = src
+  document.body.appendChild(script)
+  script.onload = function(e) {
+    e.currentTarget.remove()
+  }
+  script.onerror = function(e) {
+    e.currentTarget.remove()
+  }
 }
 ```
 
@@ -137,13 +137,13 @@ function addScriptTag(src) {
 
 ```javascript
 else if(path === '/pay') {
-    var amount = fs.readFileSync('./db', 'utf8')
-    amount -= 1
-    fs.writeFileSync('./db', amount)
-    response.statusCode = 200
-    response.setHeader('Content-Type', 'application/javascript')
-    response.write('amount.innerText = ' + amount)
-    response.end()
+  var amount = fs.readFileSync('./db', 'utf8')
+  amount -= 1
+  fs.writeFileSync('./db', amount)
+  response.statusCode = 200
+  response.setHeader('Content-Type', 'application/javascript')
+  response.write('amount.innerText = ' + amount)
+  response.end()
 }
 ```
 
@@ -170,14 +170,14 @@ response.write('amount.innerText = ' + amount)
 
 ```javascript
 btn.addEventListener('click', function() {
-    // 每次请求都定义一个随机的函数
-    var functionName = 'jsonp'+ parseInt(Math.random()*1000000)
-    window[functionName] = function(res) {
-        // 请求成功后要执行的操作
-        amount.innerText = res.amount
-        delete window[functionName]
-    }
-    addScriptTag('/pay?callback=' + functionName)
+  // 每次请求都定义一个随机的函数
+  var functionName = 'jsonp'+ parseInt(Math.random()*1000000)
+  window[functionName] = function(res) {
+    // 请求成功后要执行的操作
+    amount.innerText = res.amount
+    delete window[functionName]
+  }
+  addScriptTag('/pay?callback=' + functionName)
 })
 ```
 
@@ -185,18 +185,18 @@ btn.addEventListener('click', function() {
 
 ```javascript
 else if(path === '/pay') {
-    var amount = fs.readFileSync('./db', 'utf8')
-    var callbackName = query.callback
-    amount -= 1
-    fs.writeFileSync('./db', amount)
-    response.statusCode = 200
-    response.setHeader('Content-Type', 'application/javascript')
-    response.write(`
-        ${callbackName}({
-            amount: ${amount}
-        })
-    `)
-    response.end()
+  var amount = fs.readFileSync('./db', 'utf8')
+  var callbackName = query.callback
+  amount -= 1
+  fs.writeFileSync('./db', amount)
+  response.statusCode = 200
+  response.setHeader('Content-Type', 'application/javascript')
+  response.write(`
+    ${callbackName}({
+      amount: ${amount}
+    })
+  `)
+  response.end()
 }
 ```
 
@@ -207,14 +207,14 @@ else if(path === '/pay') {
 
 - jQuery 也封装了 JSONP，它帮我们搞定了所有的操作。虽然调用方式与 Ajax 相同，但是**跟 Ajax 没有关系**。
 
-    ```javascript
-    $.ajax({
-        url: "/pay",
-        dataType: "jsonp",
-        success: function(res) {
-            amount.innerText = res.amount
-        }
-    })
-    ```
+```javascript
+$.ajax({
+  url: "/pay",
+  dataType: "jsonp",
+  success: function(res) {
+    amount.innerText = res.amount
+  }
+})
+```
 
 - **JSONP 不支持 `POST` 请求**。因为 JSONP 是通过动态创建 `<script>` 实现的，但是 `<script>` 标签只能用 `GET` 请求，不支持 `POST` 请求。

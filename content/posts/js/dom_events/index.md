@@ -9,13 +9,13 @@ date: 2018-06-26T01:22:28+08:00
 
 ```javascript
 btn.onclick = function() {
-    console.log('hi')
+  console.log('hi')
 }
 btn.onmouseenter = function() {
-    console.log('mouseenter')
+  console.log('mouseenter')
 }
 btn.onmouseleave = function() {
-    console.log('mouseleave')
+  console.log('mouseleave')
 }
 ```
 
@@ -33,13 +33,13 @@ btn.onmouseleave = function() {
 
 ```javascript
 btn.addEventListener('click', function() {
-    console.log('hi')
+  console.log('hi')
 })
 btn.addEventListener('mouseenter', function() {
-    console.log('mouseenter')
+  console.log('mouseenter')
 })
 btn.addEventListener('mouseleave', function() {
-    console.log('mouseleave')
+  console.log('mouseleave')
 })
 ```
 
@@ -49,10 +49,10 @@ btn.addEventListener('mouseleave', function() {
 
 ```javascript
 btn.onclick = function() {  // 将会被覆盖
-    console.log(1)
+  console.log(1)
 }
 btn.onclick = function() {
-    console.log(2)
+  console.log(2)
 }
 ```
 
@@ -61,10 +61,10 @@ btn.onclick = function() {
 ```javascript
 // 不会被覆盖
 btn.addEventListener('click', function() {
-    console.log('hi')
+  console.log('hi')
 })
 btn.addEventListener('click', function() {
-    console.log('hello')
+  console.log('hello')
 })
 ```
 
@@ -72,10 +72,10 @@ btn.addEventListener('click', function() {
 
 ```javascript
 function f1() {
-    console.log('hi')
+  console.log('hi')
 }
 function f2() {
-    console.log('hello')
+  console.log('hello')
 }
 btn.addEventListener('click', f1)
 btn.addEventListener('click', f2)
@@ -89,8 +89,8 @@ btn.removeEventListener('click', f1)
 
 ```javascript
 function f1() {
-    console.log('hi')
-    btn.removeEventListener('click', f1)
+  console.log('hi')
+  btn.removeEventListener('click', f1)
 }
 btn.addEventListener('click', f1)
 // 只在第一次点击 btn 时才会打印出 'hi'

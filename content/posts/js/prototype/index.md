@@ -38,9 +38,7 @@ console.log(o1)
 当调用 `o1.toString()` 时：
 
 1. 首先会看 `o1` 是不是对象，如果不是，就临时包装成对象。
-
 2. 再看 `o1` 自身有没有 `toString` 这个属性可供调用。
-
 3. 如果没有这个属性，就会自动去调用 `__proto__` 对象里的属性方法。
 
 简单的验证：
@@ -48,8 +46,8 @@ console.log(o1)
 ```javascript
 // 再声明一个对象 o2
 var o2 = {
-    name: 'JinCheng',
-    age: 20
+  name: 'JinCheng',
+  age: 20
 }
 o1 === o2  // false 因为 Heap 地址不同
 o1.toString === o2.toString  // true 可以发现他们调用的其实是同一个公用属性
@@ -82,21 +80,20 @@ var n = new Number(1)
 注意：
 
 1. 如果对象自身和它的公用属性对象，都定义了一个同名属性，那么优先读取对象自身的属性，这叫做“覆盖”。
-
 2. 这些同名属性不是同一个方法，他们不相等，可能有不同的用法。例如：
 
-    ```javascript
-    // Number 对象 toString 方法可以接受一个参数，表示输出的进制
-    var n = 10
-    n.toString(8)  // '12'
-    
-    // Object 对象 toString 方法不能接参数
-    var o = {}
-    o.toString()  // "[object Object]"
-    
-    // 验证
-    n.toString === o.toString  // false
-    ```
+```javascript
+// Number 对象 toString 方法可以接受一个参数，表示输出的进制
+var n = 10
+n.toString(8)  // '12'
+
+// Object 对象 toString 方法不能接参数
+var o = {}
+o.toString()  // "[object Object]"
+
+// 验证
+n.toString === o.toString  // false
+```
 
 
 ## Prototype（原型对象）
@@ -111,7 +108,7 @@ JavaScript 规定，所有对象都有自己的原型对象（prototype）。
 
 简单的验证：
 
-```
+```javascript
 var o = {}
 o.__proto__ === Object.prototype  // true
 

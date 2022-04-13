@@ -7,6 +7,7 @@ date: 2018-05-13T17:09:20+08:00
 
 HyperText Transfer Protocol 超文本传输协议，用于控制客户端与服务器之间如何进行沟通传输。
 
+
 ## URL
 
 Uniform Resource Locator 统一资源定位符，也被俗称为网址。
@@ -15,12 +16,18 @@ Uniform Resource Locator 统一资源定位符，也被俗称为网址。
 
 其中包括：协议、域名、路径、查询参数、锚点和端口号。
 
-- 域名  
-    `.com` 为顶级域名，`baidu` 为二级域名，`www` 为三级域名。
-- 路径  
-    并不对应任何文件。
-- 端口号  
-    例如：21 端口用于 FTP 服务，443 端口用于 HTTPS 服务，1080 端口用于代理服务，3306 端口用于 MySQL 服务，80 端口用于 HTTP 服务。
+- 域名
+
+`.com` 为顶级域名，`baidu` 为二级域名，`www` 为三级域名。
+
+- 路径
+
+并不对应任何文件。
+
+- 端口号
+
+例如：21 端口用于 FTP 服务，443 端口用于 HTTPS 服务，1080 端口用于代理服务，3306 端口用于 MySQL 服务，80 端口用于 HTTP 服务。
+
 
 ## DNS
 
@@ -32,9 +39,11 @@ Domain Name System 域名系统，用于将域名解析为对应的 IP。
 nslookup www.baidu.com
 ```
 
+
 ## Hosts
 
 更改 hosts 文件可以指定任意域名的 IP。
+
 
 ## 客户端与服务器的基本交互
 
@@ -47,6 +56,7 @@ nslookup www.baidu.com
 5. 服务器响应
 6. 浏览器接受下载数据
 
+
 ## 发起请求
 
 ### 基本格式
@@ -54,9 +64,8 @@ nslookup www.baidu.com
 ```
 第1部分：动词 路径 协议/版本号
 第2部分：Key: value
+...
 第2部分：Key: value
-第2部分：Key: value
-    ...
 第3部分：
 第4部分：要上传的数据
 ```
@@ -68,41 +77,43 @@ nslookup www.baidu.com
 - 第 2 部分中的 `Content-Type` 标注了第 4 部分的格式。
 - 第 3 部分永远都是一个回车（\n）。
 
-
 ### curl
 
 使用 `curl` 工具可以发起请求。
 
 参数 `-s` 表示不显示进度条，参数 `-v` 表示同时显示请求和响应，参数 `-H` 表示添加请求头，参数 `-X` 表示指定请求动词，参数 `-d` 表示传输的数据。
 
-- 发起 GET 请求：  
-    ```
-    // 默认为 GET 请求
-    curl -s -v -H "Hello: xxx" -- "https://www.baidu.com"
-    
-    // 请求的内容
-    GET / HTTP/1.1
-    Host: www.baidu.com
-    User-Agent: curl/7.54.0
-    Accept: */*
-    Hello: xxx
-    
-    ```
-- 发起 POST 请求：  
-    ```
-    curl -X POST -d "1234567890" -s -v -H "Hello: xxx" -- "https://www.baidu.com"
-    
-    // 请求的内容
-    POST / HTTP/1.1
-    Host: www.baidu.com
-    User-Agent: curl/7.54.0
-    Accept: */*
-    Hello: xxx
-    Content-Length: 10
-    Content-Type: application/x-www-form-urlencoded
-    
-    1234567890
-    ```
+- 发起 GET 请求：
+
+```
+// 默认为 GET 请求
+curl -s -v -H "Hello: xxx" -- "https://www.baidu.com"
+
+// 请求的内容
+GET / HTTP/1.1
+Host: www.baidu.com
+User-Agent: curl/7.54.0
+Accept: */*
+Hello: xxx
+```
+
+- 发起 POST 请求：
+
+```
+curl -X POST -d "1234567890" -s -v -H "Hello: xxx" -- "https://www.baidu.com"
+
+// 请求的内容
+POST / HTTP/1.1
+Host: www.baidu.com
+User-Agent: curl/7.54.0
+Accept: */*
+Hello: xxx
+Content-Length: 10
+Content-Type: application/x-www-form-urlencoded
+
+1234567890
+```
+
 
 ## 响应请求
 
@@ -111,9 +122,8 @@ nslookup www.baidu.com
 ```
 第1部分：协议/版本号 状态码 状态解释
 第2部分：Key: value
+...
 第2部分：Key: value
-第2部分：Key: value
-    ...
 第3部分：
 第4部分：要传输的数据
 ```
@@ -160,6 +170,6 @@ nslookup www.baidu.com
 
 ```javascript
 response.setHeader('Access-Control-Allow-Origin', 'http://xxx')
-// 或者四海皆兄弟
+// 或者
 response.setHeader('Access-Control-Allow-Origin', '*')
 ```

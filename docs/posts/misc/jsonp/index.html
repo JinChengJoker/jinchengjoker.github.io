@@ -24,7 +24,7 @@
   <meta name="description" content="JSONP 是服务器与客户端跨源通信的常用方法。
 它的基本思想是，通过动态创建 &lt;script&gt; 元素向服务器发起请求，这种做法不受同源政策限制。服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。
 通过一个简单的例子来理解 JSONP 到底是什么。
-Demo 地址：https://github.com/JinChengJoker/jsonp-demo
+Demo 地址
 简易服务器 用 node.js 搭一个简易的服务器 server.js：
 var http = require(&#39;http&#39;) var url = require(&#39;url&#39;) var fs = require(&#39;fs&#39;) var port = process.argv[2] // 判断是否传入端口号参数 if(!port) { console.log(&#39;请指定端口号！\n例如：node server.js 8888&#39;) process.exit(1) } // 创建服务器 var server = http.createServer( function(request, response) { var temp = url.parse(request.url, true) var path = temp.pathname var query = temp.query console.log(&#39;HTTP 请求路径为：\n&#39; &#43; path) // 判断 HTTP 请求路径  if(path === &#39;/&#39;) { var data = fs." />
   <meta name="author" content="" />
@@ -75,7 +75,7 @@ var http = require(&#39;http&#39;) var url = require(&#39;url&#39;) var fs = req
 <meta property="og:description" content="JSONP 是服务器与客户端跨源通信的常用方法。
 它的基本思想是，通过动态创建 &lt;script&gt; 元素向服务器发起请求，这种做法不受同源政策限制。服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。
 通过一个简单的例子来理解 JSONP 到底是什么。
-Demo 地址：https://github.com/JinChengJoker/jsonp-demo
+Demo 地址
 简易服务器 用 node.js 搭一个简易的服务器 server.js：
 var http = require(&#39;http&#39;) var url = require(&#39;url&#39;) var fs = require(&#39;fs&#39;) var port = process.argv[2] // 判断是否传入端口号参数 if(!port) { console.log(&#39;请指定端口号！\n例如：node server.js 8888&#39;) process.exit(1) } // 创建服务器 var server = http.createServer( function(request, response) { var temp = url.parse(request.url, true) var path = temp.pathname var query = temp.query console.log(&#39;HTTP 请求路径为：\n&#39; &#43; path) // 判断 HTTP 请求路径  if(path === &#39;/&#39;) { var data = fs." />
 <meta property="og:type" content="article" />
@@ -89,7 +89,7 @@ var http = require(&#39;http&#39;) var url = require(&#39;url&#39;) var fs = req
 <meta itemprop="description" content="JSONP 是服务器与客户端跨源通信的常用方法。
 它的基本思想是，通过动态创建 &lt;script&gt; 元素向服务器发起请求，这种做法不受同源政策限制。服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。
 通过一个简单的例子来理解 JSONP 到底是什么。
-Demo 地址：https://github.com/JinChengJoker/jsonp-demo
+Demo 地址
 简易服务器 用 node.js 搭一个简易的服务器 server.js：
 var http = require(&#39;http&#39;) var url = require(&#39;url&#39;) var fs = require(&#39;fs&#39;) var port = process.argv[2] // 判断是否传入端口号参数 if(!port) { console.log(&#39;请指定端口号！\n例如：node server.js 8888&#39;) process.exit(1) } // 创建服务器 var server = http.createServer( function(request, response) { var temp = url.parse(request.url, true) var path = temp.pathname var query = temp.query console.log(&#39;HTTP 请求路径为：\n&#39; &#43; path) // 判断 HTTP 请求路径  if(path === &#39;/&#39;) { var data = fs."><meta itemprop="datePublished" content="2018-07-03T21:00:55+08:00" />
 <meta itemprop="dateModified" content="2018-07-03T21:00:55+08:00" />
@@ -101,7 +101,7 @@ var http = require(&#39;http&#39;) var url = require(&#39;url&#39;) var fs = req
 <meta name="twitter:description" content="JSONP 是服务器与客户端跨源通信的常用方法。
 它的基本思想是，通过动态创建 &lt;script&gt; 元素向服务器发起请求，这种做法不受同源政策限制。服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。
 通过一个简单的例子来理解 JSONP 到底是什么。
-Demo 地址：https://github.com/JinChengJoker/jsonp-demo
+Demo 地址
 简易服务器 用 node.js 搭一个简易的服务器 server.js：
 var http = require(&#39;http&#39;) var url = require(&#39;url&#39;) var fs = require(&#39;fs&#39;) var port = process.argv[2] // 判断是否传入端口号参数 if(!port) { console.log(&#39;请指定端口号！\n例如：node server.js 8888&#39;) process.exit(1) } // 创建服务器 var server = http.createServer( function(request, response) { var temp = url.parse(request.url, true) var path = temp.pathname var query = temp.query console.log(&#39;HTTP 请求路径为：\n&#39; &#43; path) // 判断 HTTP 请求路径  if(path === &#39;/&#39;) { var data = fs."/>
 
@@ -158,7 +158,7 @@ var http = require(&#39;http&#39;) var url = require(&#39;url&#39;) var fs = req
   <section class="post-content"><p>JSONP 是服务器与客户端跨源通信的常用方法。</p>
 <p>它的基本思想是，通过动态创建 <code>&lt;script&gt;</code> 元素向服务器发起请求，这种做法<strong>不受同源政策限制</strong>。服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。</p>
 <p>通过一个简单的例子来理解 JSONP 到底是什么。</p>
-<p>Demo 地址：https://github.com/JinChengJoker/jsonp-demo</p>
+<p><a href="https://github.com/JinChengJoker/jsonp-demo">Demo 地址</a></p>
 <h2 id="简易服务器">简易服务器</h2>
 <p>用 node.js 搭一个简易的服务器 <code>server.js</code>：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">http</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;http&#39;</span>)
@@ -168,29 +168,29 @@ var http = require(&#39;http&#39;) var url = require(&#39;url&#39;) var fs = req
 
 <span style="color:#75715e">// 判断是否传入端口号参数
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">port</span>) {
-    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;请指定端口号！\n例如：node server.js 8888&#39;</span>)
-    <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>)
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;请指定端口号！\n例如：node server.js 8888&#39;</span>)
+  <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>)
 }
 
 <span style="color:#75715e">// 创建服务器
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">server</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">createServer</span>(
-    <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">request</span>, <span style="color:#a6e22e">response</span>) {
-        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">temp</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">url</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">url</span>, <span style="color:#66d9ef">true</span>)
-        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">temp</span>.<span style="color:#a6e22e">pathname</span>
-        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">query</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">temp</span>.<span style="color:#a6e22e">query</span>
-        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;HTTP 请求路径为：\n&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">path</span>)
-        <span style="color:#75715e">// 判断 HTTP 请求路径
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">path</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;/&#39;</span>) {
-            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFileSync</span>(<span style="color:#e6db74">&#39;./index.html&#39;</span>, <span style="color:#e6db74">&#39;utf8&#39;</span>)
-            <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#39;Content-Type&#39;</span>, <span style="color:#e6db74">&#39;text/html; charset=utf-8&#39;</span>)
-            <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">data</span>)
-            <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">end</span>()
-        } <span style="color:#66d9ef">else</span> {
-            <span style="color:#75715e">// 找不到对应的请求路径，返回错误码404
-</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">statusCode</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">404</span>
-            <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">end</span>()
-        }
+  <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">request</span>, <span style="color:#a6e22e">response</span>) {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">temp</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">url</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">url</span>, <span style="color:#66d9ef">true</span>)
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">temp</span>.<span style="color:#a6e22e">pathname</span>
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">query</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">temp</span>.<span style="color:#a6e22e">query</span>
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;HTTP 请求路径为：\n&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">path</span>)
+    <span style="color:#75715e">// 判断 HTTP 请求路径
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">path</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;/&#39;</span>) {
+      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFileSync</span>(<span style="color:#e6db74">&#39;./index.html&#39;</span>, <span style="color:#e6db74">&#39;utf8&#39;</span>)
+      <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#39;Content-Type&#39;</span>, <span style="color:#e6db74">&#39;text/html; charset=utf-8&#39;</span>)
+      <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">data</span>)
+      <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">end</span>()
+    } <span style="color:#66d9ef">else</span> {
+      <span style="color:#75715e">// 找不到对应的请求路径，返回错误码404
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">statusCode</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">404</span>
+      <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">end</span>()
     }
+  }
 )
 
 <span style="color:#75715e">// 监听传入的端口号
@@ -199,66 +199,66 @@ var http = require(&#39;http&#39;) var url = require(&#39;url&#39;) var fs = req
 </code></pre></div><h2 id="访问服务器">访问服务器</h2>
 <p>启动服务器 <code>node server.js 8888</code>，监听 <code>8888</code> 端口。</p>
 <p>在浏览器访问 <code>http://localhost:8888/</code>，返回当前文件夹下的 <code>index.html</code>：</p>
-<pre tabindex="0"><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;zh-Hans&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
-    &lt;title&gt;jsonp demo&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h5&gt;当前余额：&lt;span id=&quot;amount&quot;&gt;100&lt;/span&gt;&lt;/h5&gt;
-    &lt;button id=&quot;btn&quot;&gt;支付一元&lt;/button&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;zh-Hans&#34;</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1.0&#34;</span>&gt;
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">http-equiv</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;X-UA-Compatible&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ie=edge&#34;</span>&gt;
+  &lt;<span style="color:#f92672">title</span>&gt;jsonp demo&lt;/<span style="color:#f92672">title</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+  &lt;<span style="color:#f92672">h5</span>&gt;当前余额：&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;amount&#34;</span>&gt;100&lt;/<span style="color:#f92672">span</span>&gt;&lt;/<span style="color:#f92672">h5</span>&gt;
+  &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span>&gt;支付一元&lt;/<span style="color:#f92672">button</span>&gt;
 
-    &lt;script&gt;
-        btn.addEventListener('click', function(e) {
-            amount.innerText -= 1
-        })
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p><img src="./images/demo_view.jpg" alt="demo_view"></p>
+  &lt;<span style="color:#f92672">script</span>&gt;
+    <span style="color:#a6e22e">btn</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>) {
+      <span style="color:#a6e22e">amount</span>.<span style="color:#a6e22e">innerText</span> <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
+    })
+  &lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+</code></pre></div><p><img src="./images/demo_view.jpg" alt="demo_view"></p>
 <h2 id="简易数据库文件">简易数据库文件</h2>
 <p>在当前文件下创建 <code>db</code> 文件，存入数字 <code>100</code>。</p>
 <p>修改 <code>index.html</code> 文件，将 <code>100</code> 替换为占位符 <code>&amp;&amp;amount&amp;&amp;</code>：</p>
-<pre tabindex="0"><code>&lt;span id=&quot;amount&quot;&gt;&amp;&amp;amount&amp;&amp;&lt;/span&gt;
-</code></pre><p>修改 <code>server.js</code> 文件，读取 <code>db</code> 文件数据，然后将响应数据中的占位符 <code>&amp;&amp;amount&amp;&amp;</code> 替换为真实数据：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;amount&#34;</span>&gt;<span style="color:#960050;background-color:#1e0010">&amp;&amp;</span>amount<span style="color:#960050;background-color:#1e0010">&amp;&amp;</span>&lt;/<span style="color:#f92672">span</span>&gt;
+</code></pre></div><p>修改 <code>server.js</code> 文件，读取 <code>db</code> 文件数据，然后将响应数据中的占位符 <code>&amp;&amp;amount&amp;&amp;</code> 替换为真实数据：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">path</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;/&#39;</span>) {
-    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">amount</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFileSync</span>(<span style="color:#e6db74">&#39;./db&#39;</span>, <span style="color:#e6db74">&#39;utf8&#39;</span>)
-    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFileSync</span>(<span style="color:#e6db74">&#39;./index.html&#39;</span>, <span style="color:#e6db74">&#39;utf8&#39;</span>)
-    <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">&#39;&amp;&amp;amount&amp;&amp;&#39;</span>, <span style="color:#a6e22e">amount</span>)
-    <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#39;Content-Type&#39;</span>, <span style="color:#e6db74">&#39;text/html; charset=utf-8&#39;</span>)
-    <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">data</span>)
-    <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">end</span>()
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">amount</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFileSync</span>(<span style="color:#e6db74">&#39;./db&#39;</span>, <span style="color:#e6db74">&#39;utf8&#39;</span>)
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFileSync</span>(<span style="color:#e6db74">&#39;./index.html&#39;</span>, <span style="color:#e6db74">&#39;utf8&#39;</span>)
+  <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">&#39;&amp;&amp;amount&amp;&amp;&#39;</span>, <span style="color:#a6e22e">amount</span>)
+  <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#39;Content-Type&#39;</span>, <span style="color:#e6db74">&#39;text/html; charset=utf-8&#39;</span>)
+  <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">data</span>)
+  <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">end</span>()
 }
 </code></pre></div><p>重启 <code>server.js</code>，再次访问 <code>http://localhost:8888/</code>，结果与之前一致。</p>
 <h2 id="创建-script-元素发起请求srj-方案">创建 script 元素发起请求（SRJ 方案）</h2>
 <p>可以在 <code>index.html</code> 中动态创建一个 <code>&lt;script&gt;</code> 元素，并用它的 <code>src</code> 属性来发起请求，同时监听 <code>load</code> 和 <code>error</code> 来判断是否执行成功，并在之后删除该 <code>&lt;script&gt;</code> 元素：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">btn</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span>() {
-    <span style="color:#a6e22e">addScriptTag</span>(<span style="color:#e6db74">&#39;/pay&#39;</span>)
+  <span style="color:#a6e22e">addScriptTag</span>(<span style="color:#e6db74">&#39;/pay&#39;</span>)
 })
 
 <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">addScriptTag</span>(<span style="color:#a6e22e">src</span>) {
-    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">script</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;script&#39;</span>)
-    <span style="color:#a6e22e">script</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">src</span>
-    document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">script</span>)
-    <span style="color:#a6e22e">script</span>.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>) {
-        <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">currentTarget</span>.<span style="color:#a6e22e">remove</span>()
-    }
-    <span style="color:#a6e22e">script</span>.<span style="color:#a6e22e">onerror</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>) {
-        <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">currentTarget</span>.<span style="color:#a6e22e">remove</span>()
-    }
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">script</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;script&#39;</span>)
+  <span style="color:#a6e22e">script</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">src</span>
+  document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">script</span>)
+  <span style="color:#a6e22e">script</span>.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>) {
+    <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">currentTarget</span>.<span style="color:#a6e22e">remove</span>()
+  }
+  <span style="color:#a6e22e">script</span>.<span style="color:#a6e22e">onerror</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>) {
+    <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">currentTarget</span>.<span style="color:#a6e22e">remove</span>()
+  }
 }
 </code></pre></div><p>添加 <code>server.js</code> 响应：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">path</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;/pay&#39;</span>) {
-    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">amount</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFileSync</span>(<span style="color:#e6db74">&#39;./db&#39;</span>, <span style="color:#e6db74">&#39;utf8&#39;</span>)
-    <span style="color:#a6e22e">amount</span> <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
-    <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">writeFileSync</span>(<span style="color:#e6db74">&#39;./db&#39;</span>, <span style="color:#a6e22e">amount</span>)
-    <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">statusCode</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>
-    <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#39;Content-Type&#39;</span>, <span style="color:#e6db74">&#39;application/javascript&#39;</span>)
-    <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">&#39;amount.innerText = &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">amount</span>)
-    <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">end</span>()
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">amount</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFileSync</span>(<span style="color:#e6db74">&#39;./db&#39;</span>, <span style="color:#e6db74">&#39;utf8&#39;</span>)
+  <span style="color:#a6e22e">amount</span> <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
+  <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">writeFileSync</span>(<span style="color:#e6db74">&#39;./db&#39;</span>, <span style="color:#a6e22e">amount</span>)
+  <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">statusCode</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>
+  <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#39;Content-Type&#39;</span>, <span style="color:#e6db74">&#39;application/javascript&#39;</span>)
+  <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">&#39;amount.innerText = &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">amount</span>)
+  <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">end</span>()
 }
 </code></pre></div><p>重启 <code>server.js</code>，再次访问 <code>http://localhost:8888/</code>。</p>
 <p>因为在 HTTP 响应的 Header 中设置了 <code>Content-Type</code> 为 <code>application/javascript</code>，且把返回的结果放入了 <code>&lt;script&gt;</code> 元素中，所以此时点击按钮，就会请求服务器修改数据，并且会执行由服务器返回的 <code>javascript</code>，无刷新的局部更新到页面中。</p>
@@ -270,46 +270,44 @@ var http = require(&#39;http&#39;) var url = require(&#39;url&#39;) var fs = req
 </code></pre></div><p>于是就有了 JSONP（JSON with Padding），它是 JSON 的一种“使用模式”。</p>
 <p>我们在请求的查询字符串添加一个 <code>callback</code> 参数，用来指定回调函数的名字，这对于 JSONP 是必需的。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">btn</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span>() {
-    <span style="color:#75715e">// 每次请求都定义一个随机的函数
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">functionName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;jsonp&#39;</span><span style="color:#f92672">+</span> parseInt(Math.<span style="color:#a6e22e">random</span>()<span style="color:#f92672">*</span><span style="color:#ae81ff">1000000</span>)
-    window[<span style="color:#a6e22e">functionName</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">res</span>) {
-        <span style="color:#75715e">// 请求成功后要执行的操作
-</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">amount</span>.<span style="color:#a6e22e">innerText</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">amount</span>
-        <span style="color:#66d9ef">delete</span> window[<span style="color:#a6e22e">functionName</span>]
-    }
-    <span style="color:#a6e22e">addScriptTag</span>(<span style="color:#e6db74">&#39;/pay?callback=&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">functionName</span>)
+  <span style="color:#75715e">// 每次请求都定义一个随机的函数
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">functionName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;jsonp&#39;</span><span style="color:#f92672">+</span> parseInt(Math.<span style="color:#a6e22e">random</span>()<span style="color:#f92672">*</span><span style="color:#ae81ff">1000000</span>)
+  window[<span style="color:#a6e22e">functionName</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">res</span>) {
+    <span style="color:#75715e">// 请求成功后要执行的操作
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">amount</span>.<span style="color:#a6e22e">innerText</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">amount</span>
+    <span style="color:#66d9ef">delete</span> window[<span style="color:#a6e22e">functionName</span>]
+  }
+  <span style="color:#a6e22e">addScriptTag</span>(<span style="color:#e6db74">&#39;/pay?callback=&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">functionName</span>)
 })
 </code></pre></div><p>服务器收到请求后，会将数据放在回调函数的参数位置返回。由于 <code>&lt;script&gt;</code> 元素请求的脚本，会直接作为代码运行，这时，只要浏览器定义了相应的函数，该函数就会被立即调用。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">path</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;/pay&#39;</span>) {
-    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">amount</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFileSync</span>(<span style="color:#e6db74">&#39;./db&#39;</span>, <span style="color:#e6db74">&#39;utf8&#39;</span>)
-    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">callbackName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">callback</span>
-    <span style="color:#a6e22e">amount</span> <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
-    <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">writeFileSync</span>(<span style="color:#e6db74">&#39;./db&#39;</span>, <span style="color:#a6e22e">amount</span>)
-    <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">statusCode</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>
-    <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#39;Content-Type&#39;</span>, <span style="color:#e6db74">&#39;application/javascript&#39;</span>)
-    <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">`
-</span><span style="color:#e6db74">        </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">callbackName</span><span style="color:#e6db74">}</span><span style="color:#e6db74">({
-</span><span style="color:#e6db74">            amount: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">amount</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">        })
-</span><span style="color:#e6db74">    `</span>)
-    <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">end</span>()
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">amount</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFileSync</span>(<span style="color:#e6db74">&#39;./db&#39;</span>, <span style="color:#e6db74">&#39;utf8&#39;</span>)
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">callbackName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">callback</span>
+  <span style="color:#a6e22e">amount</span> <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
+  <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">writeFileSync</span>(<span style="color:#e6db74">&#39;./db&#39;</span>, <span style="color:#a6e22e">amount</span>)
+  <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">statusCode</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>
+  <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#39;Content-Type&#39;</span>, <span style="color:#e6db74">&#39;application/javascript&#39;</span>)
+  <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">`
+</span><span style="color:#e6db74">    </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">callbackName</span><span style="color:#e6db74">}</span><span style="color:#e6db74">({
+</span><span style="color:#e6db74">      amount: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">amount</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    })
+</span><span style="color:#e6db74">  `</span>)
+  <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">end</span>()
 }
 </code></pre></div><p>这就是 JSONP。</p>
 <h2 id="注意">注意</h2>
 <ul>
-<li>
-<p>jQuery 也封装了 JSONP，它帮我们搞定了所有的操作。虽然调用方式与 Ajax 相同，但是<strong>跟 Ajax 没有关系</strong>。</p>
+<li>jQuery 也封装了 JSONP，它帮我们搞定了所有的操作。虽然调用方式与 Ajax 相同，但是<strong>跟 Ajax 没有关系</strong>。</li>
+</ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">ajax</span>({
-    <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;/pay&#34;</span>,
-    <span style="color:#a6e22e">dataType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;jsonp&#34;</span>,
-    <span style="color:#a6e22e">success</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">res</span>) {
-        <span style="color:#a6e22e">amount</span>.<span style="color:#a6e22e">innerText</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">amount</span>
-    }
+  <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;/pay&#34;</span>,
+  <span style="color:#a6e22e">dataType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;jsonp&#34;</span>,
+  <span style="color:#a6e22e">success</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">res</span>) {
+    <span style="color:#a6e22e">amount</span>.<span style="color:#a6e22e">innerText</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">amount</span>
+  }
 })
-</code></pre></div></li>
-<li>
-<p><strong>JSONP 不支持 <code>POST</code> 请求</strong>。因为 JSONP 是通过动态创建 <code>&lt;script&gt;</code> 实现的，但是 <code>&lt;script&gt;</code> 标签只能用 <code>GET</code> 请求，不支持 <code>POST</code> 请求。</p>
-</li>
+</code></pre></div><ul>
+<li><strong>JSONP 不支持 <code>POST</code> 请求</strong>。因为 JSONP 是通过动态创建 <code>&lt;script&gt;</code> 实现的，但是 <code>&lt;script&gt;</code> 标签只能用 <code>GET</code> 请求，不支持 <code>POST</code> 请求。</li>
 </ul>
 </section>
 

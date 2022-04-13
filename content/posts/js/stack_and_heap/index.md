@@ -9,7 +9,7 @@ date: 2018-04-17T14:34:42+08:00
 
 记录一下几个关于内存的问题：
 
-1.
+1. 
 
 ```javascript
 var a = 1
@@ -20,7 +20,7 @@ b = 2
 
 不废话。。。a 的值肯定为 1。
 
-2.
+2. 
 
 ```javascript
 var a = { name: 'a' }
@@ -37,7 +37,7 @@ b = { name: 'b' }
 
 所以 a 没有变化，`a.name` 的值为 `'a'`。
 
-3.
+3. 
 
 ```javascript
 var a = { name: 'a' }
@@ -52,7 +52,7 @@ b.name = 'b'
 
 因为 a 和 b 的 Heap 地址引用的是同一个内存区域（即同一个对象），所以 `a.name` 的值也变成了 `'b'`。
 
-4.
+4. 
 
 ```javascript
 var a = { name: 'a' }
@@ -65,7 +65,7 @@ b = null
 
 所以 a 没有变化，`a.name` 的值还是为 `'a'`。
 
-5.
+5. 
 
 ```javascript
 var a = { self: a }
@@ -88,7 +88,7 @@ a.self = a
 a === a.self  // true
 ```
 
-6.
+6. 
 
 ```javascript
 var a = { name: 'a' }
