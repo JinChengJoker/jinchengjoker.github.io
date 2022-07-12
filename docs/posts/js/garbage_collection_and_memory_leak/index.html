@@ -55,7 +55,7 @@ fn = null 表示 fn 在 Stack 中存的 Heap 地址被 null 覆盖了。" />
   <link rel="apple-touch-icon" href="https://jinchengjoker.github.io/apple-touch-icon.png" />
 
   
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.101.0" />
 
   
   
@@ -149,15 +149,15 @@ fn = null 表示 fn 在 Stack 中存的 Heap 地址被 null 覆盖了。"/>
   </header>
   <section class="post-content"><h2 id="垃圾回收">垃圾回收</h2>
 <p>简单来说，如果一个对象没有被引用，那么它就是垃圾，内存将会被回收。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;a&#39;</span> }
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;b&#39;</span> }
-<span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span>
-</code></pre></div><p>因为 b 在 Stack 中存的 Heap 地址被 a 覆盖了，所以导致 <code>{ name: 'b' }</code> 没有被引用，那么它就是垃圾，内存将会被回收。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">fn</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() { <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;hello&#39;</span>) }
-document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fn</span>
-<span style="color:#a6e22e">fn</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>
-<span style="color:#75715e">// 对象 function() { console.log(&#39;hello&#39;) } 会不会被垃圾回收？
-</span></code></pre></div><p>前两句表示 <code>fn</code> 和 <code>document.body.onclick</code> 在 Stack 中存的是同一个 Heap 地址。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;a&#39;</span> }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;b&#39;</span> }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span>
+</span></span></code></pre></div><p>因为 b 在 Stack 中存的 Heap 地址被 a 覆盖了，所以导致 <code>{ name: 'b' }</code> 没有被引用，那么它就是垃圾，内存将会被回收。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">fn</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() { <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;hello&#39;</span>) }
+</span></span><span style="display:flex;"><span>document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fn</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fn</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 对象 function() { console.log(&#39;hello&#39;) } 会不会被垃圾回收？
+</span></span></span></code></pre></div><p>前两句表示 <code>fn</code> 和 <code>document.body.onclick</code> 在 Stack 中存的是同一个 Heap 地址。</p>
 <p><code>fn = null</code> 表示 <code>fn</code> 在 Stack 中存的 Heap 地址被 <code>null</code> 覆盖了。</p>
 <p>但是对象 <code>function() { console.log('hello') }</code> 的 Heap 地址依然被 <code>document.body.onclick</code> 所引用，所以它不是垃圾。</p>
 <h2 id="内存泄漏">内存泄漏</h2>

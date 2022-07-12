@@ -23,13 +23,14 @@
   
   <meta name="description" content="Vue 是 MVVM？ v1.0 版本 在vue v1.0版本的官网上有这么一张图：
 可以看到在v1.0版本，当时vue把自己定义为一个MVVM模型的框架：
- Vue.js 拥抱数据驱动的视图概念。通俗地讲，它意味着我们在普通 HTML 模板中使用特殊的语法将 DOM “绑定”到底层数据。一旦创建了绑定，DOM 将与数据保持同步。每当修改了数据，DOM 便相应地更新。这样我们应用中的逻辑就几乎都是直接修改数据了，不必与 DOM 更新搅在一起。
- v2.x v3.x 版本 但是在后来的版本，vue的官网上就移除了这张图的介绍，取而代之的是下面这句话：
- 虽然没有完全遵循 MVVM 模型，但是 Vue 的设计也受到了它的启发。
- 在v2.x、v3.x版本，vue更像是一个MV*模型，因为它确实有些地方没有遵循MVVM模型。其实不必纠结这个*具体是指什么。
+Vue.js 拥抱数据驱动的视图概念。通俗地讲，它意味着我们在普通 HTML 模板中使用特殊的语法将 DOM “绑定”到底层数据。一旦创建了绑定，DOM 将与数据保持同步。每当修改了数据，DOM 便相应地更新。这样我们应用中的逻辑就几乎都是直接修改数据了，不必与 DOM 更新搅在一起。
+v2.x v3.x 版本 但是在后来的版本，vue的官网上就移除了这张图的介绍，取而代之的是下面这句话：
+虽然没有完全遵循 MVVM 模型，但是 Vue 的设计也受到了它的启发。
+在v2.x、v3.x版本，vue更像是一个MV*模型，因为它确实有些地方没有遵循MVVM模型。其实不必纠结这个*具体是指什么。
 先顺便了解一下 MVC 引用阮一峰老师的文章，在前端层面可以很容易的理解什么是MCV：
-  模型（Model）：数据保存 视图（View）：用户界面 控制器（Controller）：业务逻辑     View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，渲染出视图（用户得到反馈）   Vue 是 MVVM MVVM是Model-View-ViewModel的缩写。阮一峰老师也介绍了MVVM，但是实在是过于概括。这里推荐廖雪峰老师的文章：
- MVVM 最早由微软提出来，它借鉴了桌面应用程序的 MVC 思想，在前端页面中，把 Model 用纯 JavaScript 对象表示，View 负责显示，两者做到了最大限度的分离。" />
+模型（Model）：数据保存 视图（View）：用户界面 控制器（Controller）：业务逻辑 View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，渲染出视图（用户得到反馈） Vue 是 MVVM MVVM是Model-View-ViewModel的缩写。阮一峰老师也介绍了MVVM，但是实在是过于概括。这里推荐廖雪峰老师的文章：
+MVVM 最早由微软提出来，它借鉴了桌面应用程序的 MVC 思想，在前端页面中，把 Model 用纯 JavaScript 对象表示，View 负责显示，两者做到了最大限度的分离。
+把 Model 和 View 关联起来的就是 ViewModel。ViewModel 负责把 Model 的数据同步到 View 显示出来，还负责把 View 的修改同步回 Model。" />
   <meta name="author" content="" />
   
 
@@ -60,7 +61,7 @@
   <link rel="apple-touch-icon" href="https://jinchengjoker.github.io/apple-touch-icon.png" />
 
   
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.101.0" />
 
   
   
@@ -77,13 +78,14 @@
   <meta property="og:title" content="Vue 之 MVVM" />
 <meta property="og:description" content="Vue 是 MVVM？ v1.0 版本 在vue v1.0版本的官网上有这么一张图：
 可以看到在v1.0版本，当时vue把自己定义为一个MVVM模型的框架：
- Vue.js 拥抱数据驱动的视图概念。通俗地讲，它意味着我们在普通 HTML 模板中使用特殊的语法将 DOM “绑定”到底层数据。一旦创建了绑定，DOM 将与数据保持同步。每当修改了数据，DOM 便相应地更新。这样我们应用中的逻辑就几乎都是直接修改数据了，不必与 DOM 更新搅在一起。
- v2.x v3.x 版本 但是在后来的版本，vue的官网上就移除了这张图的介绍，取而代之的是下面这句话：
- 虽然没有完全遵循 MVVM 模型，但是 Vue 的设计也受到了它的启发。
- 在v2.x、v3.x版本，vue更像是一个MV*模型，因为它确实有些地方没有遵循MVVM模型。其实不必纠结这个*具体是指什么。
+Vue.js 拥抱数据驱动的视图概念。通俗地讲，它意味着我们在普通 HTML 模板中使用特殊的语法将 DOM “绑定”到底层数据。一旦创建了绑定，DOM 将与数据保持同步。每当修改了数据，DOM 便相应地更新。这样我们应用中的逻辑就几乎都是直接修改数据了，不必与 DOM 更新搅在一起。
+v2.x v3.x 版本 但是在后来的版本，vue的官网上就移除了这张图的介绍，取而代之的是下面这句话：
+虽然没有完全遵循 MVVM 模型，但是 Vue 的设计也受到了它的启发。
+在v2.x、v3.x版本，vue更像是一个MV*模型，因为它确实有些地方没有遵循MVVM模型。其实不必纠结这个*具体是指什么。
 先顺便了解一下 MVC 引用阮一峰老师的文章，在前端层面可以很容易的理解什么是MCV：
-  模型（Model）：数据保存 视图（View）：用户界面 控制器（Controller）：业务逻辑     View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，渲染出视图（用户得到反馈）   Vue 是 MVVM MVVM是Model-View-ViewModel的缩写。阮一峰老师也介绍了MVVM，但是实在是过于概括。这里推荐廖雪峰老师的文章：
- MVVM 最早由微软提出来，它借鉴了桌面应用程序的 MVC 思想，在前端页面中，把 Model 用纯 JavaScript 对象表示，View 负责显示，两者做到了最大限度的分离。" />
+模型（Model）：数据保存 视图（View）：用户界面 控制器（Controller）：业务逻辑 View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，渲染出视图（用户得到反馈） Vue 是 MVVM MVVM是Model-View-ViewModel的缩写。阮一峰老师也介绍了MVVM，但是实在是过于概括。这里推荐廖雪峰老师的文章：
+MVVM 最早由微软提出来，它借鉴了桌面应用程序的 MVC 思想，在前端页面中，把 Model 用纯 JavaScript 对象表示，View 负责显示，两者做到了最大限度的分离。
+把 Model 和 View 关联起来的就是 ViewModel。ViewModel 负责把 Model 的数据同步到 View 显示出来，还负责把 View 的修改同步回 Model。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jinchengjoker.github.io/posts/vue/vue_mvvm/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-01T16:15:19+08:00" />
@@ -94,13 +96,14 @@
   <meta itemprop="name" content="Vue 之 MVVM">
 <meta itemprop="description" content="Vue 是 MVVM？ v1.0 版本 在vue v1.0版本的官网上有这么一张图：
 可以看到在v1.0版本，当时vue把自己定义为一个MVVM模型的框架：
- Vue.js 拥抱数据驱动的视图概念。通俗地讲，它意味着我们在普通 HTML 模板中使用特殊的语法将 DOM “绑定”到底层数据。一旦创建了绑定，DOM 将与数据保持同步。每当修改了数据，DOM 便相应地更新。这样我们应用中的逻辑就几乎都是直接修改数据了，不必与 DOM 更新搅在一起。
- v2.x v3.x 版本 但是在后来的版本，vue的官网上就移除了这张图的介绍，取而代之的是下面这句话：
- 虽然没有完全遵循 MVVM 模型，但是 Vue 的设计也受到了它的启发。
- 在v2.x、v3.x版本，vue更像是一个MV*模型，因为它确实有些地方没有遵循MVVM模型。其实不必纠结这个*具体是指什么。
+Vue.js 拥抱数据驱动的视图概念。通俗地讲，它意味着我们在普通 HTML 模板中使用特殊的语法将 DOM “绑定”到底层数据。一旦创建了绑定，DOM 将与数据保持同步。每当修改了数据，DOM 便相应地更新。这样我们应用中的逻辑就几乎都是直接修改数据了，不必与 DOM 更新搅在一起。
+v2.x v3.x 版本 但是在后来的版本，vue的官网上就移除了这张图的介绍，取而代之的是下面这句话：
+虽然没有完全遵循 MVVM 模型，但是 Vue 的设计也受到了它的启发。
+在v2.x、v3.x版本，vue更像是一个MV*模型，因为它确实有些地方没有遵循MVVM模型。其实不必纠结这个*具体是指什么。
 先顺便了解一下 MVC 引用阮一峰老师的文章，在前端层面可以很容易的理解什么是MCV：
-  模型（Model）：数据保存 视图（View）：用户界面 控制器（Controller）：业务逻辑     View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，渲染出视图（用户得到反馈）   Vue 是 MVVM MVVM是Model-View-ViewModel的缩写。阮一峰老师也介绍了MVVM，但是实在是过于概括。这里推荐廖雪峰老师的文章：
- MVVM 最早由微软提出来，它借鉴了桌面应用程序的 MVC 思想，在前端页面中，把 Model 用纯 JavaScript 对象表示，View 负责显示，两者做到了最大限度的分离。"><meta itemprop="datePublished" content="2022-03-01T16:15:19+08:00" />
+模型（Model）：数据保存 视图（View）：用户界面 控制器（Controller）：业务逻辑 View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，渲染出视图（用户得到反馈） Vue 是 MVVM MVVM是Model-View-ViewModel的缩写。阮一峰老师也介绍了MVVM，但是实在是过于概括。这里推荐廖雪峰老师的文章：
+MVVM 最早由微软提出来，它借鉴了桌面应用程序的 MVC 思想，在前端页面中，把 Model 用纯 JavaScript 对象表示，View 负责显示，两者做到了最大限度的分离。
+把 Model 和 View 关联起来的就是 ViewModel。ViewModel 负责把 Model 的数据同步到 View 显示出来，还负责把 View 的修改同步回 Model。"><meta itemprop="datePublished" content="2022-03-01T16:15:19+08:00" />
 <meta itemprop="dateModified" content="2022-03-01T16:15:19+08:00" />
 <meta itemprop="wordCount" content="101">
 <meta itemprop="keywords" content="" />
@@ -109,13 +112,14 @@
 <meta name="twitter:title" content="Vue 之 MVVM"/>
 <meta name="twitter:description" content="Vue 是 MVVM？ v1.0 版本 在vue v1.0版本的官网上有这么一张图：
 可以看到在v1.0版本，当时vue把自己定义为一个MVVM模型的框架：
- Vue.js 拥抱数据驱动的视图概念。通俗地讲，它意味着我们在普通 HTML 模板中使用特殊的语法将 DOM “绑定”到底层数据。一旦创建了绑定，DOM 将与数据保持同步。每当修改了数据，DOM 便相应地更新。这样我们应用中的逻辑就几乎都是直接修改数据了，不必与 DOM 更新搅在一起。
- v2.x v3.x 版本 但是在后来的版本，vue的官网上就移除了这张图的介绍，取而代之的是下面这句话：
- 虽然没有完全遵循 MVVM 模型，但是 Vue 的设计也受到了它的启发。
- 在v2.x、v3.x版本，vue更像是一个MV*模型，因为它确实有些地方没有遵循MVVM模型。其实不必纠结这个*具体是指什么。
+Vue.js 拥抱数据驱动的视图概念。通俗地讲，它意味着我们在普通 HTML 模板中使用特殊的语法将 DOM “绑定”到底层数据。一旦创建了绑定，DOM 将与数据保持同步。每当修改了数据，DOM 便相应地更新。这样我们应用中的逻辑就几乎都是直接修改数据了，不必与 DOM 更新搅在一起。
+v2.x v3.x 版本 但是在后来的版本，vue的官网上就移除了这张图的介绍，取而代之的是下面这句话：
+虽然没有完全遵循 MVVM 模型，但是 Vue 的设计也受到了它的启发。
+在v2.x、v3.x版本，vue更像是一个MV*模型，因为它确实有些地方没有遵循MVVM模型。其实不必纠结这个*具体是指什么。
 先顺便了解一下 MVC 引用阮一峰老师的文章，在前端层面可以很容易的理解什么是MCV：
-  模型（Model）：数据保存 视图（View）：用户界面 控制器（Controller）：业务逻辑     View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，渲染出视图（用户得到反馈）   Vue 是 MVVM MVVM是Model-View-ViewModel的缩写。阮一峰老师也介绍了MVVM，但是实在是过于概括。这里推荐廖雪峰老师的文章：
- MVVM 最早由微软提出来，它借鉴了桌面应用程序的 MVC 思想，在前端页面中，把 Model 用纯 JavaScript 对象表示，View 负责显示，两者做到了最大限度的分离。"/>
+模型（Model）：数据保存 视图（View）：用户界面 控制器（Controller）：业务逻辑 View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，渲染出视图（用户得到反馈） Vue 是 MVVM MVVM是Model-View-ViewModel的缩写。阮一峰老师也介绍了MVVM，但是实在是过于概括。这里推荐廖雪峰老师的文章：
+MVVM 最早由微软提出来，它借鉴了桌面应用程序的 MVC 思想，在前端页面中，把 Model 用纯 JavaScript 对象表示，View 负责显示，两者做到了最大限度的分离。
+把 Model 和 View 关联起来的就是 ViewModel。ViewModel 负责把 Model 的数据同步到 View 显示出来，还负责把 View 的修改同步回 Model。"/>
 
   
   

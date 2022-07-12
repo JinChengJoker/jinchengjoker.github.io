@@ -22,7 +22,7 @@
   
   
   <meta name="description" content="什么是数据响应式 &lt;div id=&#34;app&#34;&gt; &lt;div&gt;Price: ${{ product.price }}&lt;/div&gt; &lt;div&gt;Total: ${{ product.price * product.quantity }}&lt;/div&gt; &lt;div&gt;Taxes: ${{ totalPriceWithTax }}&lt;/div&gt; &lt;/div&gt; &lt;script src=&#34;https://cdn.jsdelivr.net/npm/vue&#34;&gt;&lt;/script&gt; &lt;script&gt; var vm = new Vue({ el: &#39;#app&#39;, data: { product: { price: 5, quantity: 2 } }, computed: { totalPriceWithTax() { return this.product.price * this.product.quantity * 1.03 } } }) &lt;/script&gt; 当我们修改product.price = 10的时候，vue至少会做三件事情：
- 在页面上更新price。 重新计算price * quantity并更新页面。 再次调用totalPriceWithTax函数并更新页面。  那么vue是如何知道我们更新了price，并做出这些响应的？
+在页面上更新price。 重新计算price * quantity并更新页面。 再次调用totalPriceWithTax函数并更新页面。 那么vue是如何知道我们更新了price，并做出这些响应的？
 当然，在vue的世界里，这一切都显得理所当然。但是当我们把这种思维带回到JS的编程方式中，就会发现并不是这样。
 现在先把vue放到一边，提取出一些关键的代码：
 let product = { price: 5, quantity: 2 } let total = product." />
@@ -56,7 +56,7 @@ let product = { price: 5, quantity: 2 } let total = product." />
   <link rel="apple-touch-icon" href="https://jinchengjoker.github.io/apple-touch-icon.png" />
 
   
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.101.0" />
 
   
   
@@ -72,7 +72,7 @@ let product = { price: 5, quantity: 2 } let total = product." />
   
   <meta property="og:title" content="Vue3 响应性原理之 track &amp; trigger" />
 <meta property="og:description" content="什么是数据响应式 &lt;div id=&#34;app&#34;&gt; &lt;div&gt;Price: ${{ product.price }}&lt;/div&gt; &lt;div&gt;Total: ${{ product.price * product.quantity }}&lt;/div&gt; &lt;div&gt;Taxes: ${{ totalPriceWithTax }}&lt;/div&gt; &lt;/div&gt; &lt;script src=&#34;https://cdn.jsdelivr.net/npm/vue&#34;&gt;&lt;/script&gt; &lt;script&gt; var vm = new Vue({ el: &#39;#app&#39;, data: { product: { price: 5, quantity: 2 } }, computed: { totalPriceWithTax() { return this.product.price * this.product.quantity * 1.03 } } }) &lt;/script&gt; 当我们修改product.price = 10的时候，vue至少会做三件事情：
- 在页面上更新price。 重新计算price * quantity并更新页面。 再次调用totalPriceWithTax函数并更新页面。  那么vue是如何知道我们更新了price，并做出这些响应的？
+在页面上更新price。 重新计算price * quantity并更新页面。 再次调用totalPriceWithTax函数并更新页面。 那么vue是如何知道我们更新了price，并做出这些响应的？
 当然，在vue的世界里，这一切都显得理所当然。但是当我们把这种思维带回到JS的编程方式中，就会发现并不是这样。
 现在先把vue放到一边，提取出一些关键的代码：
 let product = { price: 5, quantity: 2 } let total = product." />
@@ -85,7 +85,7 @@ let product = { price: 5, quantity: 2 } let total = product." />
   
   <meta itemprop="name" content="Vue3 响应性原理之 track &amp; trigger">
 <meta itemprop="description" content="什么是数据响应式 &lt;div id=&#34;app&#34;&gt; &lt;div&gt;Price: ${{ product.price }}&lt;/div&gt; &lt;div&gt;Total: ${{ product.price * product.quantity }}&lt;/div&gt; &lt;div&gt;Taxes: ${{ totalPriceWithTax }}&lt;/div&gt; &lt;/div&gt; &lt;script src=&#34;https://cdn.jsdelivr.net/npm/vue&#34;&gt;&lt;/script&gt; &lt;script&gt; var vm = new Vue({ el: &#39;#app&#39;, data: { product: { price: 5, quantity: 2 } }, computed: { totalPriceWithTax() { return this.product.price * this.product.quantity * 1.03 } } }) &lt;/script&gt; 当我们修改product.price = 10的时候，vue至少会做三件事情：
- 在页面上更新price。 重新计算price * quantity并更新页面。 再次调用totalPriceWithTax函数并更新页面。  那么vue是如何知道我们更新了price，并做出这些响应的？
+在页面上更新price。 重新计算price * quantity并更新页面。 再次调用totalPriceWithTax函数并更新页面。 那么vue是如何知道我们更新了price，并做出这些响应的？
 当然，在vue的世界里，这一切都显得理所当然。但是当我们把这种思维带回到JS的编程方式中，就会发现并不是这样。
 现在先把vue放到一边，提取出一些关键的代码：
 let product = { price: 5, quantity: 2 } let total = product."><meta itemprop="datePublished" content="2022-04-14T11:17:28+08:00" />
@@ -96,7 +96,7 @@ let product = { price: 5, quantity: 2 } let total = product."><meta itemprop="da
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Vue3 响应性原理之 track &amp; trigger"/>
 <meta name="twitter:description" content="什么是数据响应式 &lt;div id=&#34;app&#34;&gt; &lt;div&gt;Price: ${{ product.price }}&lt;/div&gt; &lt;div&gt;Total: ${{ product.price * product.quantity }}&lt;/div&gt; &lt;div&gt;Taxes: ${{ totalPriceWithTax }}&lt;/div&gt; &lt;/div&gt; &lt;script src=&#34;https://cdn.jsdelivr.net/npm/vue&#34;&gt;&lt;/script&gt; &lt;script&gt; var vm = new Vue({ el: &#39;#app&#39;, data: { product: { price: 5, quantity: 2 } }, computed: { totalPriceWithTax() { return this.product.price * this.product.quantity * 1.03 } } }) &lt;/script&gt; 当我们修改product.price = 10的时候，vue至少会做三件事情：
- 在页面上更新price。 重新计算price * quantity并更新页面。 再次调用totalPriceWithTax函数并更新页面。  那么vue是如何知道我们更新了price，并做出这些响应的？
+在页面上更新price。 重新计算price * quantity并更新页面。 再次调用totalPriceWithTax函数并更新页面。 那么vue是如何知道我们更新了price，并做出这些响应的？
 当然，在vue的世界里，这一切都显得理所当然。但是当我们把这种思维带回到JS的编程方式中，就会发现并不是这样。
 现在先把vue放到一边，提取出一些关键的代码：
 let product = { price: 5, quantity: 2 } let total = product."/>
@@ -152,29 +152,29 @@ let product = { price: 5, quantity: 2 } let total = product."/>
     <h1>Vue3 响应性原理之 track &amp; trigger</h1>
   </header>
   <section class="post-content"><h2 id="什么是数据响应式">什么是数据响应式</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span>&gt;
-  &lt;<span style="color:#f92672">div</span>&gt;Price: ${{ product.price }}&lt;/<span style="color:#f92672">div</span>&gt;
-  &lt;<span style="color:#f92672">div</span>&gt;Total: ${{ product.price * product.quantity }}&lt;/<span style="color:#f92672">div</span>&gt;
-  &lt;<span style="color:#f92672">div</span>&gt;Taxes: ${{ totalPriceWithTax }}&lt;/<span style="color:#f92672">div</span>&gt;
-&lt;/<span style="color:#f92672">div</span>&gt;
-&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/vue&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
-&lt;<span style="color:#f92672">script</span>&gt;
-  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">vm</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
-    <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#app&#39;</span>,
-    <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {
-      <span style="color:#a6e22e">product</span><span style="color:#f92672">:</span> {
-        <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>,
-        <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>
-      }
-    },
-    <span style="color:#a6e22e">computed</span><span style="color:#f92672">:</span> {
-      <span style="color:#a6e22e">totalPriceWithTax</span>() {
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1.03</span>
-      }
-    }
-  })
-&lt;/<span style="color:#f92672">script</span>&gt;
-</code></pre></div><p>当我们修改<code>product.price = 10</code>的时候，<code>vue</code>至少会做三件事情：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span>&gt;Price: ${{ product.price }}&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span>&gt;Total: ${{ product.price * product.quantity }}&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span>&gt;Taxes: ${{ totalPriceWithTax }}&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/vue&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">vm</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#app&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">product</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">computed</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">totalPriceWithTax</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1.03</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><p>当我们修改<code>product.price = 10</code>的时候，<code>vue</code>至少会做三件事情：</p>
 <ol>
 <li>在页面上更新<code>price</code>。</li>
 <li>重新计算<code>price * quantity</code>并更新页面。</li>
@@ -184,59 +184,59 @@ let product = { price: 5, quantity: 2 } let total = product."/>
 <p>那么<code>vue</code>是如何知道我们更新了<code>price</code>，并做出这些响应的？</p>
 <p>当然，在<code>vue</code>的世界里，这一切都显得理所当然。但是当我们把这种思维带回到<code>JS</code>的编程方式中，就会发现并不是这样。</p>
 <p>现在先把<code>vue</code>放到一边，提取出一些关键的代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">product</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>, <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> }
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">quantity</span>  <span style="color:#75715e">// 10
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`total is </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">total</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>)
-<span style="color:#75715e">// total is 10
-</span></code></pre></div><p>在<code>vue</code>里我们期望最后打印结果为<code>total is 40</code>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">product</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>, <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">quantity</span>  <span style="color:#75715e">// 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`total is </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">total</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// total is 10
+</span></span></span></code></pre></div><p>在<code>vue</code>里我们期望最后打印结果为<code>total is 40</code>。</p>
 <p>但是在<code>JS</code>里我们得到的结果却是<code>total is 10</code>，这是因为<code>JS</code>并不具备响应性。</p>
 <h2 id="dep---保存代码并能够再次运行">dep - 保存代码并能够再次运行</h2>
 <p>要实现预期的效果，那当我们修改了<code>product.price</code>的之后，要是能再次运行<code>total = product.price * product.quantity</code>不就可以了？</p>
 <p>所以我们需要一个能保存我们<em>想要再次运行的代码</em>的地方，并且当<code>product.price</code>更新后（后面再讲如何监控数据更新），能重新找到这些代码并运行它。</p>
 <p><img src="./images/save_code.jpg" alt="save_code"></p>
 <p>我们可以把代码记录成一个函数来达到这种目的，一般把这种函数叫做<code>effect</code>。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">product</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>, <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> }
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">effect</span> <span style="color:#f92672">=</span> () =&gt; { <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">quantity</span> }
-</code></pre></div><p>然后可以用一个<code>Set</code>来存储它，并用一个名为<code>track</code>的函数来做这件事情：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dep</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>()
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">track</span>() {
-  <span style="color:#a6e22e">dep</span>.<span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">effect</span>)  <span style="color:#75715e">// Store the current effect
-</span><span style="color:#75715e"></span>}
-</code></pre></div><p><img src="./images/dep.jpg" alt="dep"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">product</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>, <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">effect</span> <span style="color:#f92672">=</span> () =&gt; { <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">quantity</span> }
+</span></span></code></pre></div><p>然后可以用一个<code>Set</code>来存储它，并用一个名为<code>track</code>的函数来做这件事情：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dep</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">track</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">dep</span>.<span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">effect</span>)  <span style="color:#75715e">// Store the current effect
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p><img src="./images/dep.jpg" alt="dep"></p>
 <p>最后还需要一个触发函数<code>trigger</code>能够运行保存的所有<code>effect</code>：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">trigger</span>() { 
-  <span style="color:#a6e22e">dep</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">effect</span> =&gt; <span style="color:#a6e22e">effect</span>()) 
-}
-</code></pre></div><p>完整的代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">product</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>, <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> }
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">effect</span> <span style="color:#f92672">=</span> () =&gt; {
-  <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">quantity</span>
-}
-
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dep</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>()
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">track</span>() {
-  <span style="color:#a6e22e">dep</span>.<span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">effect</span>)
-}
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">trigger</span>() {
-  <span style="color:#a6e22e">dep</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">effect</span> =&gt; <span style="color:#a6e22e">effect</span>())
-}
-
-<span style="color:#a6e22e">track</span>()
-<span style="color:#a6e22e">effect</span>()
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">total</span>)  <span style="color:#75715e">// 10
-</span><span style="color:#75715e"></span>
-<span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>
-<span style="color:#a6e22e">trigger</span>()
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">total</span>) <span style="color:#75715e">// 40
-</span></code></pre></div><p><em><code>effect</code>、<code>track</code>、<code>trigger</code>这三个单词将会伴随着整个<code>vue3</code>的响应式实现</em>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">trigger</span>() { 
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">dep</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">effect</span> =&gt; <span style="color:#a6e22e">effect</span>()) 
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>完整的代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">product</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>, <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">effect</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">quantity</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dep</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">track</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">dep</span>.<span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">effect</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">trigger</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">dep</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">effect</span> =&gt; <span style="color:#a6e22e">effect</span>())
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">track</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">effect</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">total</span>)  <span style="color:#75715e">// 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">trigger</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">total</span>) <span style="color:#75715e">// 40
+</span></span></span></code></pre></div><p><em><code>effect</code>、<code>track</code>、<code>trigger</code>这三个单词将会伴随着整个<code>vue3</code>的响应式实现</em>。</p>
 <h2 id="depsmap---多个属性各自的-dep">depsMap - 多个属性各自的 dep</h2>
 <p>上面的代码中，<code>track</code>和<code>trigger</code>实际上和数据并没有什么直接的关联。即：无论你改变<code>product.price</code>还是<code>product.quantity</code>，甚至你什么都不用改变，都能随时调用<code>trigger</code>。</p>
 <p>但是实际上我们更想要的效果是：</p>
@@ -254,40 +254,40 @@ let product = { price: 5, quantity: 2 } let total = product."/>
 <p>我们可以用一个<code>Map</code>来记录这些关系：</p>
 <p><img src="./images/depsMap.jpg" alt="depsMap"></p>
 <p>完整的代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">product</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>, <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> }
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">effect</span> <span style="color:#f92672">=</span> () =&gt; {
-  <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">quantity</span>
-}
-
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">depsMap</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Map</span>()
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">key</span>) {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dep</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">depsMap</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">key</span>)
-  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">dep</span>) {
-    <span style="color:#a6e22e">depsMap</span>.<span style="color:#a6e22e">set</span>(<span style="color:#a6e22e">key</span>, (<span style="color:#a6e22e">dep</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>()))
-  }
-  <span style="color:#a6e22e">dep</span>.<span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">effect</span>)
-}
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">trigger</span>(<span style="color:#a6e22e">key</span>) {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dep</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">depsMap</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">key</span>)
-  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">dep</span>) {
-    <span style="color:#a6e22e">dep</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">effect</span> =&gt; {
-      <span style="color:#a6e22e">effect</span>()
-    })
-  }
-}
-
-<span style="color:#a6e22e">track</span>(<span style="color:#e6db74">&#39;quantity&#39;</span>)
-<span style="color:#a6e22e">effect</span>()
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">total</span>)  <span style="color:#75715e">// 10
-</span><span style="color:#75715e"></span>
-<span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
-<span style="color:#a6e22e">trigger</span>(<span style="color:#e6db74">&#39;quantity&#39;</span>)
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">total</span>)  <span style="color:#75715e">// 15
-</span></code></pre></div><h2 id="targetmap---多个对象各自的-depsmap">targetMap - 多个对象各自的 depsMap</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">product</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>, <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">effect</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">quantity</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">depsMap</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Map</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">key</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dep</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">depsMap</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">key</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">dep</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">depsMap</span>.<span style="color:#a6e22e">set</span>(<span style="color:#a6e22e">key</span>, (<span style="color:#a6e22e">dep</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>()))
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">dep</span>.<span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">effect</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">trigger</span>(<span style="color:#a6e22e">key</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dep</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">depsMap</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">key</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">dep</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dep</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">effect</span> =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">effect</span>()
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">track</span>(<span style="color:#e6db74">&#39;quantity&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">effect</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">total</span>)  <span style="color:#75715e">// 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">trigger</span>(<span style="color:#e6db74">&#39;quantity&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">total</span>)  <span style="color:#75715e">// 15
+</span></span></span></code></pre></div><h2 id="targetmap---多个对象各自的-depsmap">targetMap - 多个对象各自的 depsMap</h2>
 <p>上面已经解决了一个对象中存在多个属性的问题，同样的，也可能会有多个这样的对象。</p>
 <p>即对于不同的对象，它们都会有各自的<code>depsMap</code>。这样每次调用<code>track</code>和<code>trigger</code>的时候，都要接收一个目标对象<code>target</code>和一个<code>key</code>：</p>
 <ul>
@@ -297,51 +297,51 @@ let product = { price: 5, quantity: 2 } let total = product."/>
 <p>我们可以用一个<code>WeakMap</code>来记录这些关系，<code>WeakMap</code>可以看成是一种特殊的<code>Map</code>，其键必须是对象，而值可以是任意的：</p>
 <p><img src="./images/targetMap.jpg" alt="targetMap"></p>
 <p>完整的代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">product</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>, <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> }
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">effect</span> <span style="color:#f92672">=</span> () =&gt; {
-  <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">quantity</span>
-}
-
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">targetMap</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">WeakMap</span>()
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">target</span>, <span style="color:#a6e22e">key</span>) {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">depsMap</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">targetMap</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">target</span>)
-  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">depsMap</span>) {
-    <span style="color:#a6e22e">targetMap</span>.<span style="color:#a6e22e">set</span>(<span style="color:#a6e22e">target</span>, (<span style="color:#a6e22e">depsMap</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Map</span>()))
-  }
-
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dep</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">depsMap</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">key</span>)
-  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">dep</span>) {
-    <span style="color:#a6e22e">depsMap</span>.<span style="color:#a6e22e">set</span>(<span style="color:#a6e22e">key</span>, (<span style="color:#a6e22e">dep</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>()))
-  }
-
-  <span style="color:#a6e22e">dep</span>.<span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">effect</span>)
-}
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">trigger</span>(<span style="color:#a6e22e">target</span>, <span style="color:#a6e22e">key</span>) {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">depsMap</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">targetMap</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">target</span>)
-  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">depsMap</span>) {
-    <span style="color:#66d9ef">return</span>
-  }
-
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dep</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">depsMap</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">key</span>)
-  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">dep</span>) {
-    <span style="color:#a6e22e">dep</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">effect</span> =&gt; {
-      <span style="color:#a6e22e">effect</span>()
-    })
-  }
-}
-
-<span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">product</span>, <span style="color:#e6db74">&#39;quantity&#39;</span>)
-<span style="color:#a6e22e">effect</span>()
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">total</span>)  <span style="color:#75715e">// 10
-</span><span style="color:#75715e"></span>
-<span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
-<span style="color:#a6e22e">trigger</span>(<span style="color:#a6e22e">product</span>, <span style="color:#e6db74">&#39;quantity&#39;</span>)
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">total</span>)  <span style="color:#75715e">// 15
-</span></code></pre></div><h2 id="总结">总结</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">product</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>, <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">effect</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">quantity</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">targetMap</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">WeakMap</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">target</span>, <span style="color:#a6e22e">key</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">depsMap</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">targetMap</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">target</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">depsMap</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">targetMap</span>.<span style="color:#a6e22e">set</span>(<span style="color:#a6e22e">target</span>, (<span style="color:#a6e22e">depsMap</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Map</span>()))
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dep</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">depsMap</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">key</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">dep</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">depsMap</span>.<span style="color:#a6e22e">set</span>(<span style="color:#a6e22e">key</span>, (<span style="color:#a6e22e">dep</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>()))
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">dep</span>.<span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">effect</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">trigger</span>(<span style="color:#a6e22e">target</span>, <span style="color:#a6e22e">key</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">depsMap</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">targetMap</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">target</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">depsMap</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dep</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">depsMap</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">key</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">dep</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dep</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">effect</span> =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">effect</span>()
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">product</span>, <span style="color:#e6db74">&#39;quantity&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">effect</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">total</span>)  <span style="color:#75715e">// 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">product</span>.<span style="color:#a6e22e">quantity</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">trigger</span>(<span style="color:#a6e22e">product</span>, <span style="color:#e6db74">&#39;quantity&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">total</span>)  <span style="color:#75715e">// 15
+</span></span></span></code></pre></div><h2 id="总结">总结</h2>
 <p>我们基本上已经实现了一开始期望的需求：</p>
 <blockquote>
 <p><em>一个能保存我们想要再次运行的代码的地方，并且当<code>product.price</code>更新后，能重新找到这些代码并运行它。</em></p>

@@ -22,11 +22,12 @@
   
   
   <meta name="description" content="以自己写的一个命令行工具 demo为例。
-修改 package.json { &#34;name&#34;: &#34;zy-todo&#34;, &#34;version&#34;: &#34;0.0.1&#34;, &#34;main&#34;: &#34;index.js&#34;, &#34;bin&#34;: { &#34;zydo&#34;: &#34;cli.js&#34; }, &#34;files&#34;: [ &#34;*.js&#34; ], &#34;license&#34;: &#34;MIT&#34;, &#34;dependencies&#34;: { &#34;commander&#34;: &#34;^5.1.0&#34;, &#34;inquirer&#34;: &#34;^7.1.0&#34; } }  name：必须是唯一的，不能和其他已发布的包重名。 version：发布的包的版本号。 main：整个包的主要逻辑文件，一般是 index.js。 bin：如果这个包是一个命令行工具，那么最终生成的命令是什么，以及命令对应执行的文件是什么。 files：告诉 NPM 哪些文件是有用的。  shebang shebang 写在某个文件的头部，用来告诉命令行用什么程序来执行这个文件。
+修改 package.json { &#34;name&#34;: &#34;zy-todo&#34;, &#34;version&#34;: &#34;0.0.1&#34;, &#34;main&#34;: &#34;index.js&#34;, &#34;bin&#34;: { &#34;zydo&#34;: &#34;cli.js&#34; }, &#34;files&#34;: [ &#34;*.js&#34; ], &#34;license&#34;: &#34;MIT&#34;, &#34;dependencies&#34;: { &#34;commander&#34;: &#34;^5.1.0&#34;, &#34;inquirer&#34;: &#34;^7.1.0&#34; } } name：必须是唯一的，不能和其他已发布的包重名。 version：发布的包的版本号。 main：整个包的主要逻辑文件，一般是 index.js。 bin：如果这个包是一个命令行工具，那么最终生成的命令是什么，以及命令对应执行的文件是什么。 files：告诉 NPM 哪些文件是有用的。 shebang shebang 写在某个文件的头部，用来告诉命令行用什么程序来执行这个文件。
 例如我这个包是用 node 执行 cli.js 文件，那么就在 cli.js 文件头部写入：
 #!/usr/bin/env node 可行性权限 在 Linux 和 Mac OS 下还需要给文件加上可执行权限：
 chmod &#43;x cli.js NPM 发布 发布包需要一个 NPM 账号。
-必须使用 npm 的官方源进行发布，淘宝源不支持发布。" />
+必须使用 npm 的官方源进行发布，淘宝源不支持发布。
+可以使用 nrm 来作为 npm 的源管理工具：" />
   <meta name="author" content="" />
   
 
@@ -57,7 +58,7 @@ chmod &#43;x cli.js NPM 发布 发布包需要一个 NPM 账号。
   <link rel="apple-touch-icon" href="https://jinchengjoker.github.io/apple-touch-icon.png" />
 
   
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.101.0" />
 
   
   
@@ -73,11 +74,12 @@ chmod &#43;x cli.js NPM 发布 发布包需要一个 NPM 账号。
   
   <meta property="og:title" content="在 NPM 上发布一个命令行工具包" />
 <meta property="og:description" content="以自己写的一个命令行工具 demo为例。
-修改 package.json { &#34;name&#34;: &#34;zy-todo&#34;, &#34;version&#34;: &#34;0.0.1&#34;, &#34;main&#34;: &#34;index.js&#34;, &#34;bin&#34;: { &#34;zydo&#34;: &#34;cli.js&#34; }, &#34;files&#34;: [ &#34;*.js&#34; ], &#34;license&#34;: &#34;MIT&#34;, &#34;dependencies&#34;: { &#34;commander&#34;: &#34;^5.1.0&#34;, &#34;inquirer&#34;: &#34;^7.1.0&#34; } }  name：必须是唯一的，不能和其他已发布的包重名。 version：发布的包的版本号。 main：整个包的主要逻辑文件，一般是 index.js。 bin：如果这个包是一个命令行工具，那么最终生成的命令是什么，以及命令对应执行的文件是什么。 files：告诉 NPM 哪些文件是有用的。  shebang shebang 写在某个文件的头部，用来告诉命令行用什么程序来执行这个文件。
+修改 package.json { &#34;name&#34;: &#34;zy-todo&#34;, &#34;version&#34;: &#34;0.0.1&#34;, &#34;main&#34;: &#34;index.js&#34;, &#34;bin&#34;: { &#34;zydo&#34;: &#34;cli.js&#34; }, &#34;files&#34;: [ &#34;*.js&#34; ], &#34;license&#34;: &#34;MIT&#34;, &#34;dependencies&#34;: { &#34;commander&#34;: &#34;^5.1.0&#34;, &#34;inquirer&#34;: &#34;^7.1.0&#34; } } name：必须是唯一的，不能和其他已发布的包重名。 version：发布的包的版本号。 main：整个包的主要逻辑文件，一般是 index.js。 bin：如果这个包是一个命令行工具，那么最终生成的命令是什么，以及命令对应执行的文件是什么。 files：告诉 NPM 哪些文件是有用的。 shebang shebang 写在某个文件的头部，用来告诉命令行用什么程序来执行这个文件。
 例如我这个包是用 node 执行 cli.js 文件，那么就在 cli.js 文件头部写入：
 #!/usr/bin/env node 可行性权限 在 Linux 和 Mac OS 下还需要给文件加上可执行权限：
 chmod &#43;x cli.js NPM 发布 发布包需要一个 NPM 账号。
-必须使用 npm 的官方源进行发布，淘宝源不支持发布。" />
+必须使用 npm 的官方源进行发布，淘宝源不支持发布。
+可以使用 nrm 来作为 npm 的源管理工具：" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jinchengjoker.github.io/posts/misc/make_npm_package/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-06-08T00:00:00+08:00" />
@@ -87,11 +89,12 @@ chmod &#43;x cli.js NPM 发布 发布包需要一个 NPM 账号。
   
   <meta itemprop="name" content="在 NPM 上发布一个命令行工具包">
 <meta itemprop="description" content="以自己写的一个命令行工具 demo为例。
-修改 package.json { &#34;name&#34;: &#34;zy-todo&#34;, &#34;version&#34;: &#34;0.0.1&#34;, &#34;main&#34;: &#34;index.js&#34;, &#34;bin&#34;: { &#34;zydo&#34;: &#34;cli.js&#34; }, &#34;files&#34;: [ &#34;*.js&#34; ], &#34;license&#34;: &#34;MIT&#34;, &#34;dependencies&#34;: { &#34;commander&#34;: &#34;^5.1.0&#34;, &#34;inquirer&#34;: &#34;^7.1.0&#34; } }  name：必须是唯一的，不能和其他已发布的包重名。 version：发布的包的版本号。 main：整个包的主要逻辑文件，一般是 index.js。 bin：如果这个包是一个命令行工具，那么最终生成的命令是什么，以及命令对应执行的文件是什么。 files：告诉 NPM 哪些文件是有用的。  shebang shebang 写在某个文件的头部，用来告诉命令行用什么程序来执行这个文件。
+修改 package.json { &#34;name&#34;: &#34;zy-todo&#34;, &#34;version&#34;: &#34;0.0.1&#34;, &#34;main&#34;: &#34;index.js&#34;, &#34;bin&#34;: { &#34;zydo&#34;: &#34;cli.js&#34; }, &#34;files&#34;: [ &#34;*.js&#34; ], &#34;license&#34;: &#34;MIT&#34;, &#34;dependencies&#34;: { &#34;commander&#34;: &#34;^5.1.0&#34;, &#34;inquirer&#34;: &#34;^7.1.0&#34; } } name：必须是唯一的，不能和其他已发布的包重名。 version：发布的包的版本号。 main：整个包的主要逻辑文件，一般是 index.js。 bin：如果这个包是一个命令行工具，那么最终生成的命令是什么，以及命令对应执行的文件是什么。 files：告诉 NPM 哪些文件是有用的。 shebang shebang 写在某个文件的头部，用来告诉命令行用什么程序来执行这个文件。
 例如我这个包是用 node 执行 cli.js 文件，那么就在 cli.js 文件头部写入：
 #!/usr/bin/env node 可行性权限 在 Linux 和 Mac OS 下还需要给文件加上可执行权限：
 chmod &#43;x cli.js NPM 发布 发布包需要一个 NPM 账号。
-必须使用 npm 的官方源进行发布，淘宝源不支持发布。"><meta itemprop="datePublished" content="2020-06-08T00:00:00+08:00" />
+必须使用 npm 的官方源进行发布，淘宝源不支持发布。
+可以使用 nrm 来作为 npm 的源管理工具："><meta itemprop="datePublished" content="2020-06-08T00:00:00+08:00" />
 <meta itemprop="dateModified" content="2020-06-08T00:00:00+08:00" />
 <meta itemprop="wordCount" content="84">
 <meta itemprop="keywords" content="" />
@@ -99,11 +102,12 @@ chmod &#43;x cli.js NPM 发布 发布包需要一个 NPM 账号。
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="在 NPM 上发布一个命令行工具包"/>
 <meta name="twitter:description" content="以自己写的一个命令行工具 demo为例。
-修改 package.json { &#34;name&#34;: &#34;zy-todo&#34;, &#34;version&#34;: &#34;0.0.1&#34;, &#34;main&#34;: &#34;index.js&#34;, &#34;bin&#34;: { &#34;zydo&#34;: &#34;cli.js&#34; }, &#34;files&#34;: [ &#34;*.js&#34; ], &#34;license&#34;: &#34;MIT&#34;, &#34;dependencies&#34;: { &#34;commander&#34;: &#34;^5.1.0&#34;, &#34;inquirer&#34;: &#34;^7.1.0&#34; } }  name：必须是唯一的，不能和其他已发布的包重名。 version：发布的包的版本号。 main：整个包的主要逻辑文件，一般是 index.js。 bin：如果这个包是一个命令行工具，那么最终生成的命令是什么，以及命令对应执行的文件是什么。 files：告诉 NPM 哪些文件是有用的。  shebang shebang 写在某个文件的头部，用来告诉命令行用什么程序来执行这个文件。
+修改 package.json { &#34;name&#34;: &#34;zy-todo&#34;, &#34;version&#34;: &#34;0.0.1&#34;, &#34;main&#34;: &#34;index.js&#34;, &#34;bin&#34;: { &#34;zydo&#34;: &#34;cli.js&#34; }, &#34;files&#34;: [ &#34;*.js&#34; ], &#34;license&#34;: &#34;MIT&#34;, &#34;dependencies&#34;: { &#34;commander&#34;: &#34;^5.1.0&#34;, &#34;inquirer&#34;: &#34;^7.1.0&#34; } } name：必须是唯一的，不能和其他已发布的包重名。 version：发布的包的版本号。 main：整个包的主要逻辑文件，一般是 index.js。 bin：如果这个包是一个命令行工具，那么最终生成的命令是什么，以及命令对应执行的文件是什么。 files：告诉 NPM 哪些文件是有用的。 shebang shebang 写在某个文件的头部，用来告诉命令行用什么程序来执行这个文件。
 例如我这个包是用 node 执行 cli.js 文件，那么就在 cli.js 文件头部写入：
 #!/usr/bin/env node 可行性权限 在 Linux 和 Mac OS 下还需要给文件加上可执行权限：
 chmod &#43;x cli.js NPM 发布 发布包需要一个 NPM 账号。
-必须使用 npm 的官方源进行发布，淘宝源不支持发布。"/>
+必须使用 npm 的官方源进行发布，淘宝源不支持发布。
+可以使用 nrm 来作为 npm 的源管理工具："/>
 
   
   
@@ -157,23 +161,23 @@ chmod &#43;x cli.js NPM 发布 发布包需要一个 NPM 账号。
   </header>
   <section class="post-content"><p>以自己写的一个<a href="https://github.com/JinChengJoker/zy-todo">命令行工具 demo</a>为例。</p>
 <h2 id="修改-packagejson">修改 package.json</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-  <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;zy-todo&#34;</span>,
-  <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;0.0.1&#34;</span>,
-  <span style="color:#f92672">&#34;main&#34;</span>: <span style="color:#e6db74">&#34;index.js&#34;</span>,
-  <span style="color:#f92672">&#34;bin&#34;</span>: {
-    <span style="color:#f92672">&#34;zydo&#34;</span>: <span style="color:#e6db74">&#34;cli.js&#34;</span>
-  },
-  <span style="color:#f92672">&#34;files&#34;</span>: [
-    <span style="color:#e6db74">&#34;*.js&#34;</span>
-  ],
-  <span style="color:#f92672">&#34;license&#34;</span>: <span style="color:#e6db74">&#34;MIT&#34;</span>,
-  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
-    <span style="color:#f92672">&#34;commander&#34;</span>: <span style="color:#e6db74">&#34;^5.1.0&#34;</span>,
-    <span style="color:#f92672">&#34;inquirer&#34;</span>: <span style="color:#e6db74">&#34;^7.1.0&#34;</span>
-  }
-}
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;zy-todo&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;0.0.1&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;main&#34;</span>: <span style="color:#e6db74">&#34;index.js&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;bin&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;zydo&#34;</span>: <span style="color:#e6db74">&#34;cli.js&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;files&#34;</span>: [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;*.js&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;license&#34;</span>: <span style="color:#e6db74">&#34;MIT&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;commander&#34;</span>: <span style="color:#e6db74">&#34;^5.1.0&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;inquirer&#34;</span>: <span style="color:#e6db74">&#34;^7.1.0&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
 <li>name：必须是唯一的，不能和其他已发布的包重名。</li>
 <li>version：发布的包的版本号。</li>
 <li>main：整个包的主要逻辑文件，一般是 index.js。</li>
@@ -183,20 +187,20 @@ chmod &#43;x cli.js NPM 发布 发布包需要一个 NPM 账号。
 <h2 id="shebang">shebang</h2>
 <p>shebang 写在某个文件的头部，用来告诉命令行用什么程序来执行这个文件。</p>
 <p>例如我这个包是用 node 执行 cli.js 文件，那么就在 cli.js 文件头部写入：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/usr/bin/env node
-</span></code></pre></div><h2 id="可行性权限">可行性权限</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env node
+</span></span></span></code></pre></div><h2 id="可行性权限">可行性权限</h2>
 <p>在 Linux 和 Mac OS 下还需要给文件加上可执行权限：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chmod +x cli.js
-</code></pre></div><h2 id="npm-发布">NPM 发布</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x cli.js
+</span></span></code></pre></div><h2 id="npm-发布">NPM 发布</h2>
 <p>发布包需要一个 NPM 账号。</p>
 <p>必须使用 npm 的官方源进行发布，淘宝源不支持发布。</p>
 <p>可以使用 nrm 来作为 npm 的源管理工具：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yarn global add nrm
-</code></pre></div><p>登录 NPM：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm adduser
-</code></pre></div><p>发布：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm publish
-</code></pre></div></section>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yarn global add nrm
+</span></span></code></pre></div><p>登录 NPM：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm adduser
+</span></span></code></pre></div><p>发布：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm publish
+</span></span></code></pre></div></section>
 
   
   

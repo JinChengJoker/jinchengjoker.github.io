@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+<html lang="zh-Hans">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>Ruby on rails 之创建项目 - 金成的博客</title>
+
+  
+  
+  <meta name="description" content="RubyGems Ruby 的包（gem）管理工具。
+类似于 NPM，但主要用于管理全局的 gems。
+查看当前下载源：
+gem sources -l 如果源不是 ruby-china 建议切换：
+gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/ Bundler 也是 Ruby 的包（gem）管理工具。
+和 RubyGems 不同的是，它主要用于管理项目局部的 gems，能够跟踪并安装所需的特定版本的 gem，以此来为 Ruby 项目提供一致的运行环境。
+切换至国内源：
+bundle config mirror.https://rubygems.org https://gems.ruby-china.com 也可以修改 Gemfile 的 source：
+source &#39;https://gems.ruby-china.com&#39; 安装 rails 这里使用 gem 全局安装 rails 并指定了版本：
+gem install rails -v 7.0.2.3 安装数据库驱动包 由于数据库用的是 postgresql，所以这里安装对应的驱动包：
+pacman -S postgresql-libs pacman是Arch Linux用于安装软件的工具。
+创建 rails 项目 rails new --api --database=postgresql --skip-test mangosteen-1 --api只使用 api 模式。 --database=postgresql使用 postgresql 作为数据库。 --skip-test跳过测试，后续可以使用第三方测试工具。 mangosteen-1项目名称并创建对应的目录。 启动数据库容器 注意是额外启动一个容器服务，而不是在已有容器环境中执行。" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://jinchengjoker.github.io/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="https://jinchengjoker.github.io/an-old-hope.min.css" />
+  <script
+    defer
+    src="https://jinchengjoker.github.io/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="https://jinchengjoker.github.io/theme.png" />
+
+  
+
+  
+  <link rel="icon" href="https://jinchengjoker.github.io/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://jinchengjoker.github.io/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.101.0" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Ruby on rails 之创建项目" />
+<meta property="og:description" content="RubyGems Ruby 的包（gem）管理工具。
+类似于 NPM，但主要用于管理全局的 gems。
+查看当前下载源：
+gem sources -l 如果源不是 ruby-china 建议切换：
+gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/ Bundler 也是 Ruby 的包（gem）管理工具。
+和 RubyGems 不同的是，它主要用于管理项目局部的 gems，能够跟踪并安装所需的特定版本的 gem，以此来为 Ruby 项目提供一致的运行环境。
+切换至国内源：
+bundle config mirror.https://rubygems.org https://gems.ruby-china.com 也可以修改 Gemfile 的 source：
+source &#39;https://gems.ruby-china.com&#39; 安装 rails 这里使用 gem 全局安装 rails 并指定了版本：
+gem install rails -v 7.0.2.3 安装数据库驱动包 由于数据库用的是 postgresql，所以这里安装对应的驱动包：
+pacman -S postgresql-libs pacman是Arch Linux用于安装软件的工具。
+创建 rails 项目 rails new --api --database=postgresql --skip-test mangosteen-1 --api只使用 api 模式。 --database=postgresql使用 postgresql 作为数据库。 --skip-test跳过测试，后续可以使用第三方测试工具。 mangosteen-1项目名称并创建对应的目录。 启动数据库容器 注意是额外启动一个容器服务，而不是在已有容器环境中执行。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_01_create/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-12T11:25:38+08:00" />
+<meta property="article:modified_time" content="2022-07-12T11:25:38+08:00" />
+
+
+  
+  <meta itemprop="name" content="Ruby on rails 之创建项目">
+<meta itemprop="description" content="RubyGems Ruby 的包（gem）管理工具。
+类似于 NPM，但主要用于管理全局的 gems。
+查看当前下载源：
+gem sources -l 如果源不是 ruby-china 建议切换：
+gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/ Bundler 也是 Ruby 的包（gem）管理工具。
+和 RubyGems 不同的是，它主要用于管理项目局部的 gems，能够跟踪并安装所需的特定版本的 gem，以此来为 Ruby 项目提供一致的运行环境。
+切换至国内源：
+bundle config mirror.https://rubygems.org https://gems.ruby-china.com 也可以修改 Gemfile 的 source：
+source &#39;https://gems.ruby-china.com&#39; 安装 rails 这里使用 gem 全局安装 rails 并指定了版本：
+gem install rails -v 7.0.2.3 安装数据库驱动包 由于数据库用的是 postgresql，所以这里安装对应的驱动包：
+pacman -S postgresql-libs pacman是Arch Linux用于安装软件的工具。
+创建 rails 项目 rails new --api --database=postgresql --skip-test mangosteen-1 --api只使用 api 模式。 --database=postgresql使用 postgresql 作为数据库。 --skip-test跳过测试，后续可以使用第三方测试工具。 mangosteen-1项目名称并创建对应的目录。 启动数据库容器 注意是额外启动一个容器服务，而不是在已有容器环境中执行。"><meta itemprop="datePublished" content="2022-07-12T11:25:38+08:00" />
+<meta itemprop="dateModified" content="2022-07-12T11:25:38+08:00" />
+<meta itemprop="wordCount" content="154">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ruby on rails 之创建项目"/>
+<meta name="twitter:description" content="RubyGems Ruby 的包（gem）管理工具。
+类似于 NPM，但主要用于管理全局的 gems。
+查看当前下载源：
+gem sources -l 如果源不是 ruby-china 建议切换：
+gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/ Bundler 也是 Ruby 的包（gem）管理工具。
+和 RubyGems 不同的是，它主要用于管理项目局部的 gems，能够跟踪并安装所需的特定版本的 gem，以此来为 Ruby 项目提供一致的运行环境。
+切换至国内源：
+bundle config mirror.https://rubygems.org https://gems.ruby-china.com 也可以修改 Gemfile 的 source：
+source &#39;https://gems.ruby-china.com&#39; 安装 rails 这里使用 gem 全局安装 rails 并指定了版本：
+gem install rails -v 7.0.2.3 安装数据库驱动包 由于数据库用的是 postgresql，所以这里安装对应的驱动包：
+pacman -S postgresql-libs pacman是Arch Linux用于安装软件的工具。
+创建 rails 项目 rails new --api --database=postgresql --skip-test mangosteen-1 --api只使用 api 模式。 --database=postgresql使用 postgresql 作为数据库。 --skip-test跳过测试，后续可以使用第三方测试工具。 mangosteen-1项目名称并创建对应的目录。 启动数据库容器 注意是额外启动一个容器服务，而不是在已有容器环境中执行。"/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="false">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="https://jinchengjoker.github.io/">金成的博客</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      
+      <time>Jul 12, 2022</time>
+      
+      
+    </p>
+    <h1>Ruby on rails 之创建项目</h1>
+  </header>
+  <section class="post-content"><h2 id="rubygems">RubyGems</h2>
+<p>Ruby 的包（gem）管理工具。</p>
+<p>类似于 NPM，但主要用于管理全局的 gems。</p>
+<p>查看当前下载源：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gem sources -l
+</span></span></code></pre></div><p>如果源不是 ruby-china 建议切换：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
+</span></span></code></pre></div><h2 id="bundler">Bundler</h2>
+<p>也是 Ruby 的包（gem）管理工具。</p>
+<p>和 RubyGems 不同的是，它主要用于管理项目局部的 gems，能够跟踪并安装所需的特定版本的 gem，以此来为 Ruby 项目提供一致的运行环境。</p>
+<p>切换至国内源：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bundle config mirror.https://rubygems.org https://gems.ruby-china.com
+</span></span></code></pre></div><p>也可以修改 Gemfile 的 source：</p>
+<pre tabindex="0"><code>source &#39;https://gems.ruby-china.com&#39;
+</code></pre><h2 id="安装-rails">安装 rails</h2>
+<p>这里使用 gem 全局安装 rails 并指定了版本：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gem install rails -v 7.0.2.3
+</span></span></code></pre></div><h2 id="安装数据库驱动包">安装数据库驱动包</h2>
+<p>由于数据库用的是 postgresql，所以这里安装对应的驱动包：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pacman -S postgresql-libs
+</span></span></code></pre></div><p><code>pacman</code>是<code>Arch Linux</code>用于安装软件的工具。</p>
+<h2 id="创建-rails-项目">创建 rails 项目</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rails new --api --database<span style="color:#f92672">=</span>postgresql --skip-test mangosteen-1
+</span></span></code></pre></div><ul>
+<li><code>--api</code>只使用 api 模式。</li>
+<li><code>--database=postgresql</code>使用 postgresql 作为数据库。</li>
+<li><code>--skip-test</code>跳过测试，后续可以使用第三方测试工具。</li>
+<li><code>mangosteen-1</code>项目名称并创建对应的目录。</li>
+</ul>
+<h2 id="启动数据库容器">启动数据库容器</h2>
+<p><strong>注意</strong>是额外启动一个容器服务，而不是在已有容器环境中执行。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --name db-for-mangosteen <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -e POSTGRES_USER<span style="color:#f92672">=</span>mangosteen <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -e POSTGRES_PASSWORD<span style="color:#f92672">=</span><span style="color:#ae81ff">123456</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -e POSTGRES_DB<span style="color:#f92672">=</span>mangosteen_dev <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -e PGDATA<span style="color:#f92672">=</span>/var/lib/postgresql/data/pgdata <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -v mangosteen-data:/var/lib/postgresql/data <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --network<span style="color:#f92672">=</span>network1 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    postgres:14
+</span></span></code></pre></div><ul>
+<li><code>-d</code>在后台持续运行容器。</li>
+<li><code>--name db-for-mangosteen</code>容器的名称。</li>
+<li><code>-e</code>写入环境变量。</li>
+<li><code>-v mangosteen-data:/var/lib/postgresql/data</code>创建数据卷并映射，用于数据持久化。</li>
+<li><code>--network=network1</code>指定要加入的网络。</li>
+<li><code>postgres:14</code>指定使用的数据库容器镜像版本。</li>
+</ul>
+<p>如果报错提示找不到网络，则需要先创建对应的网络：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker network create network1
+</span></span></code></pre></div><h2 id="连接数据库">连接数据库</h2>
+<p>进入 rails 项目目录 mangosteen-1，修改<code>config/database.yml</code>文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">development</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;&lt;</span>: <span style="color:#75715e">*default</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">database</span>: <span style="color:#ae81ff">mangosteen_dev</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">username</span>: <span style="color:#ae81ff">mangosteen</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">password</span>: <span style="color:#ae81ff">123456</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">host</span>: <span style="color:#ae81ff">db-for-mangosteen</span>
+</span></span></code></pre></div><h2 id="启动-rails-项目">启动 rails 项目</h2>
+<p>这里推荐优先使用局部的 rails 版本启动：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bundle exe rails server
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 等价于</span>
+</span></span><span style="display:flex;"><span>bin/rails server
+</span></span></code></pre></div><p>也可以使用全局的 rails 版本启动：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rails server
+</span></span></code></pre></div><p>但是有可能和局部的版本不一致，所以不推荐。</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="post-nav">
+     
+    <a class="next" href="https://jinchengjoker.github.io/posts/vue/vue3_reactivity_proxy_reflect/"><span>Vue3 响应性原理之 Proxy &amp; Reflect</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2022 <a href="https://jinchengjoker.github.io/">金成的博客</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>

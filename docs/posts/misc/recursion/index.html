@@ -63,7 +63,7 @@ const j = (n) =&gt; f(2, n, 1, 0) const f = (start, end, prev1, prev2) =&gt; end
   <link rel="apple-touch-icon" href="https://jinchengjoker.github.io/apple-touch-icon.png" />
 
   
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.101.0" />
 
   
   
@@ -180,20 +180,20 @@ const j = (n) =&gt; f(2, n, 1, 0) const f = (start, end, prev1, prev2) =&gt; end
     <h1>用 JS 理解递归</h1>
   </header>
   <section class="post-content"><h2 id="简单阶乘的例子">简单阶乘的例子</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">n</span>) =&gt;
-  <span style="color:#a6e22e">n</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">1</span>
-          <span style="color:#f92672">:</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">j</span>(<span style="color:#a6e22e">n</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
-</code></pre></div><p>上面的函数，可以计算出从 1 到任意正整数 n 的阶乘。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">n</span>) =&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">n</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">:</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">j</span>(<span style="color:#a6e22e">n</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span></code></pre></div><p>上面的函数，可以计算出从 1 到任意正整数 n 的阶乘。</p>
 <p>这就是最简单的递归，一个函数的内部通过某种条件进行判断，并且调用了自己。</p>
 <h2 id="斐波那契数列的例子">斐波那契数列的例子</h2>
 <p>斐波那契数列：数列的第一项和第二项都为 1，从第三项开始每一项都为前两项之和。</p>
 <p>为了编程的习惯，假设第零项为 0，也能满足斐波那契数列的要求。</p>
 <p>用递归求斐波那契数列第 n 项的值：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">n</span>) =&gt;
-  <span style="color:#a6e22e">n</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">:</span>
-  <span style="color:#a6e22e">n</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span>
-    <span style="color:#a6e22e">j</span>(<span style="color:#a6e22e">n</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">j</span>(<span style="color:#a6e22e">n</span><span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>)
-</code></pre></div><h2 id="调用栈">调用栈</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">n</span>) =&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">n</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">n</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">j</span>(<span style="color:#a6e22e">n</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">j</span>(<span style="color:#a6e22e">n</span><span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>)
+</span></span></code></pre></div><h2 id="调用栈">调用栈</h2>
 <p>上面的例子，由于使用了递归，所以会在调用栈中进行压栈，主要用来记忆每次计算之后“回到哪里”。</p>
 <p>当调用栈压栈次数过多，计算就会非常的缓慢，甚至爆栈。</p>
 <p>比如计算斐波那契数列第 40 项，可能需要一秒；计算第 50 项就需要几十秒。</p>
@@ -201,47 +201,47 @@ const j = (n) =&gt; f(2, n, 1, 0) const f = (start, end, prev1, prev2) =&gt; end
 <h2 id="用尾递归迭代优化">用尾递归（迭代）优化</h2>
 <p>尾递归就是在函数的尾巴进行迭代。</p>
 <p>因为不需要“回头”了，所以使用尾递归可以大大减少压栈和重复计算次数。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">n</span>) =&gt; <span style="color:#a6e22e">f</span>(<span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">n</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>)
-
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">f</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">start</span>, <span style="color:#a6e22e">end</span>, <span style="color:#a6e22e">prev1</span>, <span style="color:#a6e22e">prev2</span>) =&gt;
-  <span style="color:#a6e22e">end</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">:</span>
-  <span style="color:#a6e22e">end</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span>
-  <span style="color:#a6e22e">start</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">end</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">prev1</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">prev2</span> <span style="color:#f92672">:</span>
-    <span style="color:#a6e22e">f</span>(<span style="color:#a6e22e">start</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">end</span>, <span style="color:#a6e22e">prev1</span><span style="color:#f92672">+</span><span style="color:#a6e22e">prev2</span>, <span style="color:#a6e22e">prev1</span>)
-</code></pre></div><h2 id="用循环和数组优化">用循环和数组优化</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">n</span>) =&gt; <span style="color:#a6e22e">f</span>(<span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">n</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">f</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">start</span>, <span style="color:#a6e22e">end</span>, <span style="color:#a6e22e">prev1</span>, <span style="color:#a6e22e">prev2</span>) =&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">end</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">end</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">start</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">end</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">prev1</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">prev2</span> <span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">f</span>(<span style="color:#a6e22e">start</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">end</span>, <span style="color:#a6e22e">prev1</span><span style="color:#f92672">+</span><span style="color:#a6e22e">prev2</span>, <span style="color:#a6e22e">prev1</span>)
+</span></span></code></pre></div><h2 id="用循环和数组优化">用循环和数组优化</h2>
 <p>所有的递归都可以写成循环的形式，而且这种优化方式比较容易理解。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">f</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">n</span>) =&gt; {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>]
-  <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">n</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
-    <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">+</span> <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>])
-  }
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">n</span>]
-}
-</code></pre></div><h2 id="记忆化">记忆化</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">f</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">n</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">n</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">+</span> <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">n</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="记忆化">记忆化</h2>
 <p>记忆化的作用也是可以减少重复的计算，大大降低压栈次数。</p>
 <p>原理就是把已经计算过的值给缓存起来，下次需要就不用再次计算，直接可以从缓存中取到。</p>
 <p>例如 Lodash 中的 memoize 方法，React 中的 memo 和 useCallback 方法。</p>
 <p>实现一个简单的记忆化函数：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">memo</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">fn</span>) =&gt; {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">f</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">key</span>) =&gt; {
-    <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>(<span style="color:#a6e22e">key</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">cache</span>)) {
-      <span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">cache</span>[<span style="color:#a6e22e">key</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">fn</span>(<span style="color:#a6e22e">key</span>)
-    }
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">cache</span>[<span style="color:#a6e22e">key</span>]
-  }
-  <span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">cache</span> <span style="color:#f92672">=</span> {}
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">f</span>
-}
-
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">x2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">memo</span>((<span style="color:#a6e22e">x</span>) =&gt; {
-  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;执行了一次&#39;</span>)
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
-})
-
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x2</span>(<span style="color:#ae81ff">1</span>))  <span style="color:#75715e">// 打印出执行了，并且返回2
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x2</span>(<span style="color:#ae81ff">1</span>))  <span style="color:#75715e">// 不打印执行，并且返回上次的结果2
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x2</span>(<span style="color:#ae81ff">1</span>))  <span style="color:#75715e">// 不打印执行，并且返回上次的结果2
-</span></code></pre></div></section>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">memo</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">fn</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">f</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">key</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>(<span style="color:#a6e22e">key</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">cache</span>)) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">cache</span>[<span style="color:#a6e22e">key</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">fn</span>(<span style="color:#a6e22e">key</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">cache</span>[<span style="color:#a6e22e">key</span>]
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">cache</span> <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">f</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">x2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">memo</span>((<span style="color:#a6e22e">x</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;执行了一次&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x2</span>(<span style="color:#ae81ff">1</span>))  <span style="color:#75715e">// 打印出执行了，并且返回2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x2</span>(<span style="color:#ae81ff">1</span>))  <span style="color:#75715e">// 不打印执行，并且返回上次的结果2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x2</span>(<span style="color:#ae81ff">1</span>))  <span style="color:#75715e">// 不打印执行，并且返回上次的结果2
+</span></span></span></code></pre></div></section>
 
   
   

@@ -6,7 +6,27 @@
     <description>Recent content on 金成的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Tue, 19 Apr 2022 11:28:00 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Jul 2022 11:25:38 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ruby on rails 之创建项目</title>
+      <link>https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_01_create/</link>
+      <pubDate>Tue, 12 Jul 2022 11:25:38 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_01_create/</guid>
+      <description>RubyGems Ruby 的包（gem）管理工具。
+类似于 NPM，但主要用于管理全局的 gems。
+查看当前下载源：
+gem sources -l 如果源不是 ruby-china 建议切换：
+gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/ Bundler 也是 Ruby 的包（gem）管理工具。
+和 RubyGems 不同的是，它主要用于管理项目局部的 gems，能够跟踪并安装所需的特定版本的 gem，以此来为 Ruby 项目提供一致的运行环境。
+切换至国内源：
+bundle config mirror.https://rubygems.org https://gems.ruby-china.com 也可以修改 Gemfile 的 source：
+source &amp;#39;https://gems.ruby-china.com&amp;#39; 安装 rails 这里使用 gem 全局安装 rails 并指定了版本：
+gem install rails -v 7.0.2.3 安装数据库驱动包 由于数据库用的是 postgresql，所以这里安装对应的驱动包：
+pacman -S postgresql-libs pacman是Arch Linux用于安装软件的工具。
+创建 rails 项目 rails new --api --database=postgresql --skip-test mangosteen-1 --api只使用 api 模式。 --database=postgresql使用 postgresql 作为数据库。 --skip-test跳过测试，后续可以使用第三方测试工具。 mangosteen-1项目名称并创建对应的目录。 启动数据库容器 注意是额外启动一个容器服务，而不是在已有容器环境中执行。</description>
+    </item>
+    
     <item>
       <title>Vue3 响应性原理之 Proxy &amp; Reflect</title>
       <link>https://jinchengjoker.github.io/posts/vue/vue3_reactivity_proxy_reflect/</link>
@@ -19,9 +39,10 @@
 这主要是因为受限于当时ES6语法还并未在众多浏览器中普及，vue使用了兼容性更好的Object.definePropety和getter/setter来实现数据响应性。
 进入vue3时代，随着ES6语法的普及，vue也使用Proxy和Reflect重新改写了数据响应的实现。
 Proxy 的基本用法 Proxy顾名思义，它可以对一个对象进行代理，允许你拦截对该对象的任何操作。
-const product = { price: 5, quantity: 2 } const proxiedProduct = new Proxy(product, { get(target, key) { // target === product  return target[key] }, set(target, key, value) { // target === product  target[key] = value } }) console.log(proxiedProduct.quantity) // 2  proxiedProduct.price = 10 console.log(product.price) // 10 这里get和set中的target参数就是被代理的对象product。
+const product = { price: 5, quantity: 2 } const proxiedProduct = new Proxy(product, { get(target, key) { // target === product return target[key] }, set(target, key, value) { // target === product target[key] = value } }) console.log(proxiedProduct.quantity) // 2 proxiedProduct.price = 10 console.log(product.price) // 10 这里get和set中的target参数就是被代理的对象product。
 使用Proxy相比于Object.definePropety好的其中一点在于，不需要提前声明好所有的key，就可以拦截对目标对象的任何操作，这样就避免了vue之前版本中出现的问题。
-Proxy 中 this 指向的问题 把上面的例子升级一下：</description>
+Proxy 中 this 指向的问题 把上面的例子升级一下：
+const product = { price: 5, quantity: 2, get total() { return this.</description>
     </item>
     
     <item>
@@ -31,7 +52,7 @@ Proxy 中 this 指向的问题 把上面的例子升级一下：</description>
       
       <guid>https://jinchengjoker.github.io/posts/vue/vue3_reactivity_track_trigger/</guid>
       <description>什么是数据响应式 &amp;lt;div id=&amp;#34;app&amp;#34;&amp;gt; &amp;lt;div&amp;gt;Price: ${{ product.price }}&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;Total: ${{ product.price * product.quantity }}&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;Taxes: ${{ totalPriceWithTax }}&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;script src=&amp;#34;https://cdn.jsdelivr.net/npm/vue&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; var vm = new Vue({ el: &amp;#39;#app&amp;#39;, data: { product: { price: 5, quantity: 2 } }, computed: { totalPriceWithTax() { return this.product.price * this.product.quantity * 1.03 } } }) &amp;lt;/script&amp;gt; 当我们修改product.price = 10的时候，vue至少会做三件事情：
- 在页面上更新price。 重新计算price * quantity并更新页面。 再次调用totalPriceWithTax函数并更新页面。  那么vue是如何知道我们更新了price，并做出这些响应的？
+在页面上更新price。 重新计算price * quantity并更新页面。 再次调用totalPriceWithTax函数并更新页面。 那么vue是如何知道我们更新了price，并做出这些响应的？
 当然，在vue的世界里，这一切都显得理所当然。但是当我们把这种思维带回到JS的编程方式中，就会发现并不是这样。
 现在先把vue放到一边，提取出一些关键的代码：
 let product = { price: 5, quantity: 2 } let total = product.</description>
@@ -44,11 +65,11 @@ let product = { price: 5, quantity: 2 } let total = product.</description>
       
       <guid>https://jinchengjoker.github.io/posts/vue/vue2_data_problem/</guid>
       <description>来自 Vue 的警告 new Vue({ data: {}, template: ` &amp;lt;div&amp;gt;{{n}}&amp;lt;/div&amp;gt; ` }).$mount(&amp;#34;#app&amp;#34;); 上面的例子中，在template选项里使用了n，但在data选项中并没有初始化n，这时vue会在控制台发出警告：
- [Vue warn]: Property or method &amp;quot;n&amp;quot; is not defined on the instance but referenced during render. Make sure that this property is reactive, either in the data option, or for class-based components, by initializing the property.
- 这是因为vue2是使用的Object.defineProperty来实现数据响应式：
+[Vue warn]: Property or method &amp;quot;n&amp;quot; is not defined on the instance but referenced during render. Make sure that this property is reactive, either in the data option, or for class-based components, by initializing the property.
+这是因为vue2是使用的Object.defineProperty来实现数据响应式：
 Object.defineProperty(data, &amp;#39;xxx&amp;#39;, { ... }) vue会遍历data选项内所有的属性并进行代理，前提是要有明确的key，即需要事先声明好key才能进行遍历。在模板中使用了没有事先声明的属性，vue无法对其进行代理并做出响应。
 所以改为以下写法可以消除警告：
-new Vue({ data: { n: null }, template: ` &amp;lt;div&amp;gt;{{n}}&amp;lt;/div&amp;gt; ` }).</description>
+new Vue({ data: { n: null }, template: ` &amp;lt;div&amp;gt;{{n}}&amp;lt;/div&amp;gt; ` }).$mount(&amp;#34;#app&amp;#34;); Vue2 只会检查 data 内的第一层属性 但是实际开发过程中，遇到更多的是以下这种情况：</description>
     </item>
     
     <item>
@@ -60,7 +81,7 @@ new Vue({ data: { n: null }, template: ` &amp;lt;div&amp;gt;{{n}}&amp;lt;/div&am
       <description>断断续续已经用了很长时间的vue了，从之前的vue2到现在的vue3。说起它的数据响应式原理，一直都是比较模糊的，只是大概知道是通过Object.defineProperty()和代理来实现的，具体也没有去深入的了解。
 最近看了一些文章和视频，所以在这里进行一些总结。
 先了解一下 ES6 的 getter/setter 一个简单的例子了解getter/setter的基本用法：
-const obj = { lastName: &amp;#34;高&amp;#34;, firstName: &amp;#34;圆圆&amp;#34;, get name() { return this.lastName + this.firstName }, set name(value){ this.lastName = value[0] this.firstName = value.substring(1) }, } console.log(obj.name) // 高圆圆  obj.name = &amp;#39;刘诗诗&amp;#39; console.log(`姓：${obj.lastName}`) // 姓：刘 console.log(`名：${obj.firstName}`) // 名：诗诗 需求一 上面的例子在声明obj的时候就已经定义了name的getter/setter，那如何在一个已有的对象上添加一个新的getter/setter？
+const obj = { lastName: &amp;#34;高&amp;#34;, firstName: &amp;#34;圆圆&amp;#34;, get name() { return this.lastName + this.firstName }, set name(value){ this.lastName = value[0] this.firstName = value.substring(1) }, } console.log(obj.name) // 高圆圆 obj.name = &amp;#39;刘诗诗&amp;#39; console.log(`姓：${obj.lastName}`) // 姓：刘 console.log(`名：${obj.firstName}`) // 名：诗诗 需求一 上面的例子在声明obj的时候就已经定义了name的getter/setter，那如何在一个已有的对象上添加一个新的getter/setter？
 再了解一下 ES6 的 Object.defineProperty 用ES6的新语法Object.defineProperty可以实现上述需求。
 例如给obj对象添加一个age的getter/setter：
 let _age = 0 Object.defineProperty(obj, &amp;#39;age&amp;#39;, { get() { return _age }, set(value) { _age = value } }) 这里需要一个_age变量作为临时存储，为了方便可以把这个临时的_age放到obj里：</description>
@@ -83,13 +104,14 @@ let _age = 0 Object.defineProperty(obj, &amp;#39;age&amp;#39;, { get() { return 
       <guid>https://jinchengjoker.github.io/posts/vue/vue_mvvm/</guid>
       <description>Vue 是 MVVM？ v1.0 版本 在vue v1.0版本的官网上有这么一张图：
 可以看到在v1.0版本，当时vue把自己定义为一个MVVM模型的框架：
- Vue.js 拥抱数据驱动的视图概念。通俗地讲，它意味着我们在普通 HTML 模板中使用特殊的语法将 DOM “绑定”到底层数据。一旦创建了绑定，DOM 将与数据保持同步。每当修改了数据，DOM 便相应地更新。这样我们应用中的逻辑就几乎都是直接修改数据了，不必与 DOM 更新搅在一起。
- v2.x v3.x 版本 但是在后来的版本，vue的官网上就移除了这张图的介绍，取而代之的是下面这句话：
- 虽然没有完全遵循 MVVM 模型，但是 Vue 的设计也受到了它的启发。
- 在v2.x、v3.x版本，vue更像是一个MV*模型，因为它确实有些地方没有遵循MVVM模型。其实不必纠结这个*具体是指什么。
+Vue.js 拥抱数据驱动的视图概念。通俗地讲，它意味着我们在普通 HTML 模板中使用特殊的语法将 DOM “绑定”到底层数据。一旦创建了绑定，DOM 将与数据保持同步。每当修改了数据，DOM 便相应地更新。这样我们应用中的逻辑就几乎都是直接修改数据了，不必与 DOM 更新搅在一起。
+v2.x v3.x 版本 但是在后来的版本，vue的官网上就移除了这张图的介绍，取而代之的是下面这句话：
+虽然没有完全遵循 MVVM 模型，但是 Vue 的设计也受到了它的启发。
+在v2.x、v3.x版本，vue更像是一个MV*模型，因为它确实有些地方没有遵循MVVM模型。其实不必纠结这个*具体是指什么。
 先顺便了解一下 MVC 引用阮一峰老师的文章，在前端层面可以很容易的理解什么是MCV：
-  模型（Model）：数据保存 视图（View）：用户界面 控制器（Controller）：业务逻辑     View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，渲染出视图（用户得到反馈）   Vue 是 MVVM MVVM是Model-View-ViewModel的缩写。阮一峰老师也介绍了MVVM，但是实在是过于概括。这里推荐廖雪峰老师的文章：
- MVVM 最早由微软提出来，它借鉴了桌面应用程序的 MVC 思想，在前端页面中，把 Model 用纯 JavaScript 对象表示，View 负责显示，两者做到了最大限度的分离。</description>
+模型（Model）：数据保存 视图（View）：用户界面 控制器（Controller）：业务逻辑 View 传送指令到 Controller Controller 完成业务逻辑后，要求 Model 改变状态 Model 将新的数据发送到 View，渲染出视图（用户得到反馈） Vue 是 MVVM MVVM是Model-View-ViewModel的缩写。阮一峰老师也介绍了MVVM，但是实在是过于概括。这里推荐廖雪峰老师的文章：
+MVVM 最早由微软提出来，它借鉴了桌面应用程序的 MVC 思想，在前端页面中，把 Model 用纯 JavaScript 对象表示，View 负责显示，两者做到了最大限度的分离。
+把 Model 和 View 关联起来的就是 ViewModel。ViewModel 负责把 Model 的数据同步到 View 显示出来，还负责把 View 的修改同步回 Model。</description>
     </item>
     
     <item>
@@ -99,8 +121,8 @@ let _age = 0 Object.defineProperty(obj, &amp;#39;age&amp;#39;, { get() { return 
       
       <guid>https://jinchengjoker.github.io/posts/vue/vue_runtime_runtime-only/</guid>
       <description>在vue npm包的 dist/ 目录有很多不同的Vue.js构建版本。
- vue.global.js - 包含编译器和运行时的完整版（约 520KB） vue.global.prod.js - 包含编译器和运行时的压缩后完整版（约 105KB） vue.runtime.global.js - 只包含运行时（约 356KB） vue.runtime.global.prod.js - 只包含运行时的压缩版（约 68KB）  如果要在客户端上编译模板（即：将字符串传递给template选项，或者使用元素的DOM内HTML作为模板挂载到元素），则需要编译器，因此需要完整的构建版本：
-&amp;lt;!-- index.html --&amp;gt; &amp;lt;div id=&amp;#34;app&amp;#34;&amp;gt; &amp;lt;h1&amp;gt;{{hi}}&amp;lt;/h1&amp;gt; &amp;lt;/div&amp;gt; // main.js // 以 vue3 写法为例  // 需要编译器 // 会直接替换 app 元素的内容 Vue.createApp({ template: &amp;#39;&amp;lt;div&amp;gt;{{ hi }}&amp;lt;/div&amp;gt;&amp;#39;, data() { return { hi: &amp;#34;hi&amp;#34; }; } }).mount(&amp;#39;#app&amp;#39;) // 需要编译器 // 相当于使用 app 元素的 DOM 内 HTML 作为模板 Vue.createApp({ data() { return { hi: &amp;#34;hi&amp;#34; }; } }).</description>
+vue.global.js - 包含编译器和运行时的完整版（约 520KB） vue.global.prod.js - 包含编译器和运行时的压缩后完整版（约 105KB） vue.runtime.global.js - 只包含运行时（约 356KB） vue.runtime.global.prod.js - 只包含运行时的压缩版（约 68KB） 如果要在客户端上编译模板（即：将字符串传递给template选项，或者使用元素的DOM内HTML作为模板挂载到元素），则需要编译器，因此需要完整的构建版本：
+&amp;lt;!-- index.html --&amp;gt; &amp;lt;div id=&amp;#34;app&amp;#34;&amp;gt; &amp;lt;h1&amp;gt;{{hi}}&amp;lt;/h1&amp;gt; &amp;lt;/div&amp;gt; // main.js // 以 vue3 写法为例 // 需要编译器 // 会直接替换 app 元素的内容 Vue.createApp({ template: &amp;#39;&amp;lt;div&amp;gt;{{ hi }}&amp;lt;/div&amp;gt;&amp;#39;, data() { return { hi: &amp;#34;hi&amp;#34; }; } }).mount(&amp;#39;#app&amp;#39;) // 需要编译器 // 相当于使用 app 元素的 DOM 内 HTML 作为模板 Vue.createApp({ data() { return { hi: &amp;#34;hi&amp;#34; }; } }).</description>
     </item>
     
     <item>
@@ -110,11 +132,12 @@ let _age = 0 Object.defineProperty(obj, &amp;#39;age&amp;#39;, { get() { return 
       
       <guid>https://jinchengjoker.github.io/posts/misc/make_npm_package/</guid>
       <description>以自己写的一个命令行工具 demo为例。
-修改 package.json { &amp;#34;name&amp;#34;: &amp;#34;zy-todo&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;0.0.1&amp;#34;, &amp;#34;main&amp;#34;: &amp;#34;index.js&amp;#34;, &amp;#34;bin&amp;#34;: { &amp;#34;zydo&amp;#34;: &amp;#34;cli.js&amp;#34; }, &amp;#34;files&amp;#34;: [ &amp;#34;*.js&amp;#34; ], &amp;#34;license&amp;#34;: &amp;#34;MIT&amp;#34;, &amp;#34;dependencies&amp;#34;: { &amp;#34;commander&amp;#34;: &amp;#34;^5.1.0&amp;#34;, &amp;#34;inquirer&amp;#34;: &amp;#34;^7.1.0&amp;#34; } }  name：必须是唯一的，不能和其他已发布的包重名。 version：发布的包的版本号。 main：整个包的主要逻辑文件，一般是 index.js。 bin：如果这个包是一个命令行工具，那么最终生成的命令是什么，以及命令对应执行的文件是什么。 files：告诉 NPM 哪些文件是有用的。  shebang shebang 写在某个文件的头部，用来告诉命令行用什么程序来执行这个文件。
+修改 package.json { &amp;#34;name&amp;#34;: &amp;#34;zy-todo&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;0.0.1&amp;#34;, &amp;#34;main&amp;#34;: &amp;#34;index.js&amp;#34;, &amp;#34;bin&amp;#34;: { &amp;#34;zydo&amp;#34;: &amp;#34;cli.js&amp;#34; }, &amp;#34;files&amp;#34;: [ &amp;#34;*.js&amp;#34; ], &amp;#34;license&amp;#34;: &amp;#34;MIT&amp;#34;, &amp;#34;dependencies&amp;#34;: { &amp;#34;commander&amp;#34;: &amp;#34;^5.1.0&amp;#34;, &amp;#34;inquirer&amp;#34;: &amp;#34;^7.1.0&amp;#34; } } name：必须是唯一的，不能和其他已发布的包重名。 version：发布的包的版本号。 main：整个包的主要逻辑文件，一般是 index.js。 bin：如果这个包是一个命令行工具，那么最终生成的命令是什么，以及命令对应执行的文件是什么。 files：告诉 NPM 哪些文件是有用的。 shebang shebang 写在某个文件的头部，用来告诉命令行用什么程序来执行这个文件。
 例如我这个包是用 node 执行 cli.js 文件，那么就在 cli.js 文件头部写入：
 #!/usr/bin/env node 可行性权限 在 Linux 和 Mac OS 下还需要给文件加上可执行权限：
 chmod +x cli.js NPM 发布 发布包需要一个 NPM 账号。
-必须使用 npm 的官方源进行发布，淘宝源不支持发布。</description>
+必须使用 npm 的官方源进行发布，淘宝源不支持发布。
+可以使用 nrm 来作为 npm 的源管理工具：</description>
     </item>
     
     <item>
@@ -155,9 +178,9 @@ const j = (n) =&amp;gt; f(2, n, 1, 0) const f = (start, end, prev1, prev2) =&amp
       
       <guid>https://jinchengjoker.github.io/posts/js/function_in_js/</guid>
       <description>函数的返回值由什么确定？ 一个函数的返回值，由两个因素决定：
- 定义时的环境 env 调用时输入的参数 params  举例：
+定义时的环境 env 调用时输入的参数 params 举例：
 let x = &amp;#39;x&amp;#39; let a = &amp;#39;1&amp;#39; function f1(x){ return x + a } { let a = &amp;#39;2&amp;#39; f1(&amp;#39;y&amp;#39;) // 值为 &amp;#39;y1&amp;#39; } 在函数 f1 中：
- x 是参数，所以 x 的值在调用 f1 的时候确定。 a 不是参数，所以 a 的值在 f1 定义时，由它所处的环境确定。  let x = &amp;#39;x&amp;#39; let a = &amp;#39;1&amp;#39; function f1(x){ return x + a } a = &amp;#39;3&amp;#39; { let a = &amp;#39;2&amp;#39; f1(&amp;#39;y&amp;#39;) // 值为 &amp;#39;y3&amp;#39; } 另一个例子：</description>
+x 是参数，所以 x 的值在调用 f1 的时候确定。 a 不是参数，所以 a 的值在 f1 定义时，由它所处的环境确定。 let x = &amp;#39;x&amp;#39; let a = &amp;#39;1&amp;#39; function f1(x){ return x + a } a = &amp;#39;3&amp;#39; { let a = &amp;#39;2&amp;#39; f1(&amp;#39;y&amp;#39;) // 值为 &amp;#39;y3&amp;#39; } 另一个例子：</description>
     </item>
     
     <item>
@@ -182,9 +205,9 @@ const add = ({a, b}) =&amp;gt; a + b add({ a: 1, b: 2 }) 或者用箭头函数�
       <description>JSON 序列化和反序列化 对于一般（狭义）的对象，最简单快速的方法就是使用 JSON 的序列化和反序列化：
 const o1 = { name: &amp;#39;xxx&amp;#39;, age: 18, child: { name: &amp;#39;zzz&amp;#39; } } const o2 = JSON.parse(JSON.stringify(o1)) o1 === o2 // false o1.name === o2.name // true o1.child === o2.child // false o1.child.name === o2.child.name // true 缺点：仅支持 JSON 所支持的数据类型和结构。
 例如：
- 不支持函数，会被直接忽略 不支持 undefined，会被直接忽略 不支持循环引用，例如 xxx.self = xxx，会报错  对于更复杂的对象，就无法使用上面的办法，需要使用递归来进行深拷贝。
+不支持函数，会被直接忽略 不支持 undefined，会被直接忽略 不支持循环引用，例如 xxx.self = xxx，会报错 对于更复杂的对象，就无法使用上面的办法，需要使用递归来进行深拷贝。
 搭建测试环境 安装 mocha、chai 和 sinon-chai：
-yarn init -yyarn add mocha chai sinon-chai --devpackage.</description>
+yarn init -yyarn add mocha chai sinon-chai --dev package.json 添加运行测试命令：</description>
     </item>
     
     <item>
@@ -193,12 +216,13 @@ yarn init -yyarn add mocha chai sinon-chai --devpackage.</description>
       <pubDate>Wed, 11 Sep 2019 00:00:00 +0800</pubDate>
       
       <guid>https://jinchengjoker.github.io/posts/misc/eventhub/</guid>
-      <description>确定 API  EventHub#on EventHub#emit EventHub#off  测试环境搭建 TDD：测试驱动开发
+      <description>确定 API EventHub#on EventHub#emit EventHub#off 测试环境搭建 TDD：测试驱动开发
 安装 ts-node：
-yarn global add ts-node初始化一个 EventHub 类：
-// index.ts  class EventHub {} export default EventHub 编写测试用例：
-// test/index.ts  import EventHub from &amp;#39;../index&amp;#39; // 测试 eventhub 是否正确生成 const testEventHub = (message) =&amp;gt; { const eventhub = new EventHub() console.assert(eventhub instanceof Object === true, &amp;#39;eventhub 应该是一个 object&amp;#39;) console.log(message) } testEventHub(&amp;#39;测试 eventhub 是否正确生成&amp;#39;) 用 ts-node 运行测试：
-ts-node test/index.ts初步实现 on 和 emit 添加测试用例：</description>
+yarn global add ts-node 初始化一个 EventHub 类：
+// index.ts class EventHub {} export default EventHub 编写测试用例：
+// test/index.ts import EventHub from &amp;#39;../index&amp;#39; // 测试 eventhub 是否正确生成 const testEventHub = (message) =&amp;gt; { const eventhub = new EventHub() console.assert(eventhub instanceof Object === true, &amp;#39;eventhub 应该是一个 object&amp;#39;) console.log(message) } testEventHub(&amp;#39;测试 eventhub 是否正确生成&amp;#39;) 用 ts-node 运行测试：
+ts-node test/index.ts 初步实现 on 和 emit 添加测试用例：
+// test/index.</description>
     </item>
     
     <item>
@@ -208,9 +232,9 @@ ts-node test/index.ts初步实现 on 和 emit 添加测试用例：</descriptio
       
       <guid>https://jinchengjoker.github.io/posts/js/higher_function/</guid>
       <description>一句话解释高阶函数：把函数作为参数或者返回值的函数。
-JS 中部分内置的高阶函数  Function.prototype.bind Function.prototype.apply Function.prototype.call Array.prototype.sort Array.prototype.map Array.prototype.filter Array.prototype.reduce  bind/apply/call.call() 是什么意思 例如，bind的一般用法：
+JS 中部分内置的高阶函数 Function.prototype.bind Function.prototype.apply Function.prototype.call Array.prototype.sort Array.prototype.map Array.prototype.filter Array.prototype.reduce bind/apply/call.call() 是什么意思 例如，bind的一般用法：
 var f1 = function() { console.log(this) console.log(arguments) } var newF1 = f1.bind({ name: &amp;#39;john&amp;#39; }, 1, 2) newF1() // {name: &amp;#39;john&amp;#39;} // [1, 2] 推理：
- 已知obj.method(a, b, c)等价于obj.method.call(obj, a, b, c)。 假设obj = f1，method = bind。 那么f1.bind(a, b, c)等价于f1.bind.call(f1, a, b, c)。 假设a = { name: &#39;john&#39; }，b = 1，c = 2。 那么f1.bind({ name: &#39;john&#39; }, 1, 2)这就是一般的用法，它等价于f1.</description>
+已知obj.method(a, b, c)等价于obj.method.call(obj, a, b, c)。 假设obj = f1，method = bind。 那么f1.bind(a, b, c)等价于f1.bind.call(f1, a, b, c)。 假设a = { name: &#39;john&#39; }，b = 1，c = 2。 那么f1.bind({ name: &#39;john&#39; }, 1, 2)这就是一般的用法，它等价于f1.</description>
     </item>
     
     <item>
@@ -221,7 +245,8 @@ var f1 = function() { console.log(this) console.log(arguments) } var newF1 = f1.
       <guid>https://jinchengjoker.github.io/posts/bom/ajax/</guid>
       <description>全称 Async Javascript and XML。
 使用 XMLHttpRequest 浏览器提供了一个 XMLHttpRequest 方法，可以通过 new XMLHttpRequest() 创建一个可以发起 HTTP 请求的对象。
-let request = new XMLHttpRequest() // 创建 HTTP 请求对象  request.open(&amp;#39;POST&amp;#39;, &amp;#39;/xxx&amp;#39;) // 初始化请求，默认为异步 request.setRequestHeader(&amp;#39;Content-Type&amp;#39;, &amp;#39;application/x-www-form-urlencoded&amp;#39;) request.send(&amp;#39;这是要发送的数据&amp;#39;) // 发送请求 request.onreadystatechange = () =&amp;gt; { if(request.readyState === 4) { // 请求和响应已完毕  if(request.status &amp;gt;= 200 &amp;amp;&amp;amp; request.status &amp;lt; 300) { console.log(&amp;#39;请求成功&amp;#39;) console.log(request.getResponseHeader(&amp;#39;Content-Type&amp;#39;)) console.log(JSON.parse(request.responseText)) } else if(request.status &amp;gt;= 400) { console.log(&amp;#39;请求失败&amp;#39;) } } } 在 request 实例中：</description>
+let request = new XMLHttpRequest() // 创建 HTTP 请求对象 request.open(&amp;#39;POST&amp;#39;, &amp;#39;/xxx&amp;#39;) // 初始化请求，默认为异步 request.setRequestHeader(&amp;#39;Content-Type&amp;#39;, &amp;#39;application/x-www-form-urlencoded&amp;#39;) request.send(&amp;#39;这是要发送的数据&amp;#39;) // 发送请求 request.onreadystatechange = () =&amp;gt; { if(request.readyState === 4) { // 请求和响应已完毕 if(request.status &amp;gt;= 200 &amp;amp;&amp;amp; request.status &amp;lt; 300) { console.log(&amp;#39;请求成功&amp;#39;) console.log(request.getResponseHeader(&amp;#39;Content-Type&amp;#39;)) console.log(JSON.parse(request.responseText)) } else if(request.status &amp;gt;= 400) { console.log(&amp;#39;请求失败&amp;#39;) } } } 在 request 实例中：
+setRequestHeader() 可以设置 HTTP 请求头（即第二部分），但必须在 open() 和 send() 之间调用。 send() 可以设置 HTTP 请求的 body（即第四部分）。 onreadystatechange 可以监听 readyState 值的变化。 readyState 表示请求的 5 种状态。 0 未打开。open() 方法还未被调用 1 未发送。open() 方法已经被调用 2 已获取响应头。send() 方法已经被调用，响应头和响应状态已经返回 3 正在下载响应体。响应体下载中，responseText 中已经获取了部分数据 4 请求完成。整个请求过程已经完毕 getResponseHeader() 可以获取 HTTP 响应头。 </description>
     </item>
     
     <item>
@@ -253,7 +278,7 @@ response.setHeader(&amp;#39;Access-Control-Allow-Origin&amp;#39;, &amp;#39;http:
 通过一个简单的例子来理解 JSONP 到底是什么。
 Demo 地址
 简易服务器 用 node.js 搭一个简易的服务器 server.js：
-var http = require(&amp;#39;http&amp;#39;) var url = require(&amp;#39;url&amp;#39;) var fs = require(&amp;#39;fs&amp;#39;) var port = process.argv[2] // 判断是否传入端口号参数 if(!port) { console.log(&amp;#39;请指定端口号！\n例如：node server.js 8888&amp;#39;) process.exit(1) } // 创建服务器 var server = http.createServer( function(request, response) { var temp = url.parse(request.url, true) var path = temp.pathname var query = temp.query console.log(&amp;#39;HTTP 请求路径为：\n&amp;#39; + path) // 判断 HTTP 请求路径  if(path === &amp;#39;/&amp;#39;) { var data = fs.</description>
+var http = require(&amp;#39;http&amp;#39;) var url = require(&amp;#39;url&amp;#39;) var fs = require(&amp;#39;fs&amp;#39;) var port = process.argv[2] // 判断是否传入端口号参数 if(!port) { console.log(&amp;#39;请指定端口号！\n例如：node server.js 8888&amp;#39;) process.exit(1) } // 创建服务器 var server = http.createServer( function(request, response) { var temp = url.parse(request.url, true) var path = temp.pathname var query = temp.query console.log(&amp;#39;HTTP 请求路径为：\n&amp;#39; + path) // 判断 HTTP 请求路径 if(path === &amp;#39;/&amp;#39;) { var data = fs.</description>
     </item>
     
     <item>
@@ -267,7 +292,7 @@ btn.onclick = function() { console.log(&amp;#39;hi&amp;#39;) } btn.onmouseenter 
 DOM Level 2 现在主要的规范标准。
 添加了更多 DOM 事件，以及制定了事件流、事件捕获、事件冒泡和事件取消等更多标准。
 btn.addEventListener(&amp;#39;click&amp;#39;, function() { console.log(&amp;#39;hi&amp;#39;) }) btn.addEventListener(&amp;#39;mouseenter&amp;#39;, function() { console.log(&amp;#39;mouseenter&amp;#39;) }) btn.addEventListener(&amp;#39;mouseleave&amp;#39;, function() { console.log(&amp;#39;mouseleave&amp;#39;) }) 和 DOM Level 1 的区别 它们区别在于，DOM Level 1 只是一个属性，属性是唯一的，也就是说一个元素只可能有一个 onclick 属性，这意味着不能多次绑定同一事件。
-btn.onclick = function() { // 将会被覆盖  console.</description>
+btn.onclick = function() { // 将会被覆盖 console.log(1) } btn.</description>
     </item>
     
     <item>
@@ -276,7 +301,7 @@ btn.onclick = function() { // 将会被覆盖  console.</description>
       <pubDate>Tue, 22 May 2018 23:30:28 +0800</pubDate>
       
       <guid>https://jinchengjoker.github.io/posts/algorithm/sort/</guid>
-      <description>冒泡排序 基本思路  依次两两对比，大小互换，越大的数越往后排，每一轮可以确定一个数。 把剩下的数重复该操作。  算法实现 function bubbleSort(arr) { // 所需轮数 arr.length - 1  for(let l = 0; l &amp;lt; arr.length - 1; l++) { // 每一轮找出一个最大值  for(let i = 0; i &amp;lt; arr.length - 1 - l; i++) { if(arr[i] &amp;gt; arr[i+1]) { let temp = arr[i] arr[i] = arr[i+1] arr[i+1] = temp } } } return arr } 选择排序 基本思路  每一轮找出其中的一个最大数，排在其最后一位，每一轮可以确定一个数。 把剩下的数重复该操作。  算法实现 function selectSort(arr) { let length = arr.</description>
+      <description>冒泡排序 基本思路 依次两两对比，大小互换，越大的数越往后排，每一轮可以确定一个数。 把剩下的数重复该操作。 算法实现 function bubbleSort(arr) { // 所需轮数 arr.length - 1 for(let l = 0; l &amp;lt; arr.length - 1; l++) { // 每一轮找出一个最大值 for(let i = 0; i &amp;lt; arr.length - 1 - l; i++) { if(arr[i] &amp;gt; arr[i+1]) { let temp = arr[i] arr[i] = arr[i+1] arr[i+1] = temp } } } return arr } 选择排序 基本思路 每一轮找出其中的一个最大数，排在其最后一位，每一轮可以确定一个数。 把剩下的数重复该操作。 算法实现 function selectSort(arr) { let length = arr.</description>
     </item>
     
     <item>
@@ -289,14 +314,14 @@ btn.onclick = function() { // 将会被覆盖  console.</description>
 URL Uniform Resource Locator 统一资源定位符，也被俗称为网址。
 例如：https://www.baidu.com/s?wd=hello&amp;amp;rsv_spt=1#5 就是一个 URL。
 其中包括：协议、域名、路径、查询参数、锚点和端口号。
- 域名  .com 为顶级域名，baidu 为二级域名，www 为三级域名。
- 路径  并不对应任何文件。
- 端口号  例如：21 端口用于 FTP 服务，443 端口用于 HTTPS 服务，1080 端口用于代理服务，3306 端口用于 MySQL 服务，80 端口用于 HTTP 服务。
+域名 .com 为顶级域名，baidu 为二级域名，www 为三级域名。
+路径 并不对应任何文件。
+端口号 例如：21 端口用于 FTP 服务，443 端口用于 HTTPS 服务，1080 端口用于代理服务，3306 端口用于 MySQL 服务，80 端口用于 HTTP 服务。
 DNS Domain Name System 域名系统，用于将域名解析为对应的 IP。
 可以使用 nslookup 工具查询对应的 IP。
-nslookup www.baidu.comHosts 更改 hosts 文件可以指定任意域名的 IP。
+nslookup www.baidu.com Hosts 更改 hosts 文件可以指定任意域名的 IP。
 客户端与服务器的基本交互 客户端与服务器之间使用 HTTP。
- 客户端浏览器输入 URL 通过 DNS 解析，获取 IP 地址 请求该 IP 地址 80 端口 进行 TCP 的三次握手 服务器响应 浏览器接受下载数据  发起请求 基本格式 第1部分：动词 路径 协议/版本号第2部分：Key: value.</description>
+客户端浏览器输入 URL 通过 DNS 解析，获取 IP 地址 请求该 IP 地址 80 端口 进行 TCP 的三次握手 服务器响应 浏览器接受下载数据 发起请求 基本格式 第1部分：动词 路径 协议/版本号第2部分：Key: value.</description>
     </item>
     
     <item>
@@ -306,9 +331,9 @@ nslookup www.baidu.comHosts 更改 hosts 文件可以指定任意域名的 IP�
       
       <guid>https://jinchengjoker.github.io/posts/js/this_and_arguments/</guid>
       <description>this 到底指的是什么 首先我们知道函数的两种调用方式：
-function sum(a, b) { return a + b } // 第一种方式 sum(1, 2) // 3  // 第二种方式 sum.call(undefined, 1, 2) // 3 如果函数以 .call() 的方式调用，那么其实 this 通常指的就是第一个参数。暂时不讨论以 () 的方式调用。
+function sum(a, b) { return a + b } // 第一种方式 sum(1, 2) // 3 // 第二种方式 sum.call(undefined, 1, 2) // 3 如果函数以 .call() 的方式调用，那么其实 this 通常指的就是第一个参数。暂时不讨论以 () 的方式调用。
 但是需要注意的是：
- 当第一个参数为 undefined、null 或空时，在非严格模式下，this 会自动指向全局 window 对象。  // 非严格模式 function fn() { console.log(this) } fn.call() // 全局 window 对象 fn.call(undefined) // 全局 window 对象 fn.call(null) // 全局 window 对象  // 使用严格模式 function fn() { &amp;#39;use strict&amp;#39; console.</description>
+当第一个参数为 undefined、null 或空时，在非严格模式下，this 会自动指向全局 window 对象。 // 非严格模式 function fn() { console.log(this) } fn.call() // 全局 window 对象 fn.call(undefined) // 全局 window 对象 fn.call(null) // 全局 window 对象 // 使用严格模式 function fn() { &amp;#39;use strict&amp;#39; console.log(this) } fn.</description>
     </item>
     
     <item>
@@ -322,11 +347,11 @@ typeof [1, 2, 3] // &amp;#34;object&amp;#34; 它和狭义上的对象的本质�
 伪数组 如果一个对象的所有键名是按次序排列的一组整数（0，1，2 &amp;hellip;），含有 length 属性且没有继承 Array.prototype 属性，不具备数组特有的方法，那么这个对象就是伪数组。语法上称为“类似数组的对象”。
 例如函数的 arguments 对象就是一个伪数组：
 以及大多数 DOM 返回的元素集也是伪数组。
-数组的常用方法 静态方法  Array.isArray()  该方法返回一个布尔值，表示传入的参数是否为数组。可以弥补 typeof 运算符的不足。
-var arr = [1, 2, 3] typeof arr // &amp;#34;object&amp;#34; Array.isArray(arr) // true 实例方法  Array.prototype.sort()  使用该方法原数组将被改变。
+数组的常用方法 静态方法 Array.isArray() 该方法返回一个布尔值，表示传入的参数是否为数组。可以弥补 typeof 运算符的不足。
+var arr = [1, 2, 3] typeof arr // &amp;#34;object&amp;#34; Array.isArray(arr) // true 实例方法 Array.prototype.sort() 使用该方法原数组将被改变。
 sort() 方法对数组成员进行排序，默认是按照字典顺序排序(不是大小顺序)。
 如果需要按照自定义顺序排序，需要传入一个函数参数，参数函数可以接受两个参数，表示进行比较的两个数组元素。如果该函数的返回值大于0，表示第一个元素排在第二个元素后面；其他情况下，都是第一个元素排在第二个元素前面。
-[&amp;#39;d&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;a&amp;#39;].sort() // [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;d&amp;#39;] [4, 3, 2, 1].</description>
+[&amp;#39;d&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;a&amp;#39;].sort() // [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;d&amp;#39;] [4, 3, 2, 1].sort() // [1, 2, 3, 4] [11, 101].</description>
     </item>
     
     <item>
@@ -342,7 +367,7 @@ JS 的解决办法就是，把这些函数统一放在一个对象里（暂且�
 Object 对象的公用属性 举个例子：
 var o1 = {} o1.name = &amp;#39;JinCheng&amp;#39; o1.age = 20 console.log(o1) 就会发现额外隐藏的 __proto__ 属性。
 当调用 o1.toString() 时：
- 首先会看 o1 是不是对象，如果不是，就临时包装成对象。 再看 o1 自身有没有 toString 这个属性可供调用。 如果没有这个属性，就会自动去调用 __proto__ 对象里的属性方法。  简单的验证：
+首先会看 o1 是不是对象，如果不是，就临时包装成对象。 再看 o1 自身有没有 toString 这个属性可供调用。 如果没有这个属性，就会自动去调用 __proto__ 对象里的属性方法。 简单的验证：
 // 再声明一个对象 o2 var o2 = { name: &amp;#39;JinCheng&amp;#39;, age: 20 } o1 === o2 // false 因为 Heap 地址不同 o1.</description>
     </item>
     
@@ -354,9 +379,9 @@ var o1 = {} o1.name = &amp;#39;JinCheng&amp;#39; o1.age = 20 console.log(o1) 就
       <guid>https://jinchengjoker.github.io/posts/js/object_in_js/</guid>
       <description>ECMAScript 规定全局对象叫做 global，但是浏览器把 window 作为全局对象（浏览器先存在的）。
 window 有很多属性，这些属性就是全局变量，可供调用。大致分为两种：
- ECMAScript 规定的 Number、String、Boolean、Object &amp;hellip; 浏览器自己添加的 alert、prompt、comfirm、console &amp;hellip;  Number 对象 Number 对象是数值对应的包装对象。
+ECMAScript 规定的 Number、String、Boolean、Object &amp;hellip; 浏览器自己添加的 alert、prompt、comfirm、console &amp;hellip; Number 对象 Number 对象是数值对应的包装对象。
 Number() 可以作为工具函数使用，也可以作为构造函数使用（即可以使用new命令）：
- Number(&#39;1&#39;) 尝试把任意值变为数值 var n = new Number(1) 把数值 1 包装成一个对象  那么为什么要把 1 包装成一个对象？
+Number(&#39;1&#39;) 尝试把任意值变为数值 var n = new Number(1) 把数值 1 包装成一个对象 那么为什么要把 1 包装成一个对象？
 var n1 = 1 var n2 = new Number(1) // 这两个变量有什么区别？ 区别就是内存不同。
 打印出 n1 和 n2 可以发现，n1 的值是一个基本类型，直接存在 Stack 中；而 n2 的值则是一个对象，把这个对象的 Heap 地址存在 Stack 中，对象里提供了一些例如 valueOf()、toString() 等可以被调用的属性和方法。
 n2.valueOf() // 得到初始值 1 n2.toString() // 转换为字符串 &amp;#39;1&amp;#39; 但奇怪的是，n1 是基本类型，它也可以调用这些方法：</description>
@@ -383,9 +408,10 @@ fn = null 表示 fn 在 Stack 中存的 Heap 地址被 null 覆盖了。</descri
       <description>简单来说，JS 引擎将内存分为代码区和数据区，而数据区分为 Stack（栈内存）和 Heap（堆内存）。
 基本类型的数据直接存入 Stack 里，复杂类型的数据是把 Heap 地址存入 Stack 里，这个地址就是对数据的引用。
 记录一下几个关于内存的问题：
-   var a = 1 var b = a b = 2 // a = ? 不废话。。。a 的值肯定为 1。
-  var a = { name: &amp;#39;a&amp;#39; } var b = a b = { name: &amp;#39;b&amp;#39; } // a.name = ? 因为 a 的值为一个对象（复杂类型），所以 a 其实是把这个对象的 Heap 地址存在 Stack 里。
-var b = a 是复制了这个 Heap 地址给 b。</description>
+var a = 1 var b = a b = 2 // a = ? 不废话。。。a 的值肯定为 1。
+var a = { name: &amp;#39;a&amp;#39; } var b = a b = { name: &amp;#39;b&amp;#39; } // a.name = ? 因为 a 的值为一个对象（复杂类型），所以 a 其实是把这个对象的 Heap 地址存在 Stack 里。
+var b = a 是复制了这个 Heap 地址给 b。
+b = { name: &#39;b&#39; } 是把一个新对象的 Heap 地址赋值给 b，覆盖掉原来的 Heap 地址。</description>
     </item>
     
     <item>
