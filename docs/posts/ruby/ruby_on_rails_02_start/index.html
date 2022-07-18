@@ -27,7 +27,7 @@ bin/rails g model user name:string email:string 这个命令会自动创建两�
 数据库操作 数据库同步：
 bin/rails db:migrate 数据库回滚：
 # 默认回滚到上一步 bin/rails db:rollback # 可以接受回滚步数 bin/rails db:rollback step=1 创建 Controller 创建一个users的controller，并添加create和show方法：
-bin/rails g controller users create show 这个命令同时也会帮我们创建对应的路由，但是由于不够精确和完整，所以一般都是删掉自己重新写。
+bin/rails g controller users create show 这个命令同时也会帮我们创建对应的路由，但是由于不够精确和完整，所以一般都需要删掉自己重新写。
 创建路由 在config/routes.rb文件中可以创建路由：
 # 创建一个 POST 请求，并对应到 users controller 的 create 方法 post &#39;/users&#39;, to: &#39;users#create&#39; # 创建一个 GET 请求，并对应到 users controller 的 show 方法 get &#39;/users/:id&#39;, to: &#39;users#show&#39; 创建一个用户 修改 users controller 的 create 方法：" />
   <meta name="author" content="" />
@@ -81,7 +81,7 @@ bin/rails g model user name:string email:string 这个命令会自动创建两�
 数据库操作 数据库同步：
 bin/rails db:migrate 数据库回滚：
 # 默认回滚到上一步 bin/rails db:rollback # 可以接受回滚步数 bin/rails db:rollback step=1 创建 Controller 创建一个users的controller，并添加create和show方法：
-bin/rails g controller users create show 这个命令同时也会帮我们创建对应的路由，但是由于不够精确和完整，所以一般都是删掉自己重新写。
+bin/rails g controller users create show 这个命令同时也会帮我们创建对应的路由，但是由于不够精确和完整，所以一般都需要删掉自己重新写。
 创建路由 在config/routes.rb文件中可以创建路由：
 # 创建一个 POST 请求，并对应到 users controller 的 create 方法 post &#39;/users&#39;, to: &#39;users#create&#39; # 创建一个 GET 请求，并对应到 users controller 的 show 方法 get &#39;/users/:id&#39;, to: &#39;users#show&#39; 创建一个用户 修改 users controller 的 create 方法：" />
 <meta property="og:type" content="article" />
@@ -98,7 +98,7 @@ bin/rails g model user name:string email:string 这个命令会自动创建两�
 数据库操作 数据库同步：
 bin/rails db:migrate 数据库回滚：
 # 默认回滚到上一步 bin/rails db:rollback # 可以接受回滚步数 bin/rails db:rollback step=1 创建 Controller 创建一个users的controller，并添加create和show方法：
-bin/rails g controller users create show 这个命令同时也会帮我们创建对应的路由，但是由于不够精确和完整，所以一般都是删掉自己重新写。
+bin/rails g controller users create show 这个命令同时也会帮我们创建对应的路由，但是由于不够精确和完整，所以一般都需要删掉自己重新写。
 创建路由 在config/routes.rb文件中可以创建路由：
 # 创建一个 POST 请求，并对应到 users controller 的 create 方法 post &#39;/users&#39;, to: &#39;users#create&#39; # 创建一个 GET 请求，并对应到 users controller 的 show 方法 get &#39;/users/:id&#39;, to: &#39;users#show&#39; 创建一个用户 修改 users controller 的 create 方法："><meta itemprop="datePublished" content="2022-07-16T18:18:45+08:00" />
 <meta itemprop="dateModified" content="2022-07-16T18:18:45+08:00" />
@@ -113,7 +113,7 @@ bin/rails g model user name:string email:string 这个命令会自动创建两�
 数据库操作 数据库同步：
 bin/rails db:migrate 数据库回滚：
 # 默认回滚到上一步 bin/rails db:rollback # 可以接受回滚步数 bin/rails db:rollback step=1 创建 Controller 创建一个users的controller，并添加create和show方法：
-bin/rails g controller users create show 这个命令同时也会帮我们创建对应的路由，但是由于不够精确和完整，所以一般都是删掉自己重新写。
+bin/rails g controller users create show 这个命令同时也会帮我们创建对应的路由，但是由于不够精确和完整，所以一般都需要删掉自己重新写。
 创建路由 在config/routes.rb文件中可以创建路由：
 # 创建一个 POST 请求，并对应到 users controller 的 create 方法 post &#39;/users&#39;, to: &#39;users#create&#39; # 创建一个 GET 请求，并对应到 users controller 的 show 方法 get &#39;/users/:id&#39;, to: &#39;users#show&#39; 创建一个用户 修改 users controller 的 create 方法："/>
 
@@ -184,7 +184,7 @@ bin/rails g controller users create show 这个命令同时也会帮我们创建
 </span></span></code></pre></div><h2 id="创建-controller">创建 Controller</h2>
 <p>创建一个<code>users</code>的<code>controller</code>，并添加<code>create</code>和<code>show</code>方法：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bin/rails g controller users create show
-</span></span></code></pre></div><p>这个命令同时也会帮我们创建对应的路由，但是由于不够精确和完整，所以一般都是删掉自己重新写。</p>
+</span></span></code></pre></div><p>这个命令同时也会帮我们创建对应的路由，但是由于不够精确和完整，所以一般都需要删掉自己重新写。</p>
 <h2 id="创建路由">创建路由</h2>
 <p>在<code>config/routes.rb</code>文件中可以创建路由：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#75715e"># 创建一个 POST 请求，并对应到 users controller 的 create 方法</span>
@@ -239,6 +239,8 @@ bin/rails g controller users create show 这个命令同时也会帮我们创建
   
   
   <nav class="post-nav">
+    
+    <a class="prev" href="https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_03_routes/"><span>←</span><span>Ruby on rails 之创建路由</span></a>
      
     <a class="next" href="https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_01_create/"><span>Ruby on rails 之创建项目</span><span>→</span></a>
     

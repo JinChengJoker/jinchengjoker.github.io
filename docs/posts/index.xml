@@ -6,7 +6,19 @@
     <description>Recent content in Posts on 金成的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Sat, 16 Jul 2022 18:18:45 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Jul 2022 19:01:20 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ruby on rails 之创建路由</title>
+      <link>https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_03_routes/</link>
+      <pubDate>Mon, 18 Jul 2022 19:01:20 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_03_routes/</guid>
+      <description>快速创建路由 rails提供了快速创建路由的方式，我们只需要在config/routes.rb文件中写好结构，就可以自动生成对应的路由。
+namespace :api do namespace :v1 do resources :validation_codes, only: [:create] resource :session, only: [:create, :destory] resource :me, only: [:show] resources :items resources :tags end end 这里用了两层namespace来规范路由和版本控制，即所有的路由都会以/api/v1开头。 :api这种前面带冒号的表示是一种简单字符串，没有任何其他的功能，仅仅只是一个字符串而已。 resource代表对应的资源名称，如果是复数资源那么就要使用resources。 only表示这个路由只需要特定的方法，不指定则默认拥有所有方法。一共有index、create、show、update、destory五种方法。 对应的还有exclude代表不需要的方法。 然后我们可以通过rails提供的命令查看所有的路由及对应的方法：
+bin/rails routes 创建 validation_codes Table # 创建`model`的时候`ValidationCode`不需要复数。 bin/rails g model ValidationCode email:string kind:string used_at:datetime 然后完善db/migrate中对应的change方法：
+def change create_table :validation_codes do |t| t.string :email t.integer :kind, default: 1, null: false t.string code, limit: 100 t.datetime :used_at t.timestamps end end 前进数据库：</description>
+    </item>
+    
     <item>
       <title>Ruby on rails 之初体验</title>
       <link>https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_02_start/</link>
@@ -19,7 +31,7 @@ bin/rails g model user name:string email:string 这个命令会自动创建两�
 数据库操作 数据库同步：
 bin/rails db:migrate 数据库回滚：
 # 默认回滚到上一步 bin/rails db:rollback # 可以接受回滚步数 bin/rails db:rollback step=1 创建 Controller 创建一个users的controller，并添加create和show方法：
-bin/rails g controller users create show 这个命令同时也会帮我们创建对应的路由，但是由于不够精确和完整，所以一般都是删掉自己重新写。
+bin/rails g controller users create show 这个命令同时也会帮我们创建对应的路由，但是由于不够精确和完整，所以一般都需要删掉自己重新写。
 创建路由 在config/routes.rb文件中可以创建路由：
 # 创建一个 POST 请求，并对应到 users controller 的 create 方法 post &amp;#39;/users&amp;#39;, to: &amp;#39;users#create&amp;#39; # 创建一个 GET 请求，并对应到 users controller 的 show 方法 get &amp;#39;/users/:id&amp;#39;, to: &amp;#39;users#show&amp;#39; 创建一个用户 修改 users controller 的 create 方法：</description>
     </item>

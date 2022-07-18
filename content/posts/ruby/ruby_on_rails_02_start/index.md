@@ -44,7 +44,7 @@ bin/rails db:rollback step=1
 bin/rails g controller users create show
 ```
 
-这个命令同时也会帮我们创建对应的路由，但是由于不够精确和完整，所以一般都是删掉自己重新写。
+这个命令同时也会帮我们创建对应的路由，但是由于不够精确和完整，所以一般都需要删掉自己重新写。
 
 
 ## 创建路由
