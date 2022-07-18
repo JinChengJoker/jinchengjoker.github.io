@@ -6,7 +6,24 @@
     <description>Recent content on 金成的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Tue, 12 Jul 2022 11:25:38 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Jul 2022 18:18:45 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ruby on rails 之初体验</title>
+      <link>https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_02_start/</link>
+      <pubDate>Sat, 16 Jul 2022 18:18:45 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_02_start/</guid>
+      <description>数据建模 rails 提供了数据库建模工具：
+bin/rails g model user name:string email:string 这个命令会自动创建两个文件：一个是对应的model文件，一个是对应的数据库操作文件。
+然后我们直接填充/修改db/migrate目录下对应文件中的change方法即可。
+数据库操作 数据库同步：
+bin/rails db:migrate 数据库回滚：
+# 默认回滚到上一步 bin/rails db:rollback # 可以接受回滚步数 bin/rails db:rollback step=1 创建 Controller 创建一个users的controller，并添加create和show方法：
+bin/rails g controller users create show 这个命令同时也会帮我们创建对应的路由，但是由于不够精确和完整，所以一般都是删掉自己重新写。
+创建路由 在config/routes.rb文件中可以创建路由：
+# 创建一个 POST 请求，并对应到 users controller 的 create 方法 post &amp;#39;/users&amp;#39;, to: &amp;#39;users#create&amp;#39; # 创建一个 GET 请求，并对应到 users controller 的 show 方法 get &amp;#39;/users/:id&amp;#39;, to: &amp;#39;users#show&amp;#39; 创建一个用户 修改 users controller 的 create 方法：</description>
+    </item>
+    
     <item>
       <title>Ruby on rails 之创建项目</title>
       <link>https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_01_create/</link>
