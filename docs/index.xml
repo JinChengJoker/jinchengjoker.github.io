@@ -6,7 +6,20 @@
     <description>Recent content on 金成的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Mon, 18 Jul 2022 19:01:20 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Jul 2022 11:18:46 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ruby on rails 之分页</title>
+      <link>https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_04_pagination/</link>
+      <pubDate>Tue, 19 Jul 2022 11:18:46 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_04_pagination/</guid>
+      <description>创建 items Table 数据建模：
+bin/rails g model item user_id:bigint amount:integer note:text tags_id:bigint happend_at:datetime 完善db/migrate中对应的change方法：
+def change create_table :items do |t| t.bigint :user_id t.integer :amount t.text :note t.bigint :tags_id, array: true t.datetime :happend_at t.timestamps end end 前进数据库：
+bin/rails db:migrate 创建 items Controller bin/rails g controller Api::V1::items 添加 items Controller 的create方法：
+def create item = Item.new amount: 1 if item.save render json: {resource: item} else render json: {errors: item.errors} end end 使用第三方库进行分页 这里推荐两个第三方分页库 kaminari 和 pagy。</description>
+    </item>
+    
     <item>
       <title>Ruby on rails 之创建路由</title>
       <link>https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_03_routes/</link>
@@ -15,8 +28,9 @@
       <guid>https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_03_routes/</guid>
       <description>快速创建路由 rails提供了快速创建路由的方式，我们只需要在config/routes.rb文件中写好结构，就可以自动生成对应的路由。
 namespace :api do namespace :v1 do resources :validation_codes, only: [:create] resource :session, only: [:create, :destory] resource :me, only: [:show] resources :items resources :tags end end 这里用了两层namespace来规范路由和版本控制，即所有的路由都会以/api/v1开头。 :api这种前面带冒号的表示是一种简单字符串，没有任何其他的功能，仅仅只是一个字符串而已。 resource代表对应的资源名称，如果是复数资源那么就要使用resources。 only表示这个路由只需要特定的方法，不指定则默认拥有所有方法。一共有index、create、show、update、destory五种方法。 对应的还有exclude代表不需要的方法。 然后我们可以通过rails提供的命令查看所有的路由及对应的方法：
-bin/rails routes 创建 validation_codes Table # 创建`model`的时候`ValidationCode`不需要复数。 bin/rails g model ValidationCode email:string kind:string used_at:datetime 然后完善db/migrate中对应的change方法：
-def change create_table :validation_codes do |t| t.string :email t.integer :kind, default: 1, null: false t.string code, limit: 100 t.datetime :used_at t.timestamps end end 前进数据库：</description>
+bin/rails routes 创建 validation_codes Table 数据建模：
+# 创建 model 的时候 ValidationCode 不需要复数。 bin/rails g model ValidationCode email:string kind:string used_at:datetime 完善db/migrate中对应的change方法：
+def change create_table :validation_codes do |t| t.string :email t.integer :kind, default: 1, null: false t.string code, limit: 100 t.</description>
     </item>
     
     <item>

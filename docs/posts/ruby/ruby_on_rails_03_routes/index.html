@@ -23,8 +23,9 @@
   
   <meta name="description" content="快速创建路由 rails提供了快速创建路由的方式，我们只需要在config/routes.rb文件中写好结构，就可以自动生成对应的路由。
 namespace :api do namespace :v1 do resources :validation_codes, only: [:create] resource :session, only: [:create, :destory] resource :me, only: [:show] resources :items resources :tags end end 这里用了两层namespace来规范路由和版本控制，即所有的路由都会以/api/v1开头。 :api这种前面带冒号的表示是一种简单字符串，没有任何其他的功能，仅仅只是一个字符串而已。 resource代表对应的资源名称，如果是复数资源那么就要使用resources。 only表示这个路由只需要特定的方法，不指定则默认拥有所有方法。一共有index、create、show、update、destory五种方法。 对应的还有exclude代表不需要的方法。 然后我们可以通过rails提供的命令查看所有的路由及对应的方法：
-bin/rails routes 创建 validation_codes Table # 创建`model`的时候`ValidationCode`不需要复数。 bin/rails g model ValidationCode email:string kind:string used_at:datetime 然后完善db/migrate中对应的change方法：
-def change create_table :validation_codes do |t| t.string :email t.integer :kind, default: 1, null: false t.string code, limit: 100 t.datetime :used_at t.timestamps end end 前进数据库：" />
+bin/rails routes 创建 validation_codes Table 数据建模：
+# 创建 model 的时候 ValidationCode 不需要复数。 bin/rails g model ValidationCode email:string kind:string used_at:datetime 完善db/migrate中对应的change方法：
+def change create_table :validation_codes do |t| t.string :email t.integer :kind, default: 1, null: false t.string code, limit: 100 t." />
   <meta name="author" content="" />
   
 
@@ -72,8 +73,9 @@ def change create_table :validation_codes do |t| t.string :email t.integer :kind
   <meta property="og:title" content="Ruby on rails 之创建路由" />
 <meta property="og:description" content="快速创建路由 rails提供了快速创建路由的方式，我们只需要在config/routes.rb文件中写好结构，就可以自动生成对应的路由。
 namespace :api do namespace :v1 do resources :validation_codes, only: [:create] resource :session, only: [:create, :destory] resource :me, only: [:show] resources :items resources :tags end end 这里用了两层namespace来规范路由和版本控制，即所有的路由都会以/api/v1开头。 :api这种前面带冒号的表示是一种简单字符串，没有任何其他的功能，仅仅只是一个字符串而已。 resource代表对应的资源名称，如果是复数资源那么就要使用resources。 only表示这个路由只需要特定的方法，不指定则默认拥有所有方法。一共有index、create、show、update、destory五种方法。 对应的还有exclude代表不需要的方法。 然后我们可以通过rails提供的命令查看所有的路由及对应的方法：
-bin/rails routes 创建 validation_codes Table # 创建`model`的时候`ValidationCode`不需要复数。 bin/rails g model ValidationCode email:string kind:string used_at:datetime 然后完善db/migrate中对应的change方法：
-def change create_table :validation_codes do |t| t.string :email t.integer :kind, default: 1, null: false t.string code, limit: 100 t.datetime :used_at t.timestamps end end 前进数据库：" />
+bin/rails routes 创建 validation_codes Table 数据建模：
+# 创建 model 的时候 ValidationCode 不需要复数。 bin/rails g model ValidationCode email:string kind:string used_at:datetime 完善db/migrate中对应的change方法：
+def change create_table :validation_codes do |t| t.string :email t.integer :kind, default: 1, null: false t.string code, limit: 100 t." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_03_routes/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-07-18T19:01:20+08:00" />
@@ -84,18 +86,20 @@ def change create_table :validation_codes do |t| t.string :email t.integer :kind
   <meta itemprop="name" content="Ruby on rails 之创建路由">
 <meta itemprop="description" content="快速创建路由 rails提供了快速创建路由的方式，我们只需要在config/routes.rb文件中写好结构，就可以自动生成对应的路由。
 namespace :api do namespace :v1 do resources :validation_codes, only: [:create] resource :session, only: [:create, :destory] resource :me, only: [:show] resources :items resources :tags end end 这里用了两层namespace来规范路由和版本控制，即所有的路由都会以/api/v1开头。 :api这种前面带冒号的表示是一种简单字符串，没有任何其他的功能，仅仅只是一个字符串而已。 resource代表对应的资源名称，如果是复数资源那么就要使用resources。 only表示这个路由只需要特定的方法，不指定则默认拥有所有方法。一共有index、create、show、update、destory五种方法。 对应的还有exclude代表不需要的方法。 然后我们可以通过rails提供的命令查看所有的路由及对应的方法：
-bin/rails routes 创建 validation_codes Table # 创建`model`的时候`ValidationCode`不需要复数。 bin/rails g model ValidationCode email:string kind:string used_at:datetime 然后完善db/migrate中对应的change方法：
-def change create_table :validation_codes do |t| t.string :email t.integer :kind, default: 1, null: false t.string code, limit: 100 t.datetime :used_at t.timestamps end end 前进数据库："><meta itemprop="datePublished" content="2022-07-18T19:01:20+08:00" />
+bin/rails routes 创建 validation_codes Table 数据建模：
+# 创建 model 的时候 ValidationCode 不需要复数。 bin/rails g model ValidationCode email:string kind:string used_at:datetime 完善db/migrate中对应的change方法：
+def change create_table :validation_codes do |t| t.string :email t.integer :kind, default: 1, null: false t.string code, limit: 100 t."><meta itemprop="datePublished" content="2022-07-18T19:01:20+08:00" />
 <meta itemprop="dateModified" content="2022-07-18T19:01:20+08:00" />
-<meta itemprop="wordCount" content="89">
+<meta itemprop="wordCount" content="94">
 <meta itemprop="keywords" content="" />
   
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Ruby on rails 之创建路由"/>
 <meta name="twitter:description" content="快速创建路由 rails提供了快速创建路由的方式，我们只需要在config/routes.rb文件中写好结构，就可以自动生成对应的路由。
 namespace :api do namespace :v1 do resources :validation_codes, only: [:create] resource :session, only: [:create, :destory] resource :me, only: [:show] resources :items resources :tags end end 这里用了两层namespace来规范路由和版本控制，即所有的路由都会以/api/v1开头。 :api这种前面带冒号的表示是一种简单字符串，没有任何其他的功能，仅仅只是一个字符串而已。 resource代表对应的资源名称，如果是复数资源那么就要使用resources。 only表示这个路由只需要特定的方法，不指定则默认拥有所有方法。一共有index、create、show、update、destory五种方法。 对应的还有exclude代表不需要的方法。 然后我们可以通过rails提供的命令查看所有的路由及对应的方法：
-bin/rails routes 创建 validation_codes Table # 创建`model`的时候`ValidationCode`不需要复数。 bin/rails g model ValidationCode email:string kind:string used_at:datetime 然后完善db/migrate中对应的change方法：
-def change create_table :validation_codes do |t| t.string :email t.integer :kind, default: 1, null: false t.string code, limit: 100 t.datetime :used_at t.timestamps end end 前进数据库："/>
+bin/rails routes 创建 validation_codes Table 数据建模：
+# 创建 model 的时候 ValidationCode 不需要复数。 bin/rails g model ValidationCode email:string kind:string used_at:datetime 完善db/migrate中对应的change方法：
+def change create_table :validation_codes do |t| t.string :email t.integer :kind, default: 1, null: false t.string code, limit: 100 t."/>
 
   
   
@@ -168,9 +172,10 @@ def change create_table :validation_codes do |t| t.string :email t.integer :kind
 <p>然后我们可以通过<code>rails</code>提供的命令查看所有的路由及对应的方法：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bin/rails routes
 </span></span></code></pre></div><h2 id="创建-validation_codes-table">创建 validation_codes Table</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 创建`model`的时候`ValidationCode`不需要复数。</span>
+<p>数据建模：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 创建 model 的时候 ValidationCode 不需要复数。</span>
 </span></span><span style="display:flex;"><span>bin/rails g model ValidationCode email:string kind:string used_at:datetime
-</span></span></code></pre></div><p>然后完善<code>db/migrate</code>中对应的<code>change</code>方法：</p>
+</span></span></code></pre></div><p>完善<code>db/migrate</code>中对应的<code>change</code>方法：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">change</span>
 </span></span><span style="display:flex;"><span>  create_table <span style="color:#e6db74">:validation_codes</span> <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>t<span style="color:#f92672">|</span>
 </span></span><span style="display:flex;"><span>    t<span style="color:#f92672">.</span>string <span style="color:#e6db74">:email</span>
@@ -197,6 +202,8 @@ def change create_table :validation_codes do |t| t.string :email t.integer :kind
   
   
   <nav class="post-nav">
+    
+    <a class="prev" href="https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_04_pagination/"><span>←</span><span>Ruby on rails 之分页</span></a>
      
     <a class="next" href="https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_02_start/"><span>Ruby on rails 之初体验</span><span>→</span></a>
     

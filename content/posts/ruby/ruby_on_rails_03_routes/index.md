@@ -35,12 +35,14 @@ bin/rails routes
 
 ## 创建 validation_codes Table
 
+数据建模：
+
 ```bash
-# 创建`model`的时候`ValidationCode`不需要复数。
+# 创建 model 的时候 ValidationCode 不需要复数。
 bin/rails g model ValidationCode email:string kind:string used_at:datetime
 ```
 
-然后完善`db/migrate`中对应的`change`方法：
+完善`db/migrate`中对应的`change`方法：
 
 ```ruby
 def change

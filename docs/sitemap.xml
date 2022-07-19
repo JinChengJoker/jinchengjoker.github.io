@@ -3,11 +3,14 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://jinchengjoker.github.io/</loc>
-    <lastmod>2022-07-18T19:01:20+08:00</lastmod>
+    <lastmod>2022-07-19T11:18:46+08:00</lastmod>
     <priority>0</priority>
   </url><url>
     <loc>https://jinchengjoker.github.io/posts/</loc>
-    <lastmod>2022-07-18T19:01:20+08:00</lastmod>
+    <lastmod>2022-07-19T11:18:46+08:00</lastmod>
+  </url><url>
+    <loc>https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_04_pagination/</loc>
+    <lastmod>2022-07-19T11:18:46+08:00</lastmod>
   </url><url>
     <loc>https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_03_routes/</loc>
     <lastmod>2022-07-18T19:01:20+08:00</lastmod>
