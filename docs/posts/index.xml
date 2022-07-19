@@ -6,7 +6,24 @@
     <description>Recent content in Posts on 金成的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Tue, 19 Jul 2022 11:18:46 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Jul 2022 19:36:01 +0800</lastBuildDate><atom:link href="https://jinchengjoker.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ruby on rails 之单元测试</title>
+      <link>https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_05_testing/</link>
+      <pubDate>Tue, 19 Jul 2022 19:36:01 +0800</pubDate>
+      
+      <guid>https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_05_testing/</guid>
+      <description>安装测试框架 这里使用第三方测试框架 rspec-rails。
+将rspec-rails添加到Gemfile文件的:development组和:test组中：
+group :development, :test dogem &amp;#39;rspec-rails&amp;#39;, &amp;#39;~&amp;gt; 5.0.0&amp;#39;end 执行安装：
+bundle # or bundle install 初始化（创建模板配置文件）：
+bin/rails generate rspec:install 创建测试数据库 修改config/database.yml文件：
+test: &amp;lt;&amp;lt;: *default database: mangosteen_test username: mangosteen password: 123456 host: db-for-mangosteen 在测试环境下创建数据库和数据表：
+# 创建数据库 RAILS_ENV=test bin/rails db:create # 创建数据表 RAILS_ENV=test bin/rails db:migrate 测试 model 创建user model的测试：
+# 创建对应的 model 文件和测试文件 bin/rails g model user # or 仅创建测试文件 bin/rails g rspec:model user 在spec/models中可以找到刚才创建的文件user_spec.rb：
+# 一些通用的帮助办法可以写在 rails_helper 里（例如登录） # 然后在这里引用 require &amp;#39;rails_helper&amp;#39; 添加一个测试用例：</description>
+    </item>
+    
     <item>
       <title>Ruby on rails 之分页</title>
       <link>https://jinchengjoker.github.io/posts/ruby/ruby_on_rails_04_pagination/</link>
