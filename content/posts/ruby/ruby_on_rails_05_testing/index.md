@@ -171,7 +171,7 @@ end
 def create
   # 生成 6 位随机数作为验证码
   code = SecureRandom.random_number.to_s[2..7]
-  validation_code = ValidationCode.new email: params[:email], kind: :sign_in, code: code
+  validation_code = ValidationCode.new email: params[:email], kind: 'sign_in', code: code
   if validation_code.save
     head 200
   else
