@@ -19,9 +19,8 @@ group :development, :test dogem &amp;#39;rspec-rails&amp;#39;, &amp;#39;~&amp;g
 bundle # or bundle install 初始化（创建模板配置文件）：
 bin/rails generate rspec:install 创建测试数据库 修改config/database.yml文件：
 test: &amp;lt;&amp;lt;: *default database: mangosteen_test username: mangosteen password: 123456 host: db-for-mangosteen 在测试环境下创建数据库和数据表：
-# 创建数据库 RAILS_ENV=test bin/rails db:create # 创建数据表 RAILS_ENV=test bin/rails db:migrate 测试 model 创建user model的测试：
-# 创建对应的 model 文件和测试文件 bin/rails g model user # or 仅创建测试文件 bin/rails g rspec:model user 在spec/models中可以找到刚才创建的文件user_spec.rb：
-# 一些通用的帮助办法可以写在 rails_helper 里（例如登录） # 然后在这里引用 require &amp;#39;rails_helper&amp;#39; 添加一个测试用例：</description>
+# 创建数据库 RAILS_ENV=test bin/rails db:create # 创建数据表 RAILS_ENV=test bin/rails db:migrate 测试 model 创建user的model测试：
+# 安装了 rspec-rails 后会自动添加钩子 # 同时创建对应的 model 文件和测试文件 bin/rails g model user # or 仅创建测试文件 bin/rails g rspec:model user 在spec/models中可以找到刚才创建的文件user_spec.rb：</description>
     </item>
     
     <item>
