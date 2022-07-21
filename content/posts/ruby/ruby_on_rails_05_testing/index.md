@@ -1,7 +1,7 @@
 ---
 title: "Ruby on rails 之单元测试"
 date: 2022-07-19T19:36:01+08:00
-draft: true
+draft: false
 ---
 
 ## 安装测试框架
