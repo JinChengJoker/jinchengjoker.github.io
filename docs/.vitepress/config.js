@@ -18,11 +18,11 @@ function sidebarBlog() {
       ],
     },
     {
-      text: '算法',
+      text: 'HTTP',
       collapsible: true,
       collapsed: true,
       items: [
-        { text: '排序算法', link: '/blog/algorithm/sort/' },
+        { text: 'HTTP 基础知识', link: '/blog/http/http_basic/' },
       ]
     },
     {
@@ -36,27 +36,11 @@ function sidebarBlog() {
       ]
     },
     {
-      text: 'Docker',
-      collapsible: true,
-      collapsed: true,
-      items: [
-        { text: '云服务器安装 Docker', link: '/blog/docker/ecs_docker/' },
-      ]
-    },
-    {
       text: 'DOM',
       collapsible: true,
       collapsed: true,
       items: [
         { text: 'DOM 事件标准与模型', link: '/blog/dom/dom_events/' },
-      ]
-    },
-    {
-      text: 'HTTP',
-      collapsible: true,
-      collapsed: true,
-      items: [
-        { text: 'HTTP 基础知识', link: '/blog/http/http_basic/' },
       ]
     },
     {
@@ -78,15 +62,16 @@ function sidebarBlog() {
       ]
     },
     {
-      text: '其它',
+      text: 'Vue',
       collapsible: true,
       collapsed: true,
       items: [
-        { text: '用 JS 理解函数柯里化', link: '/blog/misc/currying/' },
-        { text: '用 TS 实现 EventHub（发布/订阅模式）', link: '/blog/misc/eventhub/' },
-        { text: '到底什么是前端架构？', link: '/blog/misc/fe_arch/' },
-        { text: '在 NPM 上发布一个命令行工具包', link: '/blog/misc/make_npm_package/' },
-        { text: '用 JS 理解递归', link: '/blog/misc/recursion/' },
+        { text: 'Vue 数据响应式原理', link: '/blog/vue/vue_data_reactivity/' },
+        { text: 'Vue 之 MVVM', link: '/blog/vue/vue_mvvm/' },
+        { text: 'Vue 运行时+编译器 vs. 仅运行时', link: '/blog/vue/vue_runtime_runtime-only/' },
+        { text: 'Vue2 data 选项存在的问题', link: '/blog/vue/vue2_data_problem/' },
+        { text: 'Vue3 响应性原理之 Proxy & Reflect', link: '/blog/vue/vue3_reactivity_proxy_reflect/' },
+        { text: 'Vue3 响应性原理之 track & trigger', link: '/blog/vue/vue3_reactivity_track_trigger/' },
       ]
     },
     {
@@ -102,16 +87,31 @@ function sidebarBlog() {
       ]
     },
     {
-      text: 'Vue',
+      text: 'Docker',
       collapsible: true,
       collapsed: true,
       items: [
-        { text: 'Vue 数据响应式原理', link: '/blog/vue/vue_data_reactivity/' },
-        { text: 'Vue 之 MVVM', link: '/blog/vue/vue_mvvm/' },
-        { text: 'Vue 运行时+编译器 vs. 仅运行时', link: '/blog/vue/vue_runtime_runtime-only/' },
-        { text: 'Vue2 data 选项存在的问题', link: '/blog/vue/vue2_data_problem/' },
-        { text: 'Vue3 响应性原理之 Proxy & Reflect', link: '/blog/vue/vue3_reactivity_proxy_reflect/' },
-        { text: 'Vue3 响应性原理之 track & trigger', link: '/blog/vue/vue3_reactivity_track_trigger/' },
+        { text: '云服务器安装 Docker', link: '/blog/docker/ecs_docker/' },
+      ]
+    },
+    {
+      text: '算法',
+      collapsible: true,
+      collapsed: true,
+      items: [
+        { text: '排序算法', link: '/blog/algorithm/sort/' },
+      ]
+    },
+    {
+      text: '其它',
+      collapsible: true,
+      collapsed: true,
+      items: [
+        { text: '用 JS 理解函数柯里化', link: '/blog/misc/currying/' },
+        { text: '用 TS 实现 EventHub（发布/订阅模式）', link: '/blog/misc/eventhub/' },
+        { text: '到底什么是前端架构？', link: '/blog/misc/fe_arch/' },
+        { text: '在 NPM 上发布一个命令行工具包', link: '/blog/misc/make_npm_package/' },
+        { text: '用 JS 理解递归', link: '/blog/misc/recursion/' },
       ]
     },
   ]
