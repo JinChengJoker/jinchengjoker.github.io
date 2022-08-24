@@ -1,5 +1,0 @@
-baseURL = 'https://jinchengjoker.github.io/'
-languageCode = 'zh-Hans'
-title = '金成的博客'
-theme = 'paper'
-publishdir = 'docs'

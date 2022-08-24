@@ -1,0 +1,17 @@
+{
+  "name": "jinchengjoker.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:JinChengJoker/jinchengjoker.github.io.git",
+  "author": "jincheng <jinchengjoker@foxmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0-alpha.9",
+    "vue": "^3.2.37"
+  }
+}
