@@ -1,13 +1,13 @@
 # Vue3 响应性原理之 Proxy & Reflect
 
-之前已经实现了`vue3`响应性系统中如何记录代码，并在需要的时候可以再次执行它们：[Vue3 响应性原理之 track & trigger](https://jinchengjoker.github.io/posts/vue/vue3_reactivity_track_trigger/)。
+之前已经实现了`vue3`响应性系统中如何记录代码，并在需要的时候可以再次执行它们：[Vue3 响应性原理之 track & trigger](https://jinchengjoker.github.io/blog/vue/vue3_reactivity_track_trigger/)。
 
 然而问题是现在只能手动的调用`track`和`trigger`，现在就来解决这个问题。
 
 
 ## 为什么 Vue3 要重写数据响应实现
 
-在`vue`的早期版本，使用`data`选项是会存在一些响应性问题的（[看这里](https://jinchengjoker.github.io/posts/vue/vue2_data_problem/)）。
+在`vue`的早期版本，使用`data`选项是会存在一些响应性问题的（[看这里](https://jinchengjoker.github.io/blog/vue/vue2_data_problem/)）。
 
 这主要是因为受限于当时`ES6`语法还并未在众多浏览器中普及，`vue`使用了兼容性更好的`Object.definePropety`和`getter/setter`来实现数据响应性。
 

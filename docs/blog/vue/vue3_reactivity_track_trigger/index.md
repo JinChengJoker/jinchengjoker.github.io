@@ -253,6 +253,6 @@ console.log(total)  // 15
 
 但是还有最后一个问题，现在都是手动去调用`track`和`trigger`，而理想情况是，我只需要修改数据，其它的工作都能自动完成。
 
-所以还需要有一个办法能够自动监控/代理数据，并自动做出响应：[Vue3 响应性原理之 Proxy & Reflect](https://jinchengjoker.github.io/posts/vue/vue3_reactivity_proxy_reflect/)。
+所以还需要有一个办法能够自动监控/代理数据，并自动做出响应：[Vue3 响应性原理之 Proxy & Reflect](https://jinchengjoker.github.io/blog/vue/vue3_reactivity_proxy_reflect/)。
 
 *以上例子和思路均来源于官方教程 [Vue Mastery](https://www.vuemastery.com/courses/vue-3-reactivity/vue3-reactivity)*。
